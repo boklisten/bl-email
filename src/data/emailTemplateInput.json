@@ -2,6 +2,8 @@
   "username": "Billy Bob",
   "showPrice": false,
   "showDeadline": true,
+  "title": "Til alle våre kunder",
+  "intro": "",
   "numberOfCols": 3,
   "totalPrice": 700,
   "passwordResetLink": "www.vg.no",
@@ -24,6 +26,17 @@
       "price": 0,
       "deadline": "10.10.2010",
       "status": "ordered"
+    }
+  ],
+  "textBlocks": [
+    {
+      "text": "Dette er en generell påminnelse om at vi snart tar inn bøker."
+    },
+    {
+      "text": "Hvis du har noen spørsmål ber vi deg kontakte oss på våre nettsider eller på e-post. Kontaktinfo finner du nederst i denne mailen."
+    },
+    {
+      "text": "takk for din oppmerksomhet. Vi håper du vil bruke oss igjen i fremtiden!"
     }
   ]
 }
