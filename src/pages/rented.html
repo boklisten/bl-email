@@ -1,0 +1,43 @@
+
+<container class="bl-main-container">
+    <row>
+        <columns>
+            <h3 class="text-center bl-main-title">{{emailTemplateConfig.text.deadline.title}}</h3>
+        </columns>
+    </row>
+
+    <row>
+        <columns small="12">
+            <b class="bl-hello">{{emailTemplateConfig.text.general.hello}}, {{emailTemplateInput.username}}</b>
+            <p>
+                {{emailTemplateConfig.text.deadline.intro}}
+            </p>
+        </columns>
+    </row>
+
+</container>
+
+<spacer size="8"></spacer>
+
+{{> item-list-deadline}}
+
+<spacer size="8"></spacer>
+
+<container>
+    <row>
+        <columns small="12" class="bl-container">
+            <p>
+                {{emailTemplateConfig.text.deadline.externalCandidateInfo}}
+            </p>
+        </columns>
+    </row>
+</container>
+
+<spacer size="8"></spacer>
+
+{{> leaseNotice}}
+
+<spacer size="8"></spacer>
+
+{{> login}}
+

@@ -1,0 +1,90 @@
+
+
+.bl-header {
+  background-color: $light-gray;
+}
+
+.bl-footer {
+  background-color: $light-gray;
+}
+
+.bl-main-container {
+  border-top: 3px solid $primary-color;
+}
+
+.bl-container {
+  padding-top: 20px;
+
+}
+
+.bl-container-list {
+  @extend .bl-container;
+  background-color: #3adb76;
+}
+
+.bl-container-warning {
+  @extend .bl-container;
+  background-color: $alert-color;
+  border: dashed 3px white;
+}
+
+table.button {
+  margin: 0;
+}
+
+.bl-main-title {
+  color: $primary-color;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.bl-hello {
+  color: $dark-gray;
+}
+
+.bl-item-container {
+  background-color: #1b9448;
+}
+
+.bl-table {
+  font-size: 7px;
+  padding-top: 10px;
+
+  border-style: dotted solid;
+  border-width: 5px;
+  border-color: $light-gray;
+}
+
+.bl-table-item-title {
+  font-size: 12px;
+  font-weight: bold;
+  padding-top: 5px;
+  border-bottom: 1px solid $primary-color;
+}
+
+.bl-table-item-text {
+  font-size: 10px;
+  padding-top: 5px;
+  padding-right: 3px;
+}
+
+.bl-table-total {
+  border-top: 1px solid $primary-color;
+}
+
+.bl-table-total-price {
+  @extend .bl-table-item-text;
+  padding-top: 5px;
+  font-weight: bold;
+}
+
+.bl-table-total-price-title {
+  @extend .bl-table-item-text;
+  padding-top: 5px;
+  font-style: italic;
+}
+
+.bl-center-text {
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+{
+  "username": "Billy Bob",
+  "showPrice": false,
+  "showDeadline": true,
+  "numberOfCols": 3,
+  "totalPrice": 700,
+  "passwordResetLink": "www.vg.no",
+  "confirmLink": "www.asite.com",
+  "items": [
+    {
+      "title": "Signatur 2",
+      "price": 0,
+      "deadline": "10.10.2010",
+      "status": "ordered"
+    },
+    {
+      "title": "Kosmos SF",
+      "price": 0,
+      "deadline": "10.10.2010",
+      "status": "ordered"
+    },
+    {
+      "title": "Terra Nova",
+      "price": 0,
+      "deadline": "10.10.2010",
+      "status": "ordered"
+    }
+  ]
+}

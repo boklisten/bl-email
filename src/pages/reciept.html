@@ -1,0 +1,27 @@
+
+<container class="bl-main-container">
+
+  <row>
+    <columns>
+      <h3 class="text-center bl-main-title">{{emailTemplateConfig.text.order.title}}</h3>
+    </columns>
+  </row>
+
+  <row>
+    <columns small="12">
+      <b class="bl-hello">{{emailTemplateConfig.text.general.hello}}, {{emailTemplateInput.username}}</b>
+      <p>
+        {{emailTemplateConfig.text.order.intro}}
+      </p>
+    </columns>
+  </row>
+
+</container>
+
+<spacer size="8"></spacer>
+
+{{> item-list}}
+
+<spacer size="8"></spacer>
+
+{{> login}}

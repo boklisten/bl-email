@@ -1,0 +1,44 @@
+<container class="bl-main-container">
+
+    <row>
+        <columns>
+            <h3 class="text-center bl-main-title">\{{emailTemplateConfig.text.confirm.title}}</h3>
+        </columns>
+    </row>
+
+    <row>
+        <columns small="12">
+            <b class="bl-hello">\{{emailTemplateConfig.text.general.hello}}</b>
+            <p>
+               \{{emailTemplateConfig.text.confirm.intro}}
+            </p>
+        </columns>
+    </row>
+
+</container>
+
+<spacer size="8"></spacer>
+
+<container>
+    <row>
+        <columns small="12" class="bl-container">
+           <p class="bl-center-text">
+               \{{emailTemplateConfig.text.confirm.info}}
+
+           </p>
+            <center>
+                <button href="{{emailTemplateInput.confirmLink}}" class="radius">
+                    \{{emailTemplateConfig.text.confirm.button}}
+                </button>
+                <small>
+                    <i>
+                        \{{emailTemplateInput.confirmLink}}
+                    </i>
+                </small>
+            </center>
+        </columns>
+    </row>
+</container>
+
+
+
