@@ -4,9 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/src/partials/footer.html" line="11" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0d26534-25e4-42bd-9090-4d3aca870973" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ts/email.handler.ts" afterPath="$PROJECT_DIR$/src/ts/email.handler.ts" />
+    <list default="true" id="e0d26534-25e4-42bd-9090-4d3aca870973" name="Default" comment="fix: emailHandler takes a config object as parameter">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/bl-email.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/preferred-vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,14 +26,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="email.handler.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="email.handler.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ts/email.handler.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+              <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
               <folding>
                 <element signature="e#3#54#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -139,13 +152,13 @@
         <option value="$PROJECT_DIR$/src/partials/item-list.html" />
         <option value="$PROJECT_DIR$/src/data/emailTemplateInput.json" />
         <option value="$PROJECT_DIR$/src/ts/template/email-template-input.ts" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/config/secrets.ts" />
         <option value="$PROJECT_DIR$/src/public_api.ts" />
         <option value="$PROJECT_DIR$/src/ts/sendgrid.wrapper.ts" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/ts/email.handler.ts" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -271,7 +284,7 @@
       <workItem from="1515415687486" duration="12818000" />
       <workItem from="1515487941900" duration="6157000" />
       <workItem from="1515497359805" duration="674000" />
-      <workItem from="1515498132576" duration="92000" />
+      <workItem from="1515498132576" duration="371000" />
     </task>
     <task id="LOCAL-00001" summary="feat: i now inserts handlebars based on prod or test">
       <created>1515417278026</created>
@@ -329,11 +342,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515498010729</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix: emailHandler takes a config object as parameter">
+      <created>1515498251687</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1515498251687</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69796000" />
+    <option name="totallyTimeSpent" value="70075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -405,7 +425,8 @@
     <MESSAGE value="fix: package-lock.json" />
     <MESSAGE value="fix(README): cleanup" />
     <MESSAGE value="build: some small fixes to the build build process" />
-    <option name="LAST_COMMIT_MESSAGE" value="build: some small fixes to the build build process" />
+    <MESSAGE value="fix: emailHandler takes a config object as parameter" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: emailHandler takes a config object as parameter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -613,13 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/password-reset.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -705,10 +719,18 @@
     <entry file="file://$PROJECT_DIR$/src/ts/email.handler.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+          <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
           <folding>
             <element signature="e#3#54#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
