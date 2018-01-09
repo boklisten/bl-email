@@ -26,8 +26,6 @@ export class TemplateCompiler {
 		this.compiledPages['hello'] = this.compileTemplate('hello');
 		this.compiledPages['password-reset'] = this.compileTemplate('password-reset');
 		this.compiledPages['receipt'] = this.compileTemplate('receipt');
-		this.compiledPages['rented'] = this.compileTemplate('rented');
-		
 	}
 	
 	public getHtml(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {

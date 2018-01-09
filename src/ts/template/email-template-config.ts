@@ -1,64 +1,103 @@
+import {EmailSetting} from "./email-setting";
+
 export type EmailTemplateConfig = {
 	link: {
 		leaseNotice: string,
 		login: string,
 		website: string,
-		email: string
+		email: string,
+		logo: string
 	},
-	text: {
-		general: string,
-	},
-	leaseNotice: {
-		info: string,
-		link: string
-	},
-	login: {
-		info: string,
-		button: string
-	},
-	contact: {
-		title: string,
-		email: {
-			title: string,
-			value: string
+	general: {
+		text: {
+			hello: string
 		},
-		website: {
-			title: string,
-			value: string
+		img: {
+			logo: {
+				alt: string
+			}
 		}
 	},
-	confirm: {
-		title: string,
-		intro: string,
-		info: string,
-		button: string
+	"confirm-email": {
+		emailSetting: EmailSetting,
+		text: {
+			title: string,
+			intro: string,
+			info: string,
+			button: string
+		}
 	},
 	deadline: {
-		title: string,
-		intro: string,
-		externalCandidateInfo: string
+		emailSetting: EmailSetting
+		text: {
+			title: string,
+			intro: string,
+			externalCandidateInfo: string
+		}
 	},
-	order: {
-		title: string,
-		intro: string
+	generic: {
+		emailSetting: EmailSetting,
+		text: {
+		
+		}
 	},
 	hello: {
-		title: string,
-		intro: string
+		emailSetting: EmailSetting,
+		text: {
+			title: string,
+			intro: string
+		}
+	}
+	"password-reset": {
+		emailSetting: EmailSetting,
+		text: {
+			title: string,
+			intro: string,
+			info: string,
+			linkTitle: string,
+			button: string,
+			warning: string
+		}
+	}
+	receipt: {
+		emailSetting: EmailSetting,
+		text: {
+			title: string,
+			intro: string
+		}
 	},
-	passwordReset: {
-		title: string,
-		intro: string,
-		info: string,
-		linkTitle: string,
-		button: string,
-		warning: string
-	},
-	itemList: {
-		totalPriceTitle: string,
-		titleHeader: string,
-		statusHeader: string,
-		deadlineHeader: string,
-		priceHeader: string
+	partial: {
+		contact: {
+			title: string,
+			email: {
+				title: string,
+				value: string
+			},
+			website: {
+				title: string,
+				value: string
+			},
+			address: {
+				title: string,
+				value: string
+			}
+		},
+		header: {}
+		"item-list": {
+			totalPriceTitle: string,
+			titleHeader: string,
+			statusHeader: string,
+			deadlineHeader: string,
+			priceHeader: string
+		},
+		leaseNotice: {
+			info: string,
+			link: string
+		},
+		login: {
+			info: string,
+			button: string
+		},
+		"text-container": {}
 	}
 }
