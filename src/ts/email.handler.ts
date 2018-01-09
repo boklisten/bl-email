@@ -1,10 +1,12 @@
 
+
+
 import {SendgridWrapper} from "./sendgrid.wrapper";
-import {SECRETS} from "../config/secrets";
 import {EmailTemplateInput} from "./template/email-template-input";
 import {TemplateCompiler} from "./template/template-compiler";
 import {EmailTemplateConfig} from "./template/email-template-config";
 import {EmailLog} from "./email-log";
+import {SECRETS} from "../config/secrets";
 
 export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
@@ -49,7 +51,7 @@ export class EmailHandler {
 		return this._templateCompiler.getHtml(emailTemplateConfig, emailTemplateInput);
 	}
 }
-
+/*
 const eHandler = new EmailHandler();
 const etInput: EmailTemplateInput = {
 	toEmail: "aholskil@gmail.com",
@@ -76,14 +78,4 @@ const etInput: EmailTemplateInput = {
 	]
 };
 
-const fs = require('fs');
-const emailTemplateConfig = JSON.parse(fs.readFileSync(__dirname + '/../../src/data/emailTemplateConfig.json', 'utf8'));
-
-eHandler.send(emailTemplateConfig, etInput)
-	.then((emailLog: EmailLog) => {
-		console.log('we got the log', emailLog);
-	})
-	.catch((error: Error) => {
-		console.log('an error sending email', error);
-	});
-
+*/

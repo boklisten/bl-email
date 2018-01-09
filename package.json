@@ -2,10 +2,10 @@
   "name": "bl-email",
   "version": "1.0.1",
   "description": "email handler for boklisten, based on ZURB foundation for emails",
-  "main": "dist/ts/index.js",
-  "typings": "dist/ts/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "prepare": "gulp build",
+    "prepare": "gulp build --production",
     "start": "gulp",
     "build": "gulp --production",
     "zip": "gulp zip --production",

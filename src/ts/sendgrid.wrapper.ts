@@ -22,7 +22,7 @@ export class SendgridWrapper {
 			this.sendgridMail.send(sgMsg).then(() => {
 				resolve(new EmailLog(sgMsg.to, sgMsg.from, type));
 			}).catch((error: any) => {
-				reject(new Error('could not send email to "' + sgMsg.to + '"'));
+				reject(new Error('could not send email to "' + sgMsg.to + '"' + error));
 			});
 		});
 	}
