@@ -6,14 +6,13 @@ import {EmailTemplateInput} from "./template/email-template-input";
 import {TemplateCompiler} from "./template/template-compiler";
 import {EmailTemplateConfig} from "./template/email-template-config";
 import {EmailLog} from "./email-log";
-import {SECRETS} from "../config/secrets";
 
 export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
 	private _templateCompiler: TemplateCompiler;
 	
-	constructor() {
-		this._sendGrid = new SendgridWrapper(SECRETS.email.sendgrid.apiKey);
+	constructor(config: {sendgrid: {apiKey: string}}) {
+		this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
 		this._templateCompiler = new TemplateCompiler();
 	}
 	
