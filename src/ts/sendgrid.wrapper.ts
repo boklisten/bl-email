@@ -1,3 +1,5 @@
+import {EmailLog} from "./email-log";
+
 export class SendgridWrapper {
 	private sendgridMail: any;
 	
@@ -6,29 +8,21 @@ export class SendgridWrapper {
 		this.sendgridMail.setApiKey(sendgridApiKey);
 	}
 	
-	public send(toEmail: string, fromEmail: string, subject: string, html: string) {
-		console.log('the html to send', html);
-		
-		const sgMsg = {
-			to: toEmail,
-			from: fromEmail,
-			subject: subject,
-			html: html
-		};
-		
-		
-		
-		this.sendgridMail.send(sgMsg).then(() => {
-			console.log('message sent');
-		}).catch((error: any) => {
-			console.log('the error!!', error.toString());
-			const {message, code, response} = error;
-			const {headers, body} = response;
+	public send(toEmail: string, fromEmail: string, subject: string, html: string): Promise<EmailLog> {
+		return new Promise((resolve, reject) => {
 			
-			console.log('msg', message);
-			console.log('code', code);
-			console.log('headers', headers);
-			console.log('body', body);
-		})
+			const sgMsg = {
+				to: toEmail,
+				from: fromEmail,
+				subject: subject,
+				html: html
+			};
+			
+			this.sendgridMail.send(sgMsg).then(() => {
+				resolve(new EmailLog(sgMsg.to, sgMsg.from, sgMsg.subject));
+			}).catch((error: any) => {
+				reject(new Error('could not send email to "' + sgMsg.to + '"'));
+			});
+		});
 	}
 }
