@@ -21,16 +21,20 @@ export class TemplateCompiler {
 		this.compiledPages = {confirm: {}};
 		
 		this.compiledPages["confirm-email"] = this.compileTemplate('confirm-email');
+		this.compiledPages["deadline"] = this.compileTemplate('deadline');
+		this.compiledPages['generic'] = this.compileTemplate('generic');
+		this.compiledPages['hello'] = this.compileTemplate('hello');
+		this.compiledPages['password-reset'] = this.compileTemplate('password-reset');
+		this.compiledPages['receipt'] = this.compileTemplate('receipt');
+		this.compiledPages['rented'] = this.compileTemplate('rented');
+		
 	}
 	
 	public getHtml(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
-		console.log('the compiled page', this.compiledPages[emailTemplateInput.emailType]);
 		const combinedData = {
 			emailTemplateInput: emailTemplateInput,
 			emailTemplateConfig: emailTemplateConfig
 		};
-		console.log('the combined values', combinedData);
-		
 		return this.compiledPages[emailTemplateInput.emailType](combinedData);
 	}
 	

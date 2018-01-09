@@ -40,8 +40,24 @@ const eHandler = new EmailHandler();
 const etInput: EmailTemplateInput = {
 	toEmail: "aholskil@gmail.com",
 	fromEmail: "test@boklisten.co",
-	subject: "test mail",
-	emailType: "confirm-email"
+	subject: "your receipt",
+	emailType: "receipt",
+	showPrice: true,
+	showDeadline: true,
+	items: [
+		{
+			title: "Signatur 3",
+			price: 500.0,
+			deadline: "01.01.2012",
+			status: "ordered"
+		},
+		{
+			title: "Kosmos SF",
+			price: 450.0,
+			deadline: "01.01.2017",
+			status: "ordered"
+		}
+	]
 };
 
 const fs = require('fs');

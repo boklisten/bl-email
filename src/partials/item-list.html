@@ -31,7 +31,7 @@
 
                 {{#if emailTemplateInput.showPrice}}
                 <tr class="bl-table-total">
-                    <td class="bl-table-total-price-title" colspan="{{min emailTemplateInput.numberOfCols 1}}"><i>{{emailTemplateConfig.text.itemList.totalPriceTitle}}</i></td>
+                    <td class="bl-table-total-price-title" colspan="{{emailTemplateInput.numberOfCols}}"><i>{{emailTemplateConfig.text.itemList.totalPriceTitle}}</i></td>
                     <td class="bl-table-total-price"><b>{{emailTemplateInput.totalPrice}}</b></td>
                 </tr>
                 {{/if}}
