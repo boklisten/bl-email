@@ -1,6 +1,6 @@
 {
   "name": "bl-email",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "email handler for boklisten, based on ZURB foundation for emails",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
