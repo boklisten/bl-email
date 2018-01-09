@@ -13,18 +13,22 @@ import merge    from 'merge-stream';
 import beep     from 'beepbeep';
 import colors   from 'colors';
 
+
 const $ = plugins();
 
 // Look for the --production flag
 const PRODUCTION = !!(yargs.argv.production);
 const EMAIL = yargs.argv.to;
+const TEMPLATE_PATH = './dist/templates/';
+const SRC_PATH = './src/';
+const TS_PATH = './dist/';
 
 // Declar var so that both AWS and Litmus task can use it.
 var CONFIG;
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
-  gulp.series(clean, pages, sass, images, inline));
+  gulp.series(clean, pages, sass, images, inline, buildTs));
 
 // Build emails, run the server, and watch for file changes
 gulp.task('default',
@@ -60,7 +64,7 @@ function pages() {
         data: 'src/data'
     }))
     .pipe(inky())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(TEMPLATE_PATH));
 }
 
 // Reset Panini's cache of layouts and partials
@@ -78,30 +82,30 @@ function sass() {
     }).on('error', $.sass.logError))
     .pipe($.if(PRODUCTION, $.uncss(
       {
-        html: ['dist/**/*.html']
+        html: [TEMPLATE_PATH + '**/*.html']
       })))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest(TEMPLATE_PATH + 'css'));
 }
 
 // Copy and compress images
 function images() {
   return gulp.src(['src/assets/img/**/*', '!src/assets/img/archive/**/*'])
     .pipe($.imagemin())
-    .pipe(gulp.dest('./dist/assets/img'));
+    .pipe(gulp.dest(TEMPLATE_PATH + 'assets/img'));
 }
 
 // Inline CSS and minify HTML
 function inline() {
-  return gulp.src('dist/**/*.html')
-    .pipe($.if(PRODUCTION, inliner('dist/css/app.css')))
-    .pipe(gulp.dest('dist'));
+  return gulp.src(TEMPLATE_PATH + '**/*.html')
+    .pipe($.if(PRODUCTION, inliner(TEMPLATE_PATH + 'css/app.css')))
+    .pipe(gulp.dest(TEMPLATE_PATH));
 }
 
 // Start a server with LiveReload to preview the site in
 function server(done) {
   browser.init({
-    server: 'dist'
+    server: TEMPLATE_PATH
   });
   done();
 }
@@ -155,7 +159,7 @@ function aws() {
     'Cache-Control': 'max-age=315360000, no-transform, public'
   };
 
-  return gulp.src('./dist/assets/img/*')
+  return gulp.src(TEMPLATE_PATH + 'assets/img/*')
     // publisher will add Content-Length, Content-Type and headers specified above
     // If not specified it will set x-amz-acl to public-read by default
     .pipe(publisher.publish(headers))
@@ -174,7 +178,7 @@ function litmus() {
   return gulp.src('dist/**/*.html')
     .pipe($.if(!!awsURL, $.replace(/=('|")(\/?assets\/img)/g, "=$1"+ awsURL)))
     .pipe($.litmus(CONFIG.litmus))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(TEMPLATE_PATH));
 }
 
 // Send email to specified email for testing. If no AWS creds then do not replace img urls.
@@ -185,15 +189,15 @@ function mail() {
     CONFIG.mail.to = [EMAIL];
   }
 
-  return gulp.src('dist/**/*.html')
+  return gulp.src(TEMPLATE_PATH + '**/*.html')
     .pipe($.if(!!awsURL, $.replace(/=('|")(\/?assets\/img)/g, "=$1"+ awsURL)))
     .pipe($.mail(CONFIG.mail))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest(TEMPLATE_PATH));
 }
 
 // Copy and compress into Zip
 function zip() {
-  var dist = 'dist';
+  var dist = TEMPLATE_PATH;
   var ext = '.html';
 
   function getHtmlFiles(dir) {
@@ -220,14 +224,26 @@ function zip() {
     var moveImages = gulp.src(sourcePath)
       .pipe($.htmlSrc({ selector: 'img'}))
       .pipe($.rename(function (path) {
-        path.dirname = fileName + path.dirname.replace('dist', '');
+        path.dirname = fileName + path.dirname.replace(TEMPLATE_PATH, '');
         return path;
       }));
 
     return merge(moveHTML, moveImages)
       .pipe($.zip(fileName+ '.zip'))
-      .pipe(gulp.dest('dist'));
+      .pipe(gulp.dest(TEMPLATE_PATH));
   });
 
   return merge(moveTasks);
 }
+
+
+function buildTs() {
+    const fs = require('fs');
+    const tsConfig = JSON.parse(fs.readFileSync('./tsconfig.json', 'utf8'));
+    const ts = require('gulp-typescript');
+
+    return gulp.src(SRC_PATH + '**/*.ts')
+        .pipe(ts(tsConfig.compilerOptions))
+        .pipe(gulp.dest(TS_PATH));
+};
+

@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Basic template for a Foundation for Emails project.",
   "repository": "zurb/foundation-emails-template",
-  "main": "gulpfile.babel.js",
+  "main": "dist/ts/index.js",
+  "typings": "dist/ts/index.d.ts",
   "scripts": {
+    "prepare": "gulp build",
     "start": "gulp",
     "build": "gulp --production",
     "zip": "gulp zip --production",
@@ -14,7 +16,10 @@
   "author": "ZURB <foundation@zurb.com>",
   "license": "MIT",
   "dependencies": {
-    "foundation-emails": "^2.2.1"
+    "@sendgrid/mail": "^6.1.4",
+    "foundation-emails": "^2.2.1",
+    "handlebars": "^4.0.11",
+    "typescript": "^2.6.2"
   },
   "devDependencies": {
     "babel-core": "^6.3.26",
@@ -38,6 +43,7 @@
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^3.2.3",
     "gulp-uncss": "^1.0.1",
     "gulp-zip": "^3.2.0",
     "inky": "^1.3.6",
