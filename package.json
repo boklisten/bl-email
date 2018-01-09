@@ -1,8 +1,7 @@
 {
-  "name": "foundation-emails-template",
+  "name": "bl-email",
   "version": "1.0.1",
-  "description": "Basic template for a Foundation for Emails project.",
-  "repository": "zurb/foundation-emails-template",
+  "description": "email handler for boklisten, based on ZURB foundation for emails",
   "main": "dist/ts/index.js",
   "typings": "dist/ts/index.d.ts",
   "scripts": {
@@ -13,7 +12,7 @@
     "litmus": "gulp litmus --production",
     "mail": "gulp mail --production"
   },
-  "author": "ZURB <foundation@zurb.com>",
+  "author": "holskil",
   "license": "MIT",
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
