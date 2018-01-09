@@ -19,8 +19,8 @@ export type EmailTemplateInput = {
 	items?: {
 		title: string,
 		status: string
-		deadline?: string,
-		price?: number,
+		deadline?: string | null,
+		price?: number | null,
 	}[],
 	textBlocks?: {
 		text: string

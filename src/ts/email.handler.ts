@@ -16,11 +16,14 @@ export class EmailHandler {
 	}
 	
 	public send(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
+		emailTemplateInput = this.sanitizeEmailTemplateInput(emailTemplateInput);
+		
 		return new Promise((resolve, reject) => {
 			this._sendGrid.send(
 				emailTemplateInput.toEmail,
 				emailTemplateInput.fromEmail,
 				emailTemplateInput.subject,
+				emailTemplateInput.emailType,
 				this.getHtmlBasedOnType(emailTemplateConfig, emailTemplateInput))
 				.then((emailLog: EmailLog) => {
 					resolve(emailLog);
@@ -31,8 +34,19 @@ export class EmailHandler {
 		});
 	}
 	
-	private getHtmlBasedOnType(eamilTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
-		return this._templateCompiler.getHtml(eamilTemplateConfig, emailTemplateInput);
+	private sanitizeEmailTemplateInput(etInput: EmailTemplateInput): EmailTemplateInput {
+		if (etInput.items) {
+			for (let item of etInput.items) {
+				if (!etInput.showDeadline) item.deadline = null;
+				if (!etInput.showPrice) item.price = null;
+			}
+		}
+		
+		return etInput;
+	}
+	
+	private getHtmlBasedOnType(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
+		return this._templateCompiler.getHtml(emailTemplateConfig, emailTemplateInput);
 	}
 }
 
@@ -44,6 +58,8 @@ const etInput: EmailTemplateInput = {
 	emailType: "receipt",
 	showPrice: true,
 	showDeadline: true,
+	totalPrice: 950.0,
+	numberOfCols: 3,
 	items: [
 		{
 			title: "Signatur 3",

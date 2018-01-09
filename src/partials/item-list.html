@@ -1,42 +1,44 @@
 <container class="bl-container-list">
     <row>
         <columns class="bl-table collapse" small="12">
-{{{{raw}}}}
-            <table>
-                <tr>
-                    <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.titleHeader}}</th>
-                    <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.statusHeader}}</th>
-                    {{#if emailTemplateInput.showDeadline}}
-                    <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.deadlineHeader}}</th>
-                    {{/if}}
+            {{{{raw}}}}
+                <table>
+                    <tr>
+                        <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.titleHeader}}</th>
+                        <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.statusHeader}}</th>
+
+                        {{#if emailTemplateInput.showDeadline}}
+                            <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.deadlineHeader}}</th>
+                        {{/if}}
+
+                        {{#if emailTemplateInput.showPrice}}
+                            <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.priceHeader}}</th>
+                        {{/if}}
+                    </tr>
+
+                    {{#each emailTemplateInput.items}}
+                    <tr>
+                        <td class="bl-table-item-text">{{title}}</td>
+                        <td class="bl-table-item-text">{{status}}</td>
+
+                        {{#if deadline}}
+                            <td class="bl-table-item-text">{{deadline}}</td>
+                        {{/if}}
+
+                        {{#if price}}
+                            <td class="bl-table-item-text">{{price}}</td>
+                        {{/if}}
+                    </tr>
+                    {{/each}}
+
                     {{#if emailTemplateInput.showPrice}}
-                    <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.priceHeader}}</th>
-                    {{/if}}
-                </tr>
-
-                {{#each emailTemplateInput.items}}
-                <tr>
-                    <td class="bl-table-item-text">{{title}}</td>
-                    <td class="bl-table-item-text">{{status}}</td>
-
-                    {{#if deadline}}
-                    <td class="bl-table-item-text">{{deadline}}</td>
+                        <tr class="bl-table-total">
+                            <td class="bl-table-total-price-title" colspan="{{emailTemplateInput.numberOfCols}}"><i>{{emailTemplateConfig.text.itemList.totalPriceTitle}}</i></td>
+                            <td class="bl-table-total-price"><b>{{emailTemplateInput.totalPrice}}</b></td>
+                        </tr>
                     {{/if}}
 
-                    {{#if price}}
-                    <td class="bl-table-item-text">{{price}}</td>
-                    {{/if}}
-                </tr>
-                {{/each}}
-
-                {{#if emailTemplateInput.showPrice}}
-                <tr class="bl-table-total">
-                    <td class="bl-table-total-price-title" colspan="{{emailTemplateInput.numberOfCols}}"><i>{{emailTemplateConfig.text.itemList.totalPriceTitle}}</i></td>
-                    <td class="bl-table-total-price"><b>{{emailTemplateInput.totalPrice}}</b></td>
-                </tr>
-                {{/if}}
-
-            </table>
+                </table>
             {{{{/raw}}}}
         </columns>
     </row>
