@@ -1,9 +1,11 @@
 
 
 import {EmailType} from "./email-type";
+import {EmailAttachment} from "./email-attachment";
 
 export type EmailTemplateInput = {
 	emailType: EmailType,
+	userId: string,
 	toEmail: string,
 	fromEmail: string,
 	subject: string,
@@ -24,5 +26,17 @@ export type EmailTemplateInput = {
 	}[],
 	textBlocks?: {
 		text: string
-	}[]
+	}[],
+	attachments?: EmailAttachment[],
+	order?: {
+		orderId: string,
+		delivery?: {
+			type: 'bring',
+			price: number
+		},
+		payment?: {
+			type: string,
+			amount: number
+		}
+	}
 }

@@ -6,6 +6,7 @@ import {EmailTemplateInput} from "./template/email-template-input";
 import {TemplateCompiler} from "./template/template-compiler";
 import {EmailTemplateConfig} from "./template/email-template-config";
 import {EmailLog} from "./email-log";
+import {EmailAttachment} from "./template/email-attachment";
 
 export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
@@ -20,14 +21,21 @@ export class EmailHandler {
 	
 	public send(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
 		emailTemplateInput = this.sanitizeEmailTemplateInput(emailTemplateInput);
-		
+
+		if (emailTemplateInput.attachments && emailTemplateInput.attachments.length > 0) {
+			emailTemplateInput.attachments = this.encodeAttachments(emailTemplateInput.attachments);
+		}
+
 		return new Promise((resolve, reject) => {
 			this._sendGrid.send(
+				emailTemplateInput.userId,
 				emailTemplateInput.toEmail,
 				emailTemplateInput.fromEmail,
 				emailTemplateInput.subject,
 				emailTemplateInput.emailType,
-				this.getHtmlBasedOnType(this._emailTemplateConfig, emailTemplateInput))
+				this.getHtmlBasedOnType(this._emailTemplateConfig, emailTemplateInput),
+				emailTemplateInput.attachments)
+
 				.then((emailLog: EmailLog) => {
 					resolve(emailLog);
 				})
@@ -47,36 +55,16 @@ export class EmailHandler {
 		
 		return etInput;
 	}
+
+	private encodeAttachments(attachments: EmailAttachment[]): EmailAttachment[] {
+		for (let attachment of attachments) {
+			attachment.content = new Buffer(attachment.content).toString('base64');
+		}
+
+		return attachments;
+	}
 	
 	private getHtmlBasedOnType(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
 		return this._templateCompiler.getHtml(emailTemplateConfig, emailTemplateInput);
 	}
 }
-/*
-const eHandler = new EmailHandler();
-const etInput: EmailTemplateInput = {
-	toEmail: "aholskil@gmail.com",
-	fromEmail: "test@boklisten.co",
-	subject: "your receipt",
-	emailType: "receipt",
-	showPrice: true,
-	showDeadline: true,
-	totalPrice: 950.0,
-	numberOfCols: 3,
-	items: [
-		{
-			title: "Signatur 3",
-			price: 500.0,
-			deadline: "01.01.2012",
-			status: "ordered"
-		},
-		{
-			title: "Kosmos SF",
-			price: 450.0,
-			deadline: "01.01.2017",
-			status: "ordered"
-		}
-	]
-};
-
-*/

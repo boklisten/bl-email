@@ -1,5 +1,6 @@
 import {EmailLog} from "./email-log";
 import {EmailType} from "./template/email-type";
+import {EmailAttachment} from "./template/email-attachment";
 
 export class SendgridWrapper {
 	private sendgridMail: any;
@@ -9,14 +10,19 @@ export class SendgridWrapper {
 		this.sendgridMail.setApiKey(sendgridApiKey);
 	}
 	
-	public send(toEmail: string, fromEmail: string, subject: string, type: EmailType, html: string): Promise<EmailLog> {
+	public send(userId: string, toEmail: string, fromEmail: string, subject: string, type: EmailType, html: string, attachments?: EmailAttachment[]): Promise<EmailLog> {
 		return new Promise((resolve, reject) => {
 			
 			const sgMsg = {
 				to: toEmail,
 				from: fromEmail,
 				subject: subject,
-				html: html
+				html: html,
+				customArgs: {
+					userId: userId,
+					emailType: type
+				},
+				attachments: (attachments) ? attachments : []
 			};
 			
 			this.sendgridMail.send(sgMsg).then(() => {

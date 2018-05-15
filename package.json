@@ -1,5 +1,5 @@
 {
-  "name": "bl-email",
+  "name": "@wizardcoder/bl-email",
   "version": "1.0.6",
   "description": "email handler for boklisten, based on ZURB foundation for emails",
   "main": "dist/index.js",
