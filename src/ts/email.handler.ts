@@ -10,13 +10,15 @@ import {EmailLog} from "./email-log";
 export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
 	private _templateCompiler: TemplateCompiler;
+	private _emailTemplateConfig: EmailTemplateConfig;
 	
-	constructor(config: {sendgrid: {apiKey: string}}) {
+	constructor(config: { emailTemplateConfig: EmailTemplateConfig, sendgrid: {apiKey: string}}) {
 		this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
 		this._templateCompiler = new TemplateCompiler();
+		this._emailTemplateConfig = config.emailTemplateConfig;
 	}
 	
-	public send(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
+	public send(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
 		emailTemplateInput = this.sanitizeEmailTemplateInput(emailTemplateInput);
 		
 		return new Promise((resolve, reject) => {
@@ -25,7 +27,7 @@ export class EmailHandler {
 				emailTemplateInput.fromEmail,
 				emailTemplateInput.subject,
 				emailTemplateInput.emailType,
-				this.getHtmlBasedOnType(emailTemplateConfig, emailTemplateInput))
+				this.getHtmlBasedOnType(this._emailTemplateConfig, emailTemplateInput))
 				.then((emailLog: EmailLog) => {
 					resolve(emailLog);
 				})

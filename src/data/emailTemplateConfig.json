@@ -8,7 +8,7 @@
   },
   "general": {
     "text": {
-      "hello": "Hei"
+      "hello": "Hei,"
     },
     "img": {
       "logo": {
@@ -19,7 +19,7 @@
   "confirm-email": {
     "emailSetting": {
       "fromEmail": "noreply@boklisten.co",
-      "subject": "Bekfreft din e-post"
+      "subject": "Bekreft din e-post"
     },
     "text": {
       "title": "Bekreft din e-post",
