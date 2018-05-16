@@ -80,7 +80,6 @@ export class EmailHandler {
 					return resolve({
 						content: buffer.toString('base64'),
 						contentId: 'agreement',
-						disposition: 'attachment',
 						filename: 'receipt-with-agreement.pdf',
 						type: 'pdf'
 					});

@@ -142,9 +142,12 @@
         "priceHeader": "Price"
       }
     },
-    "leaseNotice": {
-      "info": "Vi minner om at dersom du ikke leverer bøkene i tide vil det tilkomme gebyrer. Dette i henhold til leieavtalen som du har godtatt.",
-      "link": "Les leieavtalen her"
+    "delivery": {
+      "text": {
+        "deliveryMethodTitle": "Delivery Method",
+        "estimatedDeliveryTitle": "Estimated delivery date",
+        "deliveryPriceTitle": "Price"
+      }
     },
     "login": {
       "info": "For å se hvor du kan hente, levere, forlenge eller bestille bøker:",

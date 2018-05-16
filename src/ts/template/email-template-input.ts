@@ -42,8 +42,9 @@ export type EmailTemplateInput = {
 	order?: {
 		orderId: string,
 		delivery?: {
-			type: 'bring',
-			price: number
+			method: 'bring',
+			estimatedDeliveryDate: string,
+			price: string,
 		},
 		payment?: {
 			type: string,

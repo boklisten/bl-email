@@ -127,9 +127,12 @@ export type EmailTemplateConfig = {
 				priceHeader: string
 			}
 		},
-		leaseNotice: {
-			info: string,
-			link: string
+		delivery: {
+			text: {
+				deliveryMethodTitle: string,
+				estimatedDeliveryTitle: string,
+				deliveryPriceTitle: string,
+			}
 		},
 		login: {
 			info: string,

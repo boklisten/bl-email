@@ -23,6 +23,11 @@
 
 {{> item-list}}
 
+<spacer size="4"></spacer>
+{{#if emailTemplateInput.order.delivery}}
+  {{> delivery}}
+{{/if}}
+
 <spacer size="8"></spacer>
 
 {{> text-container}}

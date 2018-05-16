@@ -137,7 +137,12 @@ emailHandler.sendWithAgreement({
 		address: 'Osloveien 1B 7070 BOSBERG'
 	},
 	order: {
-		orderId: 'dfa2a83asc193274adf'
+		orderId: 'dfa2a83asc193274adf',
+		delivery: {
+			method: 'bring',
+			estimatedDeliveryDate: new Date().toLocaleDateString(),
+			price: "199 kr"
+		}
 	},
 	subject: 'a attachment for you',
 	showPrice: true,
