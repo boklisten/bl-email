@@ -6,6 +6,13 @@ import {EmailAttachment} from "./email-attachment";
 export type EmailTemplateInput = {
 	emailType: EmailType,
 	userId: string,
+	user?: {
+		dob: string,
+		name: string,
+		email: string,
+		address: string
+	},
+	creationTime?: string,
 	toEmail: string,
 	fromEmail: string,
 	subject: string,

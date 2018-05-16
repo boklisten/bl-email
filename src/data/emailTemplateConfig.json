@@ -14,6 +14,27 @@
       "logo": {
         "alt": "boklisten.no"
       }
+    },
+    "contact": {
+      "name": {
+        "value": "Boklisten.no AS"
+      },
+      "email": {
+        "title": "email:",
+        "value": "info@boklisten.no"
+      },
+      "address": {
+        "title": "address:",
+        "value": "Pb 8, 1359 Eiksmarka"
+      },
+      "organizationNumber": {
+        "title": "org.num:",
+        "value": "912047385 MVA"
+      },
+      "phone": {
+        "title": "phone:",
+        "value": "91002211"
+      }
     }
   },
   "confirm-email": {
@@ -86,8 +107,12 @@
     "text": {
       "title": "Order confirmation and agreement",
       "intro": "This document includes both a list of ordered items and a agreement. The agreement needs to be signed by the customer. If the customer is under the age of 18, a guardian is also required to sign",
+      "agreementCustomer": "Rent agreement for: ",
+      "agreementTitle": "Rent Agreement",
       "agreement": "Det avtales herved at Boklisten.no AS (Adr: Pb 8, 1359 Eiksmarka, tlf: 91002211, epost info@boklisten.no), heretter kalt Boklisten leier ut bøker til kunden (for privatister) og låner bort bøkene (for elever). Elever låner bøker for et skoleår og tilbakeleveringsfristen er 1. juli. Privatister som leier bøker for et halvt år, må levere innen 20.desember for høstsemester, og 1.juli for vårsemester. Privatister som leier bøker for et helt år må levere innen 1.juli påfølgende år for leie om høsten, eller 20.desember samme år for leie på våren. Dersom forlengelse tilbys, kan bøkene forlenges for ett semester ved innbetaling av forlengelsesgebyret. Innlevering må da skje innen neste innleveringsfrist. Bøkene må erstattes med forlagenes listepris + prisjustering på 10% + gebyr på 90 kr per bok hvis de blir ødelagte, mistes eller av annen grunn ikke leveres innen fristen.Ved tilbakelevering fra elever/privatister må bøkene være i god stand. Boklisten har ensidig rett til å avgjøre om en bok aksepteres eller må erstattes. Det anbefales derfor å behandle bøkene pent og bruke bokbind. Se mer informasjon på nettsidene til Boklisten.no om hva som godtas ved tilbakelevering av bøker.Denne avtale reguleres av norsk rett. Eventuelle tvister med utspring i avtaleforholdet skal avgjøres ved behandling i de ordinære domstoler. Oslo tingrett skal være verneting.",
+      "agreementInfo": "Låneavtalen gjelder for bøkene inkludert i disse papirene. Hvis kunden er under 18 år, må en foresatt skrive under og være erstatningsansvarlig",
       "customerSignature": "Customer's signature",
+      "guardianNameCapital": "Guardian's name in capital letters",
       "guardianSignature": "Guardian's signature (if customer is under the age of 18)"
     }
   },

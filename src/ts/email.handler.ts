@@ -73,7 +73,7 @@ export class EmailHandler {
 			const receiptWithAgreementHtml = this._templateCompiler.getReceiptWithAgreementHtml(this._emailTemplateConfig, emailTemplateInput);
 			const pdf = require('html-pdf');
 
-			pdf.create(receiptWithAgreementHtml, {format: 'letter'}).toBuffer((err, buffer) => {
+			pdf.create(receiptWithAgreementHtml, {header: {height: '15mm'}, footer: {height: '25mm'}}).toBuffer((err, buffer) => {
 				if (!Buffer.isBuffer(buffer) || err) {
 					reject(new Error('pdf to buffer failed'));
 				} else {

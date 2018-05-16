@@ -1,32 +1,50 @@
-<container class="bl-main-container">
 
+<div id="pageHeader">
+    <div class="bl-text-tiny">
+        {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementCustomer'}}
+        {{{{raw}}}}
+            {{emailTemplateInput.user.name}} - {{emailTemplateInput.user.dob}} - {{emailTemplateInput.user.address}}
+        {{{{/raw}}}}
+    </div>
+</div>
+
+
+{{> header-small}}
+
+<container>
     <row>
         <columns>
-            <h3 class="text-center bl-main-title">{{i 'emailTemplateConfig.receipt-with-agreement.text.title'}}</h3>
+            <div class="text-center bl-main-title"><b>{{i 'emailTemplateConfig.receipt-with-agreement.text.title'}}</b></div>
         </columns>
     </row>
-
 </container>
 
-<spacer size="8"></spacer>
 
 {{> item-list}}
 
-<spacer size="16"></spacer>
+<spacer size="4"></spacer>
 
 <container>
+    <row>
+        <columns>
+            <div class="bl-text-small" style="font-weight: bold; text-align: center"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementTitle'}}</div>
+        </columns>
+    </row>
     <row>
         <columns>
             <div class="bl-text-small"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreement'}}</div>
         </columns>
     </row>
-
-<spacer size="8"></spacer>
+    <row>
+        <columns>
+            <div class="bl-text-small"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementInfo'}}</div>
+        </columns>
+    </row>
 
     <row>
         <columns>
             <div>
-                _______________________________
+                __________________
             </div>
             <div class="bl-text-small">
                 {{i 'emailTemplateConfig.receipt-with-agreement.text.customerSignature'}}
@@ -34,7 +52,15 @@
         </columns>
         <columns>
             <div>
-                _______________________________
+                __________________
+            </div>
+            <div class="bl-text-small">
+                {{i 'emailTemplateConfig.receipt-with-agreement.text.guardianNameCapital'}}
+            </div>
+        </columns>
+        <columns>
+            <div>
+                __________________
             </div>
             <div class="bl-text-small">
                 {{i 'emailTemplateConfig.receipt-with-agreement.text.guardianSignature'}}
@@ -43,5 +69,20 @@
     </row>
 
 </container>
+
+<div id="pageFooter">
+    <div class="bl-text-tiny">
+        <b>{{i 'emailTemplateConfig.general.contact.name.title'}}</b> {{i 'emailTemplateConfig.general.contact.name.value'}} -
+        <b>{{i 'emailTemplateConfig.general.contact.phone.title'}}</b> {{i 'emailTemplateConfig.general.contact.phone.value'}} -
+        <b>{{i 'emailTemplateConfig.general.contact.email.title'}}</b> {{i 'emailTemplateConfig.general.contact.email.value'}} -
+        <b>{{i 'emailTemplateConfig.general.contact.address.title'}}</b> {{i 'emailTemplateConfig.general.contact.address.value'}} -
+        <b>{{i 'emailTemplateConfig.general.contact.organizationNumber.title'}}</b> {{i 'emailTemplateConfig.general.contact.organizationNumber.value'}}
+    </div>
+    <div class="bl-text-tiny">
+        {{{{raw}}}}
+            {{emailTemplateInput.creationTime}} - {{emailTemplateInput.order.orderId}}
+        {{{{/raw}}}}
+    </div>
+</div>
 
 

@@ -16,6 +16,28 @@ export type EmailTemplateConfig = {
 			logo: {
 				alt: string
 			}
+		},
+		contact: {
+			name: {
+				title: string,
+				value: string
+			},
+			email: {
+				title: string,
+				value: string
+			},
+			address: {
+				title: string,
+				value: string
+			},
+			organizationNumber: {
+				title: string,
+				value: string
+			},
+			phone: {
+				title: string,
+				value: string
+			}
 		}
 	},
 	"confirm-email": {
@@ -70,8 +92,12 @@ export type EmailTemplateConfig = {
 		text: {
 			title: string,
 			intro: string,
+			agreementCustomer: string,
+			agreementTitle: string,
 			agreement: string,
+			agreementInfo: string,
 			customerSignature: string,
+			guardianNameCapital: string,
 			guardianSignature: string
 		}
 	},

@@ -129,12 +129,112 @@ emailHandler.sendWithAgreement({
 	fromEmail: 'noreply@boklisten.co',
 	emailType: 'receipt',
 	userId: 'user1',
+	creationTime: new Date().toLocaleDateString(),
+	user: {
+		dob: '01.01.2000',
+		name: 'Albert Hans Hansen',
+		email: 'ahanshansen@b.com',
+		address: 'Osloveien 1B 7070 BOSBERG'
+	},
+	order: {
+		orderId: 'dfa2a83asc193274adf'
+	},
 	subject: 'a attachment for you',
 	showPrice: true,
 	showDeadline: true,
 	numberOfCols: 3,
 	totalPrice: 100,
 	items: [
+		{
+			title: 'Signatur 3: Tekstsamling',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua 2',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Signatur 3: Tekstsamling',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua 2',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Signatur 3: Tekstsamling',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua 2',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Signatur 3: Tekstsamling',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua 2',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Signatur 3: Tekstsamling',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua 2',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Signatur 3: Tekstsamling',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua 2',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua 2',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Signatur 3: Tekstsamling',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua 2',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
 		{
 			title: 'Signatur 3: Tekstsamling',
 			price: 100,
