@@ -133,7 +133,6 @@ emailHandler.sendWithAgreement({
 	showPrice: true,
 	showDeadline: true,
 	numberOfCols: 3,
-	title: 'Rent agreement',
 	totalPrice: 100,
 	items: [
 		{
@@ -150,7 +149,21 @@ emailHandler.sendWithAgreement({
 		}
 	],
 	textBlocks: [
-		{text: 'By signing this paper you are agreeing to the rent agreement at Boklisten.no'}
+		{
+			text: 'Included with this email are a agreement that needs to be signed before you can get the items',
+			warning: true
+		},
+		{
+			text: 'This is an important message for you',
+			alert: true
+		},
+		{
+			text: 'This is just to get your attention',
+			secondary: true
+		},
+		{
+			text: 'This is a regular message.'
+		}
 	]
 }).then((emailLog) => {
 	console.log('the log ', emailLog);

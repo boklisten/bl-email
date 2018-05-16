@@ -21,10 +21,33 @@
   @extend .bl-container;
 }
 
+.bl-container-secondary {
+  @extend .bl-container;
+  background-color: $secondary-color;
+}
+
+.bl-container-secondary {
+  table {
+    tbody {
+      tr {
+        th {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
 .bl-container-warning {
   @extend .bl-container;
+  background-color: $warning-color;
+  border: dashed 5px white;
+}
+
+.bl-container-alert {
+  @extend .bl-container-warning;
   background-color: $alert-color;
-  border: dashed 3px white;
+  color: white;
 }
 
 table.button {

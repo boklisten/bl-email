@@ -25,7 +25,11 @@ export type EmailTemplateInput = {
 		price?: number | null,
 	}[],
 	textBlocks?: {
-		text: string
+		text: string,
+		warning?: boolean,
+		alert?: boolean,
+		regular?: boolean,
+		secondary?: boolean
 	}[],
 	attachments?: EmailAttachment[],
 	order?: {
