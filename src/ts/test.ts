@@ -247,24 +247,8 @@ emailHandler.sendWithAgreement({
 			deadline: new Date().toLocaleDateString(),
 			status: 'rent'
 		}
-	],
-	textBlocks: [
-		{
-			text: 'Included with this email are a agreement that needs to be signed before you can get the items',
-			warning: true
-		},
-		{
-			text: 'This is an important message for you',
-			alert: true
-		},
-		{
-			text: 'This is just to get your attention',
-			secondary: true
-		},
-		{
-			text: 'This is a regular message.'
-		}
 	]
+
 }).then((emailLog) => {
 	console.log('the log ', emailLog);
 }).catch((emailError) => {
