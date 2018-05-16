@@ -134,16 +134,16 @@ emailHandler.sendWithAgreement({
 	showDeadline: true,
 	numberOfCols: 3,
 	title: 'Rent agreement',
-	totalPrice: 200,
+	totalPrice: 100,
 	items: [
 		{
-			title: 'signatur 3',
+			title: 'Signatur 3: Tekstsamling',
 			price: 100,
 			deadline: new Date().toLocaleDateString(),
 			status: 'rent'
 		},
 		{
-			title: 'Aqua',
+			title: 'Aqua 2',
 			price: 100,
 			deadline: new Date().toLocaleDateString(),
 			status: 'rent'
