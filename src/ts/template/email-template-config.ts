@@ -66,6 +66,15 @@ export type EmailTemplateConfig = {
 			intro: string
 		}
 	},
+	"receipt-with-agreement": {
+		text: {
+			title: string,
+			intro: string,
+			agreement: string,
+			customerSignature: string,
+			guardianSignature: string
+		}
+	},
 	partial: {
 		contact: {
 			title: string,
@@ -84,11 +93,13 @@ export type EmailTemplateConfig = {
 		},
 		header: {}
 		"item-list": {
-			totalPriceTitle: string,
-			titleHeader: string,
-			statusHeader: string,
-			deadlineHeader: string,
-			priceHeader: string
+			text: {
+				totalPriceTitle: string,
+				titleHeader: string,
+				statusHeader: string,
+				deadlineHeader: string,
+				priceHeader: string
+			}
 		},
 		leaseNotice: {
 			info: string,

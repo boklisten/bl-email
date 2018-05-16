@@ -103,11 +103,13 @@ let testConfig = {
 	},
 	"header": {},
 	"item-list": {
-		"totalPriceTitle": "Total",
+		"text": {
+			"totalPriceTitle": "Total",
 			"titleHeader": "Title",
 			"statusHeader": "Status",
 			"deadlineHeader": "Deadline",
 			"priceHeader": "Price"
+		}
 	},
 	"leaseNotice": {
 		"info": "Vi minner om at dersom du ikke leverer bøkene i tide vil det tilkomme gebyrer. Dette i henhold til leieavtalen som du har godtatt.",
@@ -122,20 +124,33 @@ let testConfig = {
 
 let emailHandler: EmailHandler = new EmailHandler({emailTemplateConfig: testConfig, sendgrid: {apiKey: SECRETS.email.sendgrid.apiKey}});
 
-emailHandler.send({
+emailHandler.sendWithAgreement({
 	toEmail: 'aholskil@gmail.com',
 	fromEmail: 'noreply@boklisten.co',
-	emailType: 'hello',
+	emailType: 'receipt',
 	userId: 'user1',
 	subject: 'a attachment for you',
-	attachments: [
-		/*{
-			content: 'this is a message just for you',
-			filename: 'attachment-1.txt',
-			type: 'plain/text',
-			disposition: 'attachment',
-			contentId: 'attachment1'
-		}*/
+	showPrice: true,
+	showDeadline: true,
+	numberOfCols: 3,
+	title: 'Rent agreement',
+	totalPrice: 200,
+	items: [
+		{
+			title: 'signatur 3',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		},
+		{
+			title: 'Aqua',
+			price: 100,
+			deadline: new Date().toLocaleDateString(),
+			status: 'rent'
+		}
+	],
+	textBlocks: [
+		{text: 'By signing this paper you are agreeing to the rent agreement at Boklisten.no'}
 	]
 }).then((emailLog) => {
 	console.log('the log ', emailLog);

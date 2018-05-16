@@ -26,6 +26,15 @@ export class TemplateCompiler {
 		this.compiledPages['hello'] = this.compileTemplate('hello');
 		this.compiledPages['password-reset'] = this.compileTemplate('password-reset');
 		this.compiledPages['receipt'] = this.compileTemplate('receipt');
+		this.compiledPages['receipt-with-agreement'] = this.compileTemplate('receipt-with-agreement');
+	}
+
+	public getReceiptWithAgreementHtml(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
+		const combinedData = {
+			emailTemplateInput: emailTemplateInput,
+			emailTemplateConfig: emailTemplateConfig
+		};
+		return this.compiledPages['receipt-with-agreement'](combinedData);
 	}
 	
 	public getHtml(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {

@@ -4,15 +4,15 @@
             {{{{raw}}}}
                 <table>
                     <tr>
-                        <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.titleHeader}}</th>
-                        <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.statusHeader}}</th>
+                        <th class="bl-table-item-title">{{emailTemplateConfig.partial.item-list.text.titleHeader}}</th>
+                        <th class="bl-table-item-title">{{emailTemplateConfig.partial.item-list.text.statusHeader}}</th>
 
                         {{#if emailTemplateInput.showDeadline}}
-                            <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.deadlineHeader}}</th>
+                            <th class="bl-table-item-title">{{emailTemplateConfig.partial.item-list.text.deadlineHeader}}</th>
                         {{/if}}
 
                         {{#if emailTemplateInput.showPrice}}
-                            <th class="bl-table-item-title">{{emailTemplateConfig.text.itemList.priceHeader}}</th>
+                            <th class="bl-table-item-title">{{emailTemplateConfig.partial.item-list.text.priceHeader}}</th>
                         {{/if}}
                     </tr>
 
@@ -33,7 +33,7 @@
 
                     {{#if emailTemplateInput.showPrice}}
                         <tr class="bl-table-total">
-                            <td class="bl-table-total-price-title" colspan="{{emailTemplateInput.numberOfCols}}"><i>{{emailTemplateConfig.text.itemList.totalPriceTitle}}</i></td>
+                            <td class="bl-table-total-price-title" colspan="{{emailTemplateInput.numberOfCols}}"><i>{{emailTemplateConfig.item-list.text.totalPriceTitle}}</i></td>
                             <td class="bl-table-total-price"><b>{{emailTemplateInput.totalPrice}}</b></td>
                         </tr>
                     {{/if}}

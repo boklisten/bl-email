@@ -1,0 +1,47 @@
+<container class="bl-main-container">
+
+    <row>
+        <columns>
+            <h3 class="text-center bl-main-title">{{i 'emailTemplateConfig.receipt-with-agreement.text.title'}}</h3>
+        </columns>
+    </row>
+
+</container>
+
+<spacer size="8"></spacer>
+
+{{> item-list}}
+
+<spacer size="16"></spacer>
+
+<container>
+    <row>
+        <columns>
+            <div class="bl-text-small"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreement'}}</div>
+        </columns>
+    </row>
+
+<spacer size="8"></spacer>
+
+    <row>
+        <columns>
+            <div>
+                _______________________________
+            </div>
+            <div class="bl-text-small">
+                {{i 'emailTemplateConfig.receipt-with-agreement.text.customerSignature'}}
+            </div>
+        </columns>
+        <columns>
+            <div>
+                _______________________________
+            </div>
+            <div class="bl-text-small">
+                {{i 'emailTemplateConfig.receipt-with-agreement.text.guardianSignature'}}
+            </div>
+        </columns>
+    </row>
+
+</container>
+
+

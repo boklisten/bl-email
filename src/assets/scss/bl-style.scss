@@ -31,6 +31,10 @@ table.button {
   margin: 0;
 }
 
+.bl-text-small {
+  font-size: 10px;
+}
+
 .bl-main-title {
   color: $primary-color;
   padding-bottom: 0;
@@ -60,6 +64,8 @@ table.button {
   font-weight: bold;
   padding-top: 5px;
   border-bottom: 1px solid $primary-color;
+  background-color: $primary-color;
+  color: white;
 }
 
 .bl-table-item-text {
@@ -69,7 +75,7 @@ table.button {
 }
 
 .bl-table-total {
-  border-top: 1px solid $primary-color;
+  border-top: 2px solid $primary-color;
 }
 
 .bl-table-total-price {

@@ -39,10 +39,55 @@ export class EmailHandler {
 				.then((emailLog: EmailLog) => {
 					resolve(emailLog);
 				})
-				.catch((error: Error) => {
+				.catch((error) => {
 					reject(error);
 				})
 		});
+	}
+
+	public sendWithAgreement(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
+		return new Promise((resolve, reject) => {
+			this.createRentAgreementAttachment(emailTemplateInput).then((receiptWithAgreementAttachment: EmailAttachment) => {
+				this._sendGrid.send(
+					emailTemplateInput.userId,
+					emailTemplateInput.toEmail,
+					emailTemplateInput.fromEmail,
+					emailTemplateInput.subject,
+					emailTemplateInput.emailType,
+					this.getHtmlBasedOnType(this._emailTemplateConfig, emailTemplateInput),
+					[receiptWithAgreementAttachment]
+				).then((emailLog: EmailLog) => {
+					resolve(emailLog);
+				}).catch((emailError) => {
+					reject(emailError);
+				})
+			}).catch((attachmentError) => {
+				reject(attachmentError);
+			})
+		});
+	}
+
+	private createRentAgreementAttachment(emailTemplateInput: EmailTemplateInput): Promise<EmailAttachment> {
+		return new Promise((resolve, reject) => {
+
+			const receiptWithAgreementHtml = this._templateCompiler.getReceiptWithAgreementHtml(this._emailTemplateConfig, emailTemplateInput);
+			const pdf = require('html-pdf');
+
+			pdf.create(receiptWithAgreementHtml, {format: 'letter'}).toBuffer((err, buffer) => {
+				if (!Buffer.isBuffer(buffer) || err) {
+					reject(new Error('pdf to buffer failed'));
+				} else {
+					return resolve({
+						content: buffer.toString('base64'),
+						contentId: 'agreement',
+						disposition: 'attachment',
+						filename: 'receipt-with-agreement.pdf',
+						type: 'pdf'
+					});
+				}
+			});
+		});
+
 	}
 	
 	private sanitizeEmailTemplateInput(etInput: EmailTemplateInput): EmailTemplateInput {
