@@ -124,7 +124,8 @@ export type EmailTemplateConfig = {
 				titleHeader: string,
 				statusHeader: string,
 				deadlineHeader: string,
-				priceHeader: string
+				priceHeader: string,
+				orderIdTitle: string
 			}
 		},
 		delivery: {
@@ -134,6 +135,18 @@ export type EmailTemplateConfig = {
 				deliveryPriceTitle: string,
 			}
 		},
+		payment: {
+			text: {
+				title: string,
+				totalTitle: string,
+				taxTitle: string,
+				methodTitle: string,
+				cardInfoTitle: string,
+				paymentIdTitle: string,
+				paymentStatusTitle: string,
+				dateTitle: string
+			}
+		}
 		login: {
 			info: string,
 			button: string

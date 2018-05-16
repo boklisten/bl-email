@@ -4,6 +4,17 @@
   "showDeadline": true,
   "title": "Melding fra Boklisten.no",
   "intro": "",
+  "order": {
+    "payment": {
+      "method": "DIBS",
+      "amount": "100",
+      "currency": "NOK",
+      "taxAmount": "0",
+      "cardInfo": "****0123",
+      "paymentId": "ak18c78asfc0212",
+      "status": "Confirmed"
+    }
+  },
   "creationTime": "18.01.2018",
   "numberOfCols": 2,
   "totalPrice": 700,

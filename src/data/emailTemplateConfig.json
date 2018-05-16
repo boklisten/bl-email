@@ -139,7 +139,8 @@
         "titleHeader": "Title",
         "statusHeader": "Status",
         "deadlineHeader": "Deadline",
-        "priceHeader": "Price"
+        "priceHeader": "Price",
+        "orderIdTitle": "Order id:"
       }
     },
     "delivery": {
@@ -147,6 +148,18 @@
         "deliveryMethodTitle": "Delivery Method",
         "estimatedDeliveryTitle": "Estimated delivery date",
         "deliveryPriceTitle": "Price"
+      }
+    },
+    "payment": {
+      "text": {
+        "title": "Payment details",
+        "totalTitle": "Total",
+        "taxTitle": "Mva.",
+        "methodTitle": "Method:",
+        "cardInfoTitle": "Card:",
+        "paymentIdTitle": "Payment id:",
+        "paymentStatusTitle": "Status:",
+        "dateTitle": "Date:"
       }
     },
     "login": {

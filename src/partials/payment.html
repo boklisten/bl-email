@@ -1,0 +1,43 @@
+{{{{raw}}}}
+
+    {{#if emailTemplateInput.order.showPayment}}
+        <callout>
+            <container>
+                    <row>
+                        <columns small="12">
+                                <h5>{{emailTemplateConfig.partial.payment.text.title}}</h5>
+                        </columns>
+                    </row>
+                    <row>
+                        <columns>
+                            <table>
+                                <tr>
+                                    <td><b>{{emailTemplateConfig.partial.payment.text.totalTitle}}</b></td>
+                                    <td>{{emailTemplateInput.order.payment.amount}} {{emailTemplateInput.order.payment.currency}}</td>
+                                </tr>
+                                <tr>
+                                    <td><small>{{emailTemplateConfig.partial.payment.text.taxTitle}}</small></td>
+                                    <td><small>{{emailTemplateInput.order.payment.taxAmount}} {{emailTemplateInput.order.payment.currency}}</small></td>
+                                </tr>
+                            </table>
+                        </columns>
+                    </row>
+                    <row>
+                        <columns small="12">
+                            <div class="bl-text-small"><b>{{emailTemplateConfig.partial.payment.text.methodTitle}}</b> {{emailTemplateInput.order.payment.method}}</div>
+                            <div class="bl-text-small"><b>{{emailTemplateConfig.partial.payment.text.cardInfoTitle}}</b> {{emailTemplateInput.order.payment.cardInfo}}</div>
+                        </columns>
+                        <columns>
+                            <div class="bl-text-small"><b>{{emailTemplateConfig.partial.payment.text.paymentStatusTitle}}</b> {{emailTemplateInput.order.payment.status}}</div>
+                            <div class="bl-text-small"><b>{{emailTemplateConfig.partial.payment.text.dateTitle}}</b> {{emailTemplateInput.creationTime}}</div>
+                        </columns>
+                    </row>
+                    <row>
+                        <columns>
+                            <small>{{emailTemplateConfig.partial.payment.text.paymentIdTitle}} {{emailTemplateInput.order.payment.paymentId}}</small>
+                        </columns>
+                    </row>
+            </container>
+        </callout>
+    {{/if}}
+{{{{/raw}}}}

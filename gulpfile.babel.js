@@ -22,13 +22,14 @@ const EMAIL = yargs.argv.to;
 const TEMPLATE_PATH = './dist/templates/';
 const SRC_PATH = './src/';
 const TS_PATH = './dist/';
+const DATA_PATH = './dist/data/';
 
 // Declar var so that both AWS and Litmus task can use it.
 var CONFIG;
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
-  gulp.series(clean, pages, sass, images, inline, buildTs));
+  gulp.series(clean, pages, sass, images, inline, copyTestData, buildTs));
 
 // Build emails, run the server, and watch for file changes
 gulp.task('default',
@@ -246,4 +247,10 @@ function buildTs() {
         .pipe(ts(tsConfig.compilerOptions))
         .pipe(gulp.dest(TS_PATH));
 };
+
+function copyTestData() {
+    return gulp.src(SRC_PATH + './data/**/*.json')
+        .pipe(gulp.dest(DATA_PATH));
+
+}
 

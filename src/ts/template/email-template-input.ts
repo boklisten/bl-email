@@ -41,14 +41,21 @@ export type EmailTemplateInput = {
 	attachments?: EmailAttachment[],
 	order?: {
 		orderId: string,
+		showDelivery?: boolean,
 		delivery?: {
 			method: 'bring',
 			estimatedDeliveryDate: string,
 			price: string,
 		},
+		showPayment?: boolean,
 		payment?: {
 			type: string,
-			amount: number
+			amount: string,
+			cardInfo: string,
+			currency: string,
+			taxAmount: string,
+			paymentId: string,
+			status: string
 		}
 	}
 }

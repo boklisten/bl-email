@@ -13,10 +13,10 @@ export class EmailHandler {
 	private _templateCompiler: TemplateCompiler;
 	private _emailTemplateConfig: EmailTemplateConfig;
 	
-	constructor(config: { emailTemplateConfig: EmailTemplateConfig, sendgrid: {apiKey: string}}) {
+	constructor(config: { emailTemplateConfig?: EmailTemplateConfig, sendgrid: {apiKey: string}}) {
 		this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
 		this._templateCompiler = new TemplateCompiler();
-		this._emailTemplateConfig = config.emailTemplateConfig;
+		this._emailTemplateConfig = (config.emailTemplateConfig) ? config.emailTemplateConfig : require('../data/emailTemplateConfig.json');
 	}
 	
 	public send(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
