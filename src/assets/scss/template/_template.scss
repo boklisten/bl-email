@@ -5,11 +5,11 @@
 body,
 html, 
 .body {
-  background: $light-gray !important;
+  background: $body-background !important;
 }
 
 .container.header {
-  background: $light-gray;
+  background: $container-background;
 }
 
 .body-drip {

@@ -1,61 +1,14 @@
 
 
-import {EmailType} from "./email-type";
 import {EmailAttachment} from "./email-attachment";
+import {EmailOrder} from "./email-order";
+import {EmailTextBlock} from "./email-text-block";
+import {EmailUser} from "./email-user";
 
 export type EmailTemplateInput = {
-	emailType: EmailType,
-	userId: string,
-	user?: {
-		dob: string,
-		name: string,
-		email: string,
-		address: string
-	},
+	user?: EmailUser,
+	title?: string, //override the title of the email
+	order?: EmailOrder
 	creationTime?: string,
-	toEmail: string,
-	fromEmail: string,
-	subject: string,
-	username?: string,
-	showPrice?: boolean,
-	showDeadline?: boolean,
-	title?: string,
-	intro?: string,
-	numberOfCols?: number,
-	totalPrice?: number,
-	passwordResetLink?: string,
-	confirmLink?: string,
-	items?: {
-		title: string,
-		status: string
-		deadline?: string | null,
-		price?: number | null,
-	}[],
-	textBlocks?: {
-		text: string,
-		warning?: boolean,
-		alert?: boolean,
-		regular?: boolean,
-		secondary?: boolean
-	}[],
-	attachments?: EmailAttachment[],
-	order?: {
-		orderId: string,
-		showDelivery?: boolean,
-		delivery?: {
-			method: 'bring',
-			estimatedDeliveryDate: string,
-			price: string,
-		},
-		showPayment?: boolean,
-		payment?: {
-			type: string,
-			amount: string,
-			cardInfo: string,
-			currency: string,
-			taxAmount: string,
-			paymentId: string,
-			status: string
-		}
-	}
+	textBlocks?: EmailTextBlock[]
 }

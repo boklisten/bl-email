@@ -2,6 +2,7 @@
 
 import {EmailTemplateInput} from "./email-template-input";
 import {EmailTemplateConfig} from "./email-template-config";
+import {EmailType} from "./email-type";
 
 
 const fs = require('fs');
@@ -37,12 +38,12 @@ export class TemplateCompiler {
 		return this.compiledPages['receipt-with-agreement'](combinedData);
 	}
 	
-	public getHtml(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
+	public getHtml(emailType: EmailType, emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
 		const combinedData = {
 			emailTemplateInput: emailTemplateInput,
 			emailTemplateConfig: emailTemplateConfig
 		};
-		return this.compiledPages[emailTemplateInput.emailType](combinedData);
+		return this.compiledPages[emailType](combinedData);
 	}
 	
 	

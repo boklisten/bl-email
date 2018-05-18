@@ -7,6 +7,10 @@ import {TemplateCompiler} from "./template/template-compiler";
 import {EmailTemplateConfig} from "./template/email-template-config";
 import {EmailLog} from "./email-log";
 import {EmailAttachment} from "./template/email-attachment";
+import {EmailOrder} from "./template/email-order";
+import {EmailSetting} from "./template/email-setting";
+import {EmailType} from "./template/email-type";
+import {EmailUser} from "./template/email-user";
 
 export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
@@ -18,53 +22,44 @@ export class EmailHandler {
 		this._templateCompiler = new TemplateCompiler();
 		this._emailTemplateConfig = (config.emailTemplateConfig) ? config.emailTemplateConfig : require('../data/emailTemplateConfig.json');
 	}
-	
-	public send(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
-		emailTemplateInput = this.sanitizeEmailTemplateInput(emailTemplateInput);
 
-		if (emailTemplateInput.attachments && emailTemplateInput.attachments.length > 0) {
-			emailTemplateInput.attachments = this.encodeAttachments(emailTemplateInput.attachments);
+	public sendOrderReceipt(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser, withAgreement?: boolean) {
+		let emailType = 'receipt';
+
+		emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
+
+		if (withAgreement) {
+			//this.createRentAgreementAttachment()
 		}
 
-		return new Promise((resolve, reject) => {
-			this._sendGrid.send(
-				emailTemplateInput.userId,
-				emailTemplateInput.toEmail,
-				emailTemplateInput.fromEmail,
-				emailTemplateInput.subject,
-				emailTemplateInput.emailType,
-				this.getHtmlBasedOnType(this._emailTemplateConfig, emailTemplateInput),
-				emailTemplateInput.attachments)
+		let emailTemplateInput: EmailTemplateInput = {
+			user: emailUser,
+			order: emailOrder,
+			creationTime: new Date().toString(),
+			textBlocks: emailSetting.textBlocks
+		};
 
-				.then((emailLog: EmailLog) => {
-					resolve(emailLog);
-				})
-				.catch((error) => {
-					reject(error);
-				})
-		});
+		return this.sendEmail(emailSetting, 'receipt', emailTemplateInput);
+	}
+
+	private sendEmail(emailSetting: EmailSetting, emailType: EmailType, emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
+		return this._sendGrid.send(
+			emailSetting.userId,
+			emailSetting.toEmail,
+			emailSetting.fromEmail,
+			emailSetting.subject,
+			emailType,
+			this._templateCompiler.getHtml(emailType, this._emailTemplateConfig, emailTemplateInput),
+			emailSetting.attachments
+		);
+	}
+	
+	public send(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
+		return Promise.reject('not implemented');
 	}
 
 	public sendWithAgreement(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
-		return new Promise((resolve, reject) => {
-			this.createRentAgreementAttachment(emailTemplateInput).then((receiptWithAgreementAttachment: EmailAttachment) => {
-				this._sendGrid.send(
-					emailTemplateInput.userId,
-					emailTemplateInput.toEmail,
-					emailTemplateInput.fromEmail,
-					emailTemplateInput.subject,
-					emailTemplateInput.emailType,
-					this.getHtmlBasedOnType(this._emailTemplateConfig, emailTemplateInput),
-					[receiptWithAgreementAttachment]
-				).then((emailLog: EmailLog) => {
-					resolve(emailLog);
-				}).catch((emailError) => {
-					reject(emailError);
-				})
-			}).catch((attachmentError) => {
-				reject(attachmentError);
-			})
-		});
+		return Promise.reject('not implemented');
 	}
 
 	private createRentAgreementAttachment(emailTemplateInput: EmailTemplateInput): Promise<EmailAttachment> {
@@ -88,27 +83,16 @@ export class EmailHandler {
 		});
 
 	}
-	
-	private sanitizeEmailTemplateInput(etInput: EmailTemplateInput): EmailTemplateInput {
-		if (etInput.items) {
-			for (let item of etInput.items) {
-				if (!etInput.showDeadline) item.deadline = null;
-				if (!etInput.showPrice) item.price = null;
-			}
-		}
-		
-		return etInput;
-	}
 
 	private encodeAttachments(attachments: EmailAttachment[]): EmailAttachment[] {
-		for (let attachment of attachments) {
-			attachment.content = new Buffer(attachment.content).toString('base64');
+		if (attachments && attachments.length > 0) {
+			for (let attachment of attachments) {
+				attachment.content = new Buffer(attachment.content).toString('base64');
+			}
+		} else {
+			attachments = [];
 		}
 
 		return attachments;
-	}
-	
-	private getHtmlBasedOnType(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
-		return this._templateCompiler.getHtml(emailTemplateConfig, emailTemplateInput);
 	}
 }

@@ -10,16 +10,17 @@
 
   <row>
     <columns small="12">
-      <b class="bl-hello">{{i 'emailTemplateConfig.general.text.hello'}} {{i 'emailTemplateInput.username'}}</b>
-      <p>
-        {{i 'emailTemplateConfig.receipt.text.intro'}}
-      </p>
+      <b class="bl-hello">{{i 'emailTemplateConfig.general.text.hello'}} {{i 'emailTemplateInput.user.name'}}</b>
     </columns>
   </row>
 
 </container>
 
-<spacer size="8"></spacer>
+<spacer size="4"></spacer>
+
+{{> text-container}}
+
+<spacer size="4"></spacer>
 
 {{> item-list}}
 
@@ -31,9 +32,7 @@
 
 {{> payment}}
 
-<spacer size="4"></spacer>
 
-{{> text-container}}
 
 <spacer size="4"></spacer>
 

@@ -1,49 +1,39 @@
 import {EmailHandler} from "./email.handler";
 import {SECRETS} from "../config/secrets";
-
-
-const testConfig = require('../data/emailTemplateConfig.json');
+import {EmailSetting} from "./template/email-setting";
+import {EmailOrder} from "./template/email-order";
+import {EmailUser} from "./template/email-user";
+import {EmailTextBlock} from "./template/email-text-block";
 
 
 
 let emailHandler: EmailHandler = new EmailHandler({sendgrid: {apiKey: SECRETS.email.sendgrid.apiKey}});
 
-emailHandler.sendWithAgreement({
+
+let emailTextBlocks: EmailTextBlock[] = [
+	{
+		text: 'This is the receipt of the last transaction you did at boklisten.co'
+	},
+	{
+		text: 'Included in this email are an agreement that you need to sign and deliver at branch when you whant to retrieve the items.',
+		warning: true
+	}
+];
+
+let emailSetting: EmailSetting = {
 	toEmail: 'aholskil@gmail.com',
 	fromEmail: 'noreply@boklisten.co',
-	emailType: 'receipt',
+	subject: 'Order receipt from Boklisten.co',
 	userId: 'user1',
-	creationTime: new Date().toLocaleDateString(),
-	user: {
-		dob: '01.01.2000',
-		name: 'Albert Hans Hansen',
-		email: 'ahanshansen@b.com',
-		address: 'Osloveien 1B 7070 BOSBERG'
-	},
-	order: {
-		orderId: 'dfa2a83asc193274adf',
-		showDelivery: true,
-		delivery: {
-			method: 'bring',
-			estimatedDeliveryDate: new Date().toLocaleDateString(),
-			price: "199 kr"
-		},
-		showPayment: true,
-		payment: {
-			type: 'dibs',
-			amount: '100',
-			cardInfo: '0123',
-			currency: 'NOK',
-			taxAmount: '0',
-			paymentId: 'abc113193',
-			status: 'Confirmed'
-		}
-	},
-	subject: 'a attachment for you',
-	showPrice: true,
+	textBlocks: emailTextBlocks
+};
+
+let emailOrder: EmailOrder = {
+	id: 'dfa2a83asc193274adf',
 	showDeadline: true,
-	numberOfCols: 3,
-	totalPrice: 100,
+	showPrice: true,
+	amount: '200 kr',
+	showDelivery: true,
 	items: [
 		{
 			title: 'Signatur 3: Tekstsamling',
@@ -56,101 +46,51 @@ emailHandler.sendWithAgreement({
 			price: 100,
 			deadline: new Date().toLocaleDateString(),
 			status: 'rent'
-		},
-		{
-			title: 'Signatur 3: Tekstsamling',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Aqua 2',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Signatur 3: Tekstsamling',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Aqua 2',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Signatur 3: Tekstsamling',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Aqua 2',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Signatur 3: Tekstsamling',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Aqua 2',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Signatur 3: Tekstsamling',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Aqua 2',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Aqua 2',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Signatur 3: Tekstsamling',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Aqua 2',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Signatur 3: Tekstsamling',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
-		},
-		{
-			title: 'Aqua 2',
-			price: 100,
-			deadline: new Date().toLocaleDateString(),
-			status: 'rent'
 		}
-	]
+	],
+	delivery: {
+		method: 'bring',
+		address: 'Traktorveien 10D, 0134 OSLO',
+		estimatedDeliveryDate: new Date().toLocaleDateString(),
+		price: "199 kr"
+	},
+	showPayments: true,
+	payments: [
+		{
+			type: 'cash',
+			amount: '100',
+			currency: 'NOK',
+			taxAmount: '0',
+			paymentId: 'abc113193',
+			status: 'Confirmed',
+			creationTime: '01.01.1900'
+		},
+		{
+			type: 'card',
+			amount: '100',
+			cardInfo: '0123',
+			currency: 'NOK',
+			taxAmount: '0',
+			paymentId: 'abc113193',
+			status: 'Confirmed',
+			creationTime: '01.01.1900'
+		},
 
-}).then((emailLog) => {
-	console.log('the log ', emailLog);
+	]
+};
+
+let emailUser: EmailUser = {
+	id: 'user1',
+	dob: '01.01.2000',
+	name: 'Billy Bob Johansen',
+	email: 'aholskil@gmail.com',
+	address: 'Traktorveien 10D, 3421, OSLO'
+};
+
+
+emailHandler.sendOrderReceipt(emailSetting, emailOrder, emailUser).then((emailLog) => {
+	console.log('email sent!!', emailLog)
 }).catch((emailError) => {
-	console.log('got an error', emailError);
+	console.log('emailError', emailError);
 });
+
