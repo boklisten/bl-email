@@ -146,6 +146,7 @@
     "delivery": {
       "text": {
         "deliveryMethodTitle": "Delivery Method",
+        "deliveryAddressTitle": "Delivery Address",
         "estimatedDeliveryTitle": "Estimated delivery date",
         "deliveryPriceTitle": "Price"
       }

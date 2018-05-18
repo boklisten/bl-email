@@ -1,4 +1,3 @@
-<container class="bl-container-list">
     <row>
         <columns class="bl-table" small="12">
             {{{{raw}}}}
@@ -32,19 +31,22 @@
                     {{/each}}
 
                     {{#if emailTemplateInput.order.showPrice}}
-                        <tr class="bl-table-total">
-                            <td class="bl-table-total-price-title" colspan="{{emailTemplateInput.numberOfCols}}"><i>{{emailTemplateConfig.item-list.text.totalPriceTitle}}</i></td>
-                            <td class="bl-table-total-price"><b>{{emailTemplateInput.order.amount}}</b></td>
-                        </tr>
+                        {{#if emailTemplateInput.order.showDeadline}}
+                            <tr>
+                                <td class="bl-table-item-text" colspan="3"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
+                                <td class="bl-table-item-text"><b>{{emailTemplateInput.order.itemAmount}}</b></td>
+                            </tr>
+                        {{else}}
+                            <tr>
+                                <td class="bl-table-item-text" colspan="2"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
+                                <td class="bl-table-item-text"><b>{{emailTemplateInput.order.itemAmount}}</b></td>
+                            </tr>
+                        {{/if}}
                     {{/if}}
 
                 </table>
-                <div class="bl-text-small">
-                    <small>
-                        {{emailTemplateConfig.partial.item-list.text.orderIdTitle}} {{emailTemplateInput.order.id}}
-                    </small>
-                </div>
+
             {{{{/raw}}}}
+
         </columns>
     </row>
-</container>

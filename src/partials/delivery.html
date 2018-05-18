@@ -1,17 +1,18 @@
 {{{{raw}}}}
     {{#if emailTemplateInput.order.showDelivery}}
-        <container class="bl-container-list">
             <row>
                 <columns class="bl-table" small="12">
                         <table>
                             <tr class="bl-table-title-container">
                                 <th class="bl-table-title">{{emailTemplateConfig.partial.delivery.text.deliveryMethodTitle}}</th>
+                                <th class="bl-table-title">{{emailTemplateConfig.partial.delivery.text.deliveryAddressTitle}}</th>
                                 <th class="bl-table-title">{{emailTemplateConfig.partial.delivery.text.estimatedDeliveryTitle}}</th>
                                 <th class="bl-table-title">{{emailTemplateConfig.partial.delivery.text.deliveryPriceTitle}}</th>
                             </tr>
 
                             <tr>
                                 <td class="bl-table-item-text">{{emailTemplateInput.order.delivery.method}}</td>
+                                <td class="bl-table-item-text">{{emailTemplateInput.order.delivery.address}}</td>
                                 <td class="bl-table-item-text">{{emailTemplateInput.order.delivery.estimatedDeliveryDate}}</td>
                                 <td class="bl-table-item-text">{{emailTemplateInput.order.delivery.price}}</td>
                             </tr>
@@ -19,6 +20,5 @@
                         </table>
                 </columns>
             </row>
-        </container>
     {{/if}}
 {{{{/raw}}}}

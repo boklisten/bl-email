@@ -82,6 +82,11 @@ table.button {
   color: $dark-gray;
 }
 
+.bl-container-title {
+  padding: 5px;
+}
+
+
 .bl-item-container {
   background-color: white;
 }
@@ -100,7 +105,7 @@ table.button {
   font-size: 10px;
   font-weight: bold;
   color: white;
-  padding-left: 5px;
+  padding: 5px;
 }
 
 .bl-table-item-text {
@@ -118,6 +123,8 @@ table.button {
 .bl-table-total-price {
   @extend .bl-table-item-text;
   padding-top: 2px;
+  font-size: 15px;
+  text-align: right;
   font-weight: bold;
   color: white;
 }
@@ -126,6 +133,7 @@ table.button {
   @extend .bl-table-item-text;
   padding-top: 2px;
   font-style: italic;
+
   color: white;
 }
 

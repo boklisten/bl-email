@@ -4,12 +4,13 @@ export type EmailOrder = {
 	id: string,
 	showDeadline?: boolean,
 	showPrice?: boolean,
-	amount: string,
+	itemAmount: string,
+	totalAmount: string,
 	items: {
 		title: string,
 		status: string
 		deadline?: string | null,
-		price?: number | null,
+		price?: string | null,
 	}[],
 	showDelivery?: boolean,
 	delivery?: {

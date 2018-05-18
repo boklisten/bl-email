@@ -32,18 +32,19 @@ let emailOrder: EmailOrder = {
 	id: 'dfa2a83asc193274adf',
 	showDeadline: true,
 	showPrice: true,
-	amount: '200 kr',
+	totalAmount: '375 kr',
+	itemAmount: '300 kr',
 	showDelivery: true,
 	items: [
 		{
 			title: 'Signatur 3: Tekstsamling',
-			price: 100,
+			price: '100 kr',
 			deadline: new Date().toLocaleDateString(),
 			status: 'rent'
 		},
 		{
 			title: 'Aqua 2',
-			price: 100,
+			price: '200 kr',
 			deadline: new Date().toLocaleDateString(),
 			status: 'rent'
 		}
@@ -52,7 +53,7 @@ let emailOrder: EmailOrder = {
 		method: 'bring',
 		address: 'Traktorveien 10D, 0134 OSLO',
 		estimatedDeliveryDate: new Date().toLocaleDateString(),
-		price: "199 kr"
+		price: "75 kr"
 	},
 	showPayments: true,
 	payments: [
