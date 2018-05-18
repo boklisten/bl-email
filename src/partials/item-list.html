@@ -4,7 +4,9 @@
                 <table>
                     <tr class="bl-table-title-container">
                         <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.titleHeader}}</th>
-                        <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.statusHeader}}</th>
+                        {{#if emailTemplateInput.order.showStatus}}
+                            <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.statusHeader}}</th>
+                        {{/if}}
 
                         {{#if emailTemplateInput.order.showDeadline}}
                             <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.deadlineHeader}}</th>
@@ -18,7 +20,10 @@
                     {{#each emailTemplateInput.order.items}}
                     <tr>
                         <td class="bl-table-item-text">{{title}}</td>
-                        <td class="bl-table-item-text">{{status}}</td>
+
+                        {{#if ../emailTemplateInput.order.showStatus}}
+                            <td class="bl-table-item-text">{{status}}</td>
+                        {{/if}}
 
                         {{#if ../emailTemplateInput.order.showDeadline}}
                             <td class="bl-table-item-text">{{deadline}}</td>
@@ -31,17 +36,24 @@
                     {{/each}}
 
                     {{#if emailTemplateInput.order.showPrice}}
-                        {{#if emailTemplateInput.order.showDeadline}}
-                            <tr>
-                                <td class="bl-table-item-text" colspan="3"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
-                                <td class="bl-table-item-text"><b>{{emailTemplateInput.order.itemAmount}}</b></td>
-                            </tr>
-                        {{else}}
-                            <tr>
-                                <td class="bl-table-item-text" colspan="2"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
-                                <td class="bl-table-item-text"><b>{{emailTemplateInput.order.itemAmount}}</b></td>
-                            </tr>
-                        {{/if}}
+                        <tr>
+
+                            {{#if emailTemplateInput.order.showStatus}}
+                                {{#if emailTemplateInput.order.showDeadline}}
+                                    <td class="bl-table-item-text" colspan="3"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
+                                {{else}}
+                                    <td class="bl-table-item-text" colspan="2"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
+                                {{/if}}
+                            {{else}}
+                                {{#if emailTemplateInput.order.showDeadline}}
+                                    <td class="bl-table-item-text" colspan="2"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
+                                {{else}}
+                                    <td class="bl-table-item-text" colspan="1"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
+                                {{/if}}
+                            {{/if}}
+
+                            <td class="bl-table-item-text"><b>{{emailTemplateInput.order.itemAmount}}</b></td>
+                        </tr>
                     {{/if}}
 
                 </table>

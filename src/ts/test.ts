@@ -31,7 +31,8 @@ let emailSetting: EmailSetting = {
 let emailOrder: EmailOrder = {
 	id: 'dfa2a83asc193274adf',
 	showDeadline: false,
-	showPrice: false,
+	showPrice: true,
+	showStatus: true,
 	totalAmount: '375 kr',
 	itemAmount: '300 kr',
 	items: [
@@ -92,7 +93,7 @@ let emailUser: EmailUser = {
 };
 
 
-emailHandler.sendOrderReceipt(emailSetting, emailOrder, emailUser, true).then((emailLog) => {
+emailHandler.sendOrderReceipt(emailSetting, emailOrder, emailUser, false).then((emailLog) => {
 	console.log('email sent!!', emailLog)
 }).catch((emailError) => {
 	console.log('emailError', emailError);

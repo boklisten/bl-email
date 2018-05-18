@@ -12,13 +12,6 @@
     {{> delivery}}
 
     {{{{raw}}}}
-        {{#if emailTemplateInput.order.showPrice}}
-            <row class="bl-table-total">
-                <columns>
-                    <div style="float: right"><i class="bl-table-total-price-title">{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i> <b class="bl-table-total-price"> {{emailTemplateInput.order.totalAmount}}</b></div>
-                </columns>
-            </row>
-        {{/if}}
         <row>
             <columns>
                 <div class="bl-text-small">
@@ -28,6 +21,14 @@
                 </div>
             </columns>
         </row>
+
+        {{#if emailTemplateInput.order.showPrice}}
+            <row class="bl-table-total">
+                <columns>
+                    <div style="float: right"><i class="bl-table-total-price-title">{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i> <b class="bl-table-total-price"> {{emailTemplateInput.order.totalAmount}}</b></div>
+                </columns>
+            </row>
+        {{/if}}
     {{{{/raw}}}}
 
 </container>
