@@ -116,6 +116,18 @@
       "guardianSignature": "Guardian's signature (if customer is under the age of 18)"
     }
   },
+  "reminder": {
+    "text": {
+      "title": "Time to deliver your items",
+      "yourItemsTitle": "Your items"
+    },
+    "textBlocks": [
+      {
+        "text": "This is a reminder that you have items that needs to be delivered by the given deadline",
+        "warning": true
+      }
+    ]
+  },
   "partial": {
     "contact": {
       "title": "Kontaktinfo",

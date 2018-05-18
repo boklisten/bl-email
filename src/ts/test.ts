@@ -11,13 +11,6 @@ let emailHandler: EmailHandler = new EmailHandler({sendgrid: {apiKey: SECRETS.em
 
 
 let emailTextBlocks: EmailTextBlock[] = [
-	{
-		text: 'This is the receipt of the last transaction you did at boklisten.co'
-	},
-	{
-		text: 'Included in this email are an agreement that you need to sign and deliver at branch when you whant to retrieve the items.',
-		warning: true
-	}
 ];
 
 let emailSetting: EmailSetting = {
@@ -93,7 +86,7 @@ let emailUser: EmailUser = {
 };
 
 
-emailHandler.sendOrderReceipt(emailSetting, emailOrder, emailUser, false).then((emailLog) => {
+emailHandler.sendReminder(emailSetting, emailOrder, emailUser).then((emailLog) => {
 	console.log('email sent!!', emailLog)
 }).catch((emailError) => {
 	console.log('emailError', emailError);

@@ -23,11 +23,26 @@ export class EmailHandler {
 		this._emailTemplateConfig = (config.emailTemplateConfig) ? config.emailTemplateConfig : require('../data/emailTemplateConfig.json');
 	}
 
-	public async sendOrderReceipt(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser, withAgreement?: boolean) {
-		let emailType = 'receipt';
-
+	public sendReminder(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser): Promise<EmailLog> {
 		emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
+		let emailTemplateInput: EmailTemplateInput = {
+			user: emailUser,
+			order: emailOrder,
+			creationTime: new Date().toString(),
+			textBlocks: emailSetting.textBlocks
+		};
+
+		emailTemplateInput.order.showStatus = false;
+		emailTemplateInput.order.showPrice = false;
+		emailTemplateInput.order.showDeadline = true;
+		emailTemplateInput.textBlocks = emailTemplateInput.textBlocks.concat(this._emailTemplateConfig.reminder.textBlocks);
+
+		return this.sendEmail(emailSetting, 'reminder', emailTemplateInput);
+	}
+
+	public async sendOrderReceipt(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser, withAgreement?: boolean) {
+		emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
 		let emailTemplateInput: EmailTemplateInput = {
 			user: emailUser,
@@ -60,13 +75,6 @@ export class EmailHandler {
 		);
 	}
 	
-	public send(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
-		return Promise.reject('not implemented');
-	}
-
-	public sendWithAgreement(emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
-		return Promise.reject('not implemented');
-	}
 
 	private createRentAgreementAttachment(emailTemplateInput: EmailTemplateInput): Promise<EmailAttachment> {
 		return new Promise((resolve, reject) => {

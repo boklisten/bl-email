@@ -27,6 +27,7 @@ export class TemplateCompiler {
 		this.compiledPages['hello'] = this.compileTemplate('hello');
 		this.compiledPages['password-reset'] = this.compileTemplate('password-reset');
 		this.compiledPages['receipt'] = this.compileTemplate('receipt');
+		this.compiledPages['reminder'] = this.compileTemplate('reminder');
 		this.compiledPages['receipt-with-agreement'] = this.compileTemplate('receipt-with-agreement');
 	}
 

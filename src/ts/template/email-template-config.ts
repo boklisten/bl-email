@@ -1,4 +1,5 @@
 import {EmailSetting} from "./email-setting";
+import {EmailTextBlock} from "./email-text-block";
 
 export type EmailTemplateConfig = {
 	link: {
@@ -39,6 +40,13 @@ export type EmailTemplateConfig = {
 				value: string
 			}
 		}
+	},
+	"reminder": {
+		text: {
+			title: string,
+			yourItemsTitle: string
+		}
+		textBlocks: EmailTextBlock[]
 	},
 	"confirm-email": {
 		emailSetting: EmailSetting,
