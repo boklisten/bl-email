@@ -1,88 +1,88 @@
-
-<div id="pageHeader">
-    <div class="bl-text-tiny">
-        {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementCustomer'}}
-        {{{{raw}}}}
-            {{emailTemplateInput.user.name}} - {{emailTemplateInput.user.dob}} - {{emailTemplateInput.user.address}}
-        {{{{/raw}}}}
+<div class="bl-body-pdf">
+    <div id="pageHeader">
+        <div class="bl-text-tiny bl-center-text">
+            {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementCustomer'}}
+            {{{{raw}}}}
+                {{emailTemplateInput.user.name}} - {{emailTemplateInput.user.dob}} - {{emailTemplateInput.user.address}}
+            {{{{/raw}}}}
+        </div>
     </div>
+
+
+    {{> header-small}}
+
+    <container>
+        <row>
+            <columns>
+                <div class="text-center bl-main-title"><b>{{i 'emailTemplateConfig.receipt-with-agreement.text.title'}}</b></div>
+            </columns>
+        </row>
+    </container>
+
+
+    {{> item-list}}
+
+    <spacer size="4"></spacer>
+
+    <container>
+        <row>
+            <columns>
+                <div class="bl-text-small" style="font-weight: bold; text-align: center"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementTitle'}}</div>
+            </columns>
+        </row>
+        <row>
+            <columns>
+                <div class="bl-text-small"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreement'}}</div>
+            </columns>
+        </row>
+        <row>
+            <columns>
+                <div class="bl-text-small"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementInfo'}}</div>
+            </columns>
+        </row>
+
+        <row>
+            <columns>
+                <div>
+                    ____________________
+                </div>
+                <div class="bl-text-small">
+                    {{i 'emailTemplateConfig.receipt-with-agreement.text.customerSignature'}}
+                </div>
+            </columns>
+            <columns>
+                <div>
+                    ____________________
+                </div>
+                <div class="bl-text-small">
+                    {{i 'emailTemplateConfig.receipt-with-agreement.text.guardianNameCapital'}}
+                </div>
+            </columns>
+            <columns>
+                <div>
+                    ____________________
+                </div>
+                <div class="bl-text-small">
+                    {{i 'emailTemplateConfig.receipt-with-agreement.text.guardianSignature'}}
+                </div>
+            </columns>
+        </row>
+
+    </container>
+
+    <div id="pageFooter">
+        <div class="bl-text-tiny bl-center-text">
+            <b>{{i 'emailTemplateConfig.general.contact.name.title'}}</b> {{i 'emailTemplateConfig.general.contact.name.value'}} -
+            <b>{{i 'emailTemplateConfig.general.contact.phone.title'}}</b> {{i 'emailTemplateConfig.general.contact.phone.value'}} -
+            <b>{{i 'emailTemplateConfig.general.contact.email.title'}}</b> {{i 'emailTemplateConfig.general.contact.email.value'}} -
+            <b>{{i 'emailTemplateConfig.general.contact.address.title'}}</b> {{i 'emailTemplateConfig.general.contact.address.value'}} -
+            <b>{{i 'emailTemplateConfig.general.contact.organizationNumber.title'}}</b> {{i 'emailTemplateConfig.general.contact.organizationNumber.value'}}
+        </div>
+        <div class="bl-text-tiny bl-center-text">
+            {{{{raw}}}}
+                {{emailTemplateInput.creationTime}} - {{emailTemplateInput.order.orderId}}
+            {{{{/raw}}}}
+        </div>
+    </div>
+
 </div>
-
-
-{{> header-small}}
-
-<container>
-    <row>
-        <columns>
-            <div class="text-center bl-main-title"><b>{{i 'emailTemplateConfig.receipt-with-agreement.text.title'}}</b></div>
-        </columns>
-    </row>
-</container>
-
-
-{{> item-list}}
-
-<spacer size="4"></spacer>
-
-<container>
-    <row>
-        <columns>
-            <div class="bl-text-small" style="font-weight: bold; text-align: center"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementTitle'}}</div>
-        </columns>
-    </row>
-    <row>
-        <columns>
-            <div class="bl-text-small"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreement'}}</div>
-        </columns>
-    </row>
-    <row>
-        <columns>
-            <div class="bl-text-small"> {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementInfo'}}</div>
-        </columns>
-    </row>
-
-    <row>
-        <columns>
-            <div>
-                __________________
-            </div>
-            <div class="bl-text-small">
-                {{i 'emailTemplateConfig.receipt-with-agreement.text.customerSignature'}}
-            </div>
-        </columns>
-        <columns>
-            <div>
-                __________________
-            </div>
-            <div class="bl-text-small">
-                {{i 'emailTemplateConfig.receipt-with-agreement.text.guardianNameCapital'}}
-            </div>
-        </columns>
-        <columns>
-            <div>
-                __________________
-            </div>
-            <div class="bl-text-small">
-                {{i 'emailTemplateConfig.receipt-with-agreement.text.guardianSignature'}}
-            </div>
-        </columns>
-    </row>
-
-</container>
-
-<div id="pageFooter">
-    <div class="bl-text-tiny">
-        <b>{{i 'emailTemplateConfig.general.contact.name.title'}}</b> {{i 'emailTemplateConfig.general.contact.name.value'}} -
-        <b>{{i 'emailTemplateConfig.general.contact.phone.title'}}</b> {{i 'emailTemplateConfig.general.contact.phone.value'}} -
-        <b>{{i 'emailTemplateConfig.general.contact.email.title'}}</b> {{i 'emailTemplateConfig.general.contact.email.value'}} -
-        <b>{{i 'emailTemplateConfig.general.contact.address.title'}}</b> {{i 'emailTemplateConfig.general.contact.address.value'}} -
-        <b>{{i 'emailTemplateConfig.general.contact.organizationNumber.title'}}</b> {{i 'emailTemplateConfig.general.contact.organizationNumber.value'}}
-    </div>
-    <div class="bl-text-tiny">
-        {{{{raw}}}}
-            {{emailTemplateInput.creationTime}} - {{emailTemplateInput.order.orderId}}
-        {{{{/raw}}}}
-    </div>
-</div>
-
-

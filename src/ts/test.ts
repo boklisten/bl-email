@@ -30,11 +30,10 @@ let emailSetting: EmailSetting = {
 
 let emailOrder: EmailOrder = {
 	id: 'dfa2a83asc193274adf',
-	showDeadline: true,
-	showPrice: true,
+	showDeadline: false,
+	showPrice: false,
 	totalAmount: '375 kr',
 	itemAmount: '300 kr',
-	showDelivery: true,
 	items: [
 		{
 			title: 'Signatur 3: Tekstsamling',
@@ -49,13 +48,15 @@ let emailOrder: EmailOrder = {
 			status: 'rent'
 		}
 	],
+	showDelivery: false,
 	delivery: {
 		method: 'bring',
 		address: 'Traktorveien 10D, 0134 OSLO',
 		estimatedDeliveryDate: new Date().toLocaleDateString(),
-		price: "75 kr"
+		amount: '75',
+		currency: 'NOK'
 	},
-	showPayment: true,
+	showPayment: false,
 	payment: {
 		total: '375',
 		currency: 'NOK',
@@ -91,7 +92,7 @@ let emailUser: EmailUser = {
 };
 
 
-emailHandler.sendOrderReceipt(emailSetting, emailOrder, emailUser).then((emailLog) => {
+emailHandler.sendOrderReceipt(emailSetting, emailOrder, emailUser, true).then((emailLog) => {
 	console.log('email sent!!', emailLog)
 }).catch((emailError) => {
 	console.log('emailError', emailError);

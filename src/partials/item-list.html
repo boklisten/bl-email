@@ -20,11 +20,11 @@
                         <td class="bl-table-item-text">{{title}}</td>
                         <td class="bl-table-item-text">{{status}}</td>
 
-                        {{#if deadline}}
+                        {{#if ../emailTemplateInput.order.showDeadline}}
                             <td class="bl-table-item-text">{{deadline}}</td>
                         {{/if}}
 
-                        {{#if price}}
+                        {{#if ../emailTemplateInput.order.showPrice}}
                             <td class="bl-table-item-text">{{price}}</td>
                         {{/if}}
                     </tr>

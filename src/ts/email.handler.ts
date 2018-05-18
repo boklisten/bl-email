@@ -23,14 +23,11 @@ export class EmailHandler {
 		this._emailTemplateConfig = (config.emailTemplateConfig) ? config.emailTemplateConfig : require('../data/emailTemplateConfig.json');
 	}
 
-	public sendOrderReceipt(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser, withAgreement?: boolean) {
+	public async sendOrderReceipt(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser, withAgreement?: boolean) {
 		let emailType = 'receipt';
 
 		emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
-		if (withAgreement) {
-			//this.createRentAgreementAttachment()
-		}
 
 		let emailTemplateInput: EmailTemplateInput = {
 			user: emailUser,
@@ -38,6 +35,15 @@ export class EmailHandler {
 			creationTime: new Date().toString(),
 			textBlocks: emailSetting.textBlocks
 		};
+
+		if (withAgreement) {
+			try {
+				let agreementAttachment = await this.createRentAgreementAttachment(emailTemplateInput);
+				emailSetting.attachments.push(agreementAttachment);
+			} catch (e) {
+				throw new Error('could not create agreement attachment for email');
+			}
+		}
 
 		return this.sendEmail(emailSetting, 'receipt', emailTemplateInput);
 	}

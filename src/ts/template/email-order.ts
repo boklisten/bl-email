@@ -17,7 +17,8 @@ export type EmailOrder = {
 		method: 'bring',
 		address: string,
 		estimatedDeliveryDate: string,
-		price: string,
+		amount: string,
+		currency: string
 	},
 	showPayment?: boolean,
 	payment: {

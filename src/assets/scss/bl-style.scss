@@ -3,6 +3,16 @@
   background-color: $body-background !important;
 }
 
+
+.bl-header-pdf {
+  background-color: $white !important;
+}
+
+.bl-body-pdf {
+  background-color: $white !important;
+}
+
+
 .bl-footer {
   background-color: $body-background !important;
 }
@@ -23,6 +33,11 @@
 
 .bl-payment-container {
   background-color: $success-color;
+  border-radius: 3px;
+}
+
+.bl-delivery-container {
+  background-color: $secondary-color;
   border-radius: 3px;
 }
 

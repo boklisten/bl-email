@@ -145,8 +145,8 @@
     },
     "delivery": {
       "text": {
-        "deliveryMethodTitle": "Delivery Method",
-        "deliveryAddressTitle": "Delivery Address",
+        "deliveryMethodTitle": "Method",
+        "deliveryAddressTitle": "Shipping address",
         "estimatedDeliveryTitle": "Estimated delivery date",
         "deliveryPriceTitle": "Price"
       }
@@ -154,7 +154,7 @@
     "payment": {
       "text": {
         "title": "Payment details",
-        "totalTitle": "Total",
+        "totalTitle": "Total:",
         "taxTitle": "Mva.",
         "methodTitle": "Method:",
         "cardInfoTitle": "Card:",
