@@ -22,8 +22,18 @@
 }
 
 .bl-payment-container {
-  background-color: #1daced;
-  padding-top: 10px;
+  background-color: $success-color;
+  border-radius: 3px;
+}
+
+.bl-payment-container:first-child {
+  margin-bottom: 10px;
+}
+
+.bl-payment-text-small {
+  @extend .bl-text-small;
+  padding: 5px;
+  color: white;
 }
 
 .bl-container-list {
@@ -116,7 +126,7 @@ table.button {
 }
 
 .bl-table-total {
-  border-top: 5px solid #ffffff;
+  padding-top: 10px;
   background-color: #8a8a8a;
 }
 

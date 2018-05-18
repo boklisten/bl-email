@@ -55,29 +55,31 @@ let emailOrder: EmailOrder = {
 		estimatedDeliveryDate: new Date().toLocaleDateString(),
 		price: "75 kr"
 	},
-	showPayments: true,
-	payments: [
-		{
-			type: 'cash',
-			amount: '100',
-			currency: 'NOK',
-			taxAmount: '0',
-			paymentId: 'abc113193',
-			status: 'Confirmed',
-			creationTime: '01.01.1900'
-		},
-		{
-			type: 'card',
-			amount: '100',
-			cardInfo: '0123',
-			currency: 'NOK',
-			taxAmount: '0',
-			paymentId: 'abc113193',
-			status: 'Confirmed',
-			creationTime: '01.01.1900'
-		},
+	showPayment: true,
+	payment: {
+		total: '375',
+		currency: 'NOK',
+		payments: [
+			{
+				method: 'cash',
+				amount: '100',
+				taxAmount: '0',
+				paymentId: 'abc113193',
+				status: 'Confirmed',
+				creationTime: '01.01.1900'
+			},
+			{
+				method: 'card',
+				amount: '100',
+				cardInfo: '0123',
+				taxAmount: '0',
+				paymentId: 'abc113193',
+				status: 'Confirmed',
+				creationTime: '01.01.1900'
+			},
 
-	]
+		]
+	}
 };
 
 let emailUser: EmailUser = {

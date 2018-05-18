@@ -19,15 +19,20 @@ export type EmailOrder = {
 		estimatedDeliveryDate: string,
 		price: string,
 	},
-	showPayments?: boolean,
-	payments?: {
-		type: string,
-		amount: string,
-		cardInfo?: string,
+	showPayment?: boolean,
+	payment: {
+		total: string,
 		currency: string,
-		taxAmount: string,
-		paymentId: string,
-		status: string,
-		creationTime: string
-	}[]
+		taxRate?: string,
+		taxAmount?: string,
+		payments?: {
+			method: string,
+			amount: string,
+			cardInfo?: string,
+			taxAmount: string,
+			paymentId: string,
+			status: string,
+			creationTime: string
+		}[]
+	}
 }
