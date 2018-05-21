@@ -9,15 +9,6 @@
         </columns>
     </row>
 
-    <row>
-        <columns small="12">
-            <b class="bl-hello">{{i 'emailTemplateConfig.general.text.hello'}}</b>
-            <p>
-               {{i 'emailTemplateConfig.confirm-email.text.intro'}}
-            </p>
-        </columns>
-    </row>
-
 </container>
 
 <spacer size="8"></spacer>
@@ -27,15 +18,14 @@
         <columns small="12" class="bl-container">
            <p class="bl-center-text">
                {{i 'emailTemplateConfig.confirm-email.text.info'}}
-
            </p>
             <center>
-                <button href="{{emailTemplateInput.confirmLink}}" class="radius">
+                <button href="{{i 'emailTemplateInput.extra.emailConfirmLink'}}" class="radius">
                     {{i 'emailTemplateConfig.confirm-email.text.button'}}
                 </button>
                 <small>
                     <i>
-                        {{i 'emailTemplateInput.confirmLink'}}
+                        {{i 'emailTemplateInput.extra.emailConfirmLink'}}
                     </i>
                 </small>
             </center>

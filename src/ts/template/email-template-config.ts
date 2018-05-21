@@ -109,6 +109,11 @@ export type EmailTemplateConfig = {
 			guardianSignature: string
 		}
 	},
+	"order-detail": {
+		text: {
+			title: string
+		}
+	},
 	partial: {
 		contact: {
 			title: string,

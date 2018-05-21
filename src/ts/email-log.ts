@@ -1,5 +1,5 @@
-
 import {EmailType} from "./template/email-type";
+
 
 export class EmailLog {
 	private _date: Date;

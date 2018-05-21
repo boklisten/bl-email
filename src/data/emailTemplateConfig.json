@@ -155,6 +155,11 @@
         "orderIdTitle": "Order id:"
       }
     },
+    "order-detail": {
+      "text": {
+        "title": "Order details"
+      }
+    },
     "delivery": {
       "text": {
         "deliveryMethodTitle": "Method",

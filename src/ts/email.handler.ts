@@ -11,6 +11,7 @@ import {EmailOrder} from "./template/email-order";
 import {EmailSetting} from "./template/email-setting";
 import {EmailType} from "./template/email-type";
 import {EmailUser} from "./template/email-user";
+import {EmailTextBlock} from "./template/email-text-block";
 
 export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
@@ -21,6 +22,43 @@ export class EmailHandler {
 		this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
 		this._templateCompiler = new TemplateCompiler();
 		this._emailTemplateConfig = (config.emailTemplateConfig) ? config.emailTemplateConfig : require('../data/emailTemplateConfig.json');
+	}
+
+	public sendGeneric(emailSetting: EmailSetting, title: string, textBlocks: EmailTextBlock[]): Promise<EmailLog> {
+
+		let emailTemplateInput: EmailTemplateInput = {
+			title: title,
+			creationTime: new Date().toString(),
+			textBlocks: textBlocks
+		};
+
+		return this.sendEmail(emailSetting, 'generic', emailTemplateInput);
+	}
+
+	public sendPasswordReset(emailSetting: EmailSetting, passwordResetLink: string): Promise<EmailLog> {
+
+		let emailTemplateInput: EmailTemplateInput = {
+			creationTime: new Date().toString(),
+			textBlocks: emailSetting.textBlocks,
+			extra: {
+				passwordResetLink: passwordResetLink
+			}
+		};
+
+		return this.sendEmail(emailSetting, 'password-reset', emailTemplateInput);
+	}
+
+	public sendEmailVerification(emailSetting: EmailSetting, emailConfirmLink: string): Promise<EmailLog> {
+
+		let emailTemplateInput: EmailTemplateInput = {
+			creationTime: new Date().toString(),
+			textBlocks: emailSetting.textBlocks,
+			extra: {
+				emailConfirmLink: emailConfirmLink
+			}
+		};
+
+		return this.sendEmail(emailSetting, 'confirm-email', emailTemplateInput);
 	}
 
 	public sendReminder(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser): Promise<EmailLog> {

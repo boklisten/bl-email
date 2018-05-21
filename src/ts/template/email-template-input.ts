@@ -10,5 +10,9 @@ export type EmailTemplateInput = {
 	title?: string, //override the title of the email
 	order?: EmailOrder
 	creationTime?: string,
-	textBlocks?: EmailTextBlock[]
+	textBlocks?: EmailTextBlock[],
+	extra?: {
+		emailConfirmLink?: string,
+		passwordResetLink?: string
+	}
 }

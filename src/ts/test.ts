@@ -85,10 +85,50 @@ let emailUser: EmailUser = {
 	address: 'Traktorveien 10D, 3421, OSLO'
 };
 
-
+/*
 emailHandler.sendReminder(emailSetting, emailOrder, emailUser).then((emailLog) => {
-	console.log('email sent!!', emailLog)
+	console.log('reminder sent!', emailLog)
 }).catch((emailError) => {
 	console.log('emailError', emailError);
+}); */
+
+/*
+emailHandler.sendOrderReceipt(emailSetting, emailOrder, emailUser, true).then((emailLog) => {
+	console.log('receipt sent', emailLog);
+}).catch((emailError) => {
+	console.log('receipt: emailError', emailError);
 });
+*/
+
+/*
+emailHandler.sendEmailVerification(emailSetting, 'www.boklisten.co/email/confirm/fsda32c').then((emailLog) => {
+	console.log('email confirm sent!', emailLog);
+}).catch((emailError) => {
+	console.log('confirm email: emailError', emailError);
+});
+*/
+/*
+emailHandler.sendPasswordReset(emailSetting, 'www.boklisten.co/password/reset/fjdaslk').then((emailLog) => {
+	console.log('password reset sent!', emailLog);
+}).catch((emailError) => {
+	console.log('password reset error: ', emailError);
+});
+*/
+
+let genericTextBlocks: EmailTextBlock[] = [
+	{
+		text: 'Hi there, this is a generic message'
+	},
+	{
+		text: 'This is a alert to you regarding that you have failed to deliver',
+		alert: true
+	}
+];
+
+emailHandler.sendGeneric(emailSetting, 'Just a heads up!', genericTextBlocks).then((emailLog) => {
+	console.log('generic email sent!', emailLog);
+}).catch((emailError) => {
+	console.log('generic email error: ', emailError);
+});
+
 
