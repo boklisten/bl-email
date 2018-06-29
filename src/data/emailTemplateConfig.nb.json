@@ -1,0 +1,188 @@
+{
+  "link": {
+    "leaseNotice": "#",
+    "login": "http://www.boklisten.no",
+    "website": "http://www.boklisten.no",
+    "email": "info@boklisten.no",
+    "logo": "http://boklisten.no/images/boklisten_logo_v2_icon_blue.png"
+  },
+  "general": {
+    "text": {
+      "hello": "Hei,"
+    },
+    "img": {
+      "logo": {
+        "alt": "boklisten.no"
+      }
+    },
+    "contact": {
+      "name": {
+        "value": "Boklisten.no AS"
+      },
+      "email": {
+        "title": "E-post:",
+        "value": "info@boklisten.no"
+      },
+      "address": {
+        "title": "Adresse:",
+        "value": "Pb 8, 1316 Eiksmarka"
+      },
+      "organizationNumber": {
+        "title": "Organisasjonsnummer:",
+        "value": "912047385 MVA"
+      },
+      "phone": {
+        "title": "Telefon:",
+        "value": "91002211"
+      }
+    }
+  },
+  "confirm-email": {
+    "emailSetting": {
+      "fromEmail": "ikkesvar@boklisten.no",
+      "subject": "Bekreft din e-post"
+    },
+    "text": {
+      "title": "Bekreft din e-post",
+      "intro": "For å kunne logge inn ber vi deg om å bekrefte din e-post.",
+      "info": "Du bekrefter at dette er din e-post ved å klikke på knappen eller følg linken under",
+      "button": "Bekreft din e-post"
+    }
+  },
+  "deadline": {
+    "emailSetting": {
+      "fromEmail": "ikkesvar@boklisten.no",
+      "subject": "Fristen er snart her"
+    },
+    "text": {
+      "title": "På tide å levere inn bøkene",
+      "intro": "Du har bøker som snart skal leveres inn. Under finner du en liste over hvilke bøker som du ikke har levert enda.",
+      "externalCandidateInfo": "Hvis du er privatist og ønsker å forlenge fristen kan dette enkelt gjøres ved å loggeinn på våre hjemmesider."
+    }
+  },
+  "generic": {
+    "emailSetting": {
+      "fromEmail": "ikkesvar@boklisten.no",
+      "subject": ""
+    },
+    "text": {
+
+    }
+  },
+  "hello": {
+    "emailSetting": {
+      "fromEmail": "ikkesvar@boklisten.no",
+      "subject": "Velkommen"
+    },
+    "text": {
+      "title": "Velkommen!",
+      "intro": "Nå kan du gå igang med å velge de bøkene du trenger til dette semesteret. Vi synes det er superkult at du valgte boklisten. God lesning!"
+    }
+  },
+  "password-reset": {
+    "emailSetting": {
+      "fromEmail": "ikkesvar@boklisten.no",
+      "subject": "Endring av passord"
+    },
+    "text": {
+      "title": "Endring av passord",
+      "intro": "Du har bedt om å få endre passord.",
+      "info": "Du kan endre passordet ditt ved å klikke på knappen eller følg linken under",
+      "linkTitle": "",
+      "button": "Endre passord",
+      "warning": "Hvis dette ikke var deg vil vi gjerne at du kontakter oss. Dette kan du gjøre ved å sende e-post til:"
+    }
+  },
+  "receipt": {
+    "emailSetting": {
+      "fromEmail": "ikkesvar@boklisten.no",
+      "subject": "Kvittering"
+    },
+    "text": {
+      "title": "Kvittering",
+      "intro": "Dette er en kvittering på de transaksjonene du nettopp gjorde hos oss"
+    }
+  },
+  "receipt-with-agreement": {
+    "text": {
+      "title": "Order bekreftelse og leieavtale",
+      "intro": "Dette dokumentet inkluderer både en liste med de bestilte bøkene og en leieavtale. Leieavtalen må signeres og leveres i det du får utlevert bøkene. Hvis du er under 18 år må også en foresatt skrive under.",
+      "agreementCustomer": "Leieavtale for: ",
+      "agreementTitle": "Leieavtale",
+      "agreement": "Det avtales herved at Boklisten.no AS (Adr: Pb 8, 1316 Eiksmarka, tlf: 91002211, epost info@boklisten.no), heretter kalt Boklisten leier ut bøker til kunden (for privatister) og låner bort bøkene (for elever). Elever låner bøker for et skoleår og tilbakeleveringsfristen er 1. juli. Privatister som leier bøker for et halvt år, må levere innen 20.desember for høstsemester, og 1.juli for vårsemester. Privatister som leier bøker for et helt år må levere innen 1.juli påfølgende år for leie om høsten, eller 20.desember samme år for leie på våren. Dersom forlengelse tilbys, kan bøkene forlenges for ett semester ved innbetaling av forlengelsesgebyret. Innlevering må da skje innen neste innleveringsfrist. Bøkene må erstattes med forlagenes listepris + prisjustering på 10% + gebyr på 90 kr per bok hvis de blir ødelagte, mistes eller av annen grunn ikke leveres innen fristen.Ved tilbakelevering fra elever/privatister må bøkene være i god stand. Boklisten har ensidig rett til å avgjøre om en bok aksepteres eller må erstattes. Det anbefales derfor å behandle bøkene pent og bruke bokbind. Se mer informasjon på nettsidene til Boklisten.no om hva som godtas ved tilbakelevering av bøker.Denne avtale reguleres av norsk rett. Eventuelle tvister med utspring i avtaleforholdet skal avgjøres ved behandling i de ordinære domstoler. Oslo tingrett skal være verneting.",
+      "agreementInfo": "Leieavtalen gjelder for bøkene inkludert i disse papirene. Hvis kunden er under 18 år, må en foresatt skrive under og være erstatningsansvarlig",
+      "customerSignature": "Kundens signatur",
+      "guardianNameCapital": "Foresattes navn i blokkbokstaver",
+      "guardianSignature": "Foresattes signatur"
+    }
+  },
+  "reminder": {
+    "text": {
+      "title": "På tide å levere bøkene",
+      "yourItemsTitle": "Dine bøker"
+    },
+    "textBlocks": [
+      {
+        "text": "Dette er en påminnelse på at du må levere bøkene snart, hvis du ikke gjør dette vil det tilkomme gebyrer i henhold til leieavtalen.",
+        "warning": true
+      }
+    ]
+  },
+  "partial": {
+    "contact": {
+      "title": "Kontaktinfo",
+      "email": {
+        "title": "E-post:",
+        "value": "info@boklisten.no"
+      },
+      "website": {
+        "title": "Nettside:",
+        "value": "www.boklisten.no"
+      },
+      "address": {
+        "title": "Adresse:",
+        "value": "Pb 8, 1316 Eiksmarka"
+      }
+    },
+    "header": {},
+    "item-list": {
+      "text": {
+        "totalPriceTitle": "Total",
+        "titleHeader": "Tittel",
+        "statusHeader": "Status",
+        "deadlineHeader": "Frist",
+        "priceHeader": "Pris",
+        "orderIdTitle": "Ordre id:"
+      }
+    },
+    "order-detail": {
+      "text": {
+        "title": "Ordredetaljer"
+      }
+    },
+    "delivery": {
+      "text": {
+        "deliveryMethodTitle": "Sendingsmetode",
+        "deliveryAddressTitle": "Leveres til",
+        "estimatedDeliveryTitle": "Forventet leveringsdato",
+        "deliveryPriceTitle": "Pris"
+      }
+    },
+    "payment": {
+      "text": {
+        "title": "Betalingsdetaljer",
+        "totalTitle": "Totalt:",
+        "taxTitle": "Mva.",
+        "methodTitle": "Betalingsmetode:",
+        "cardInfoTitle": "Kortnummer:",
+        "paymentIdTitle": "Betalings-ID:",
+        "paymentStatusTitle": "Status:",
+        "dateTitle": "Dato:"
+      }
+    },
+    "login": {
+      "info": "For å se hvor du kan hente, levere, forlenge eller bestille bøker:",
+      "button": "Logg inn på boklisten.no"
+    }
+  }
+}

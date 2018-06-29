@@ -12,16 +12,27 @@ import {EmailSetting} from "./template/email-setting";
 import {EmailType} from "./template/email-type";
 import {EmailUser} from "./template/email-user";
 import {EmailTextBlock} from "./template/email-text-block";
+import {isNullOrUndefined} from "util";
 
 export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
 	private _templateCompiler: TemplateCompiler;
 	private _emailTemplateConfig: EmailTemplateConfig;
 	
-	constructor(config: { emailTemplateConfig?: EmailTemplateConfig, sendgrid: {apiKey: string}}) {
+	constructor(config: { emailTemplateConfig?: EmailTemplateConfig, sendgrid: {apiKey: string}, locale?: 'en' | 'nb'}) {
 		this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
 		this._templateCompiler = new TemplateCompiler();
-		this._emailTemplateConfig = (config.emailTemplateConfig) ? config.emailTemplateConfig : require('../data/emailTemplateConfig.json');
+
+		if (!isNullOrUndefined(config.locale)) {
+			if (config.locale === 'nb') {
+				this._emailTemplateConfig = require('../data/emailTemplateConfig.nb.json');
+			} else {
+				this._emailTemplateConfig = require('../data/emailTemplateConfig.json');
+			}
+		} else {
+			this._emailTemplateConfig = (config.emailTemplateConfig) ? config.emailTemplateConfig : require('../data/emailTemplateConfig.json');
+
+		}
 	}
 
 	public sendGeneric(emailSetting: EmailSetting, title: string, textBlocks: EmailTextBlock[]): Promise<EmailLog> {
