@@ -33,8 +33,8 @@
 }
 
 .bl-payment-container {
-  background-color: $success-color;
   border-radius: 3px;
+  border: 2px solid $secondary-color;
 }
 
 .bl-delivery-container {
@@ -49,7 +49,6 @@
 .bl-payment-text-small {
   @extend .bl-text-small;
   padding: 5px;
-  color: white;
 }
 
 .bl-container-list {
