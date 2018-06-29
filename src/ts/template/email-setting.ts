@@ -6,6 +6,7 @@ export type EmailSetting = {
 	toEmail: string,
 	fromEmail: string,
 	subject: string,
+	userFullName?: string,
 	attachments?: EmailAttachment[],
 	textBlocks?: EmailTextBlock[]
 }

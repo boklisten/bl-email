@@ -11,7 +11,15 @@
 
   <row>
     <columns small="12">
-      <b class="bl-hello">{{i 'emailTemplateConfig.general.text.hello'}} {{i 'emailTemplateInput.user.name'}}</b>
+      <b class="bl-hello">{{i 'emailTemplateConfig.general.text.hello'}}
+        {{{{raw}}}}
+          {{#if emailTemplateInput.userFullName}}
+            {{emailTemplateInput.userFullName}}
+          {{else}}
+            {{emailTemplateInput.user.name}}
+          {{/if}}
+        {{{{/raw}}}}
+      </b>
     </columns>
   </row>
 

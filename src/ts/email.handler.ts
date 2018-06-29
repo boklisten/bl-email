@@ -96,6 +96,7 @@ export class EmailHandler {
 		let emailTemplateInput: EmailTemplateInput = {
 			user: emailUser,
 			order: emailOrder,
+			userFullName: (!isNullOrUndefined(emailSetting.userFullName)) ? emailSetting.userFullName : emailUser.name,
 			creationTime: new Date().toString(),
 			textBlocks: emailSetting.textBlocks
 		};

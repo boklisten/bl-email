@@ -157,11 +157,12 @@
     },
     "order-detail": {
       "text": {
-        "title": "Order details"
+        "title": "Ordredetaljer"
       }
     },
     "delivery": {
       "text": {
+        "title": "Delivery details",
         "deliveryMethodTitle": "Method",
         "deliveryAddressTitle": "Shipping address",
         "estimatedDeliveryTitle": "Estimated delivery date",

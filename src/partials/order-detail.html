@@ -1,7 +1,7 @@
 <container>
     <row>
         <columns>
-            <h4 class="bl-container-title">{{emailTemplateConfig.partial.order-detail.text.title}}</h4>
+            <h4 class="bl-container-title">{{i 'emailTemplateConfig.partial.order-detail.text.title'}}</h4>
         </columns>
     </row>
 
@@ -15,20 +15,10 @@
         <row>
             <columns>
                 <div class="bl-text-small">
-                    <small>
-                        {{emailTemplateConfig.partial.item-list.text.orderIdTitle}} {{emailTemplateInput.order.id}}
-                    </small>
+                    {{emailTemplateConfig.partial.item-list.text.orderIdTitle}} {{emailTemplateInput.order.id}}
                 </div>
             </columns>
         </row>
-
-        {{#if emailTemplateInput.order.showPrice}}
-            <row class="bl-table-total">
-                <columns>
-                    <div style="float: right"><i class="bl-table-total-price-title">{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i> <b class="bl-table-total-price"> {{emailTemplateInput.order.totalAmount}}</b></div>
-                </columns>
-            </row>
-        {{/if}}
     {{{{/raw}}}}
 
 </container>

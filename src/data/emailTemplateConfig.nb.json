@@ -105,7 +105,7 @@
   },
   "receipt-with-agreement": {
     "text": {
-      "title": "Order bekreftelse og leieavtale",
+      "title": "Ordrebekreftelse og leieavtale",
       "intro": "Dette dokumentet inkluderer både en liste med de bestilte bøkene og en leieavtale. Leieavtalen må signeres og leveres i det du får utlevert bøkene. Hvis du er under 18 år må også en foresatt skrive under.",
       "agreementCustomer": "Leieavtale for: ",
       "agreementTitle": "Leieavtale",
@@ -147,12 +147,12 @@
     "header": {},
     "item-list": {
       "text": {
-        "totalPriceTitle": "Total",
+        "totalPriceTitle": "Totalt",
         "titleHeader": "Tittel",
-        "statusHeader": "Status",
+        "statusHeader": "Handling",
         "deadlineHeader": "Frist",
         "priceHeader": "Pris",
-        "orderIdTitle": "Ordre id:"
+        "orderIdTitle": "Ordre-ID:"
       }
     },
     "order-detail": {
@@ -162,6 +162,7 @@
     },
     "delivery": {
       "text": {
+        "title": "Leveringsdetaljer",
         "deliveryMethodTitle": "Sendingsmetode",
         "deliveryAddressTitle": "Leveres til",
         "estimatedDeliveryTitle": "Forventet leveringsdato",
