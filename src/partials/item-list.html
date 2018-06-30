@@ -30,7 +30,7 @@
                         {{/if}}
 
                         {{#if ../emailTemplateInput.order.showPrice}}
-                            <td class="bl-table-item-text">{{price}}</td>
+                            <td class="bl-table-item-text">{{price}} {{../emailTemplateInput.currency}}</td>
                         {{/if}}
                     </tr>
                     {{/each}}
@@ -48,7 +48,7 @@
                                 {{#if emailTemplateInput.order.showDeadline}}
                                     <td class="bl-table-item-text" colspan="2"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
                                 {{else}}
-                                    <td class="bl-table-item-text" colspan="1"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
+                                    <td class="bl-table-item-text" colspan="1"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}} {{emailTemplateInput.currency}}</i></td>
                                 {{/if}}
                             {{/if}}
 

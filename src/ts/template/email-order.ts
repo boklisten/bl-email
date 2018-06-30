@@ -7,11 +7,12 @@ export type EmailOrder = {
 	showStatus?: boolean,
 	itemAmount: string,
 	totalAmount: string,
+	currency?: string,
 	items: {
 		title: string,
 		status: string
 		deadline?: string | null,
-		price?: string | null,
+		price?: string | null
 	}[],
 	showDelivery?: boolean,
 	delivery?: {

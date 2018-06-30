@@ -93,6 +93,7 @@ export class EmailHandler {
 	public async sendOrderReceipt(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser, withAgreement?: boolean) {
 		emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
+
 		let emailTemplateInput: EmailTemplateInput = {
 			user: emailUser,
 			order: emailOrder,
