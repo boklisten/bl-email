@@ -48,11 +48,11 @@
                                 {{#if emailTemplateInput.order.showDeadline}}
                                     <td class="bl-table-item-text" colspan="2"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
                                 {{else}}
-                                    <td class="bl-table-item-text" colspan="1"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}} {{emailTemplateInput.order.currency}}</i></td>
+                                    <td class="bl-table-item-text" colspan="1"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
                                 {{/if}}
                             {{/if}}
 
-                            <td class="bl-table-item-text"><b>{{emailTemplateInput.order.itemAmount}}</b></td>
+                            <td class="bl-table-item-text"><b>{{emailTemplateInput.order.itemAmount}} {{emailTemplateInput.order.currency}}</b></td>
                         </tr>
                     {{/if}}
 
