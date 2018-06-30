@@ -18,10 +18,13 @@ export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
 	private _templateCompiler: TemplateCompiler;
 	private _emailTemplateConfig: EmailTemplateConfig;
+	private _agreementFileName: string;
 	
-	constructor(config: { emailTemplateConfig?: EmailTemplateConfig, sendgrid: {apiKey: string}, locale?: 'en' | 'nb'}) {
+	constructor(config: { emailTemplateConfig?: EmailTemplateConfig, sendgrid: {apiKey: string}, locale?: 'en' | 'nb', agreementFileName?: string}) {
 		this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
 		this._templateCompiler = new TemplateCompiler();
+
+		this._agreementFileName = (config.agreementFileName) ? config.agreementFileName : 'boklistenno_agreement';
 
 		if (!isNullOrUndefined(config.locale)) {
 			if (config.locale === 'nb') {
@@ -140,7 +143,7 @@ export class EmailHandler {
 					return resolve({
 						content: buffer.toString('base64'),
 						contentId: 'agreement',
-						filename: 'receipt-with-agreement.pdf',
+						filename: this._agreementFileName + '.pdf',
 						type: 'pdf'
 					});
 				}
