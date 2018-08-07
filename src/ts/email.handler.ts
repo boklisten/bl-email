@@ -13,14 +13,17 @@ import {EmailType} from "./template/email-type";
 import {EmailUser} from "./template/email-user";
 import {EmailTextBlock} from "./template/email-text-block";
 import {isNullOrUndefined} from "util";
+import moment = require("moment");
 
 export class EmailHandler {
 	private _sendGrid: SendgridWrapper;
 	private _templateCompiler: TemplateCompiler;
 	private _emailTemplateConfig: EmailTemplateConfig;
 	private _agreementFileName: string;
+	private _dateFormat: string;
 	
 	constructor(config: { emailTemplateConfig?: EmailTemplateConfig, sendgrid: {apiKey: string}, locale?: 'en' | 'nb', agreementFileName?: string}) {
+		this._dateFormat = 'DD.MM.YYYY';
 		this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
 		this._templateCompiler = new TemplateCompiler();
 
@@ -65,7 +68,7 @@ export class EmailHandler {
 	public sendEmailVerification(emailSetting: EmailSetting, emailConfirmLink: string): Promise<EmailLog> {
 
 		let emailTemplateInput: EmailTemplateInput = {
-			creationTime: new Date().toString(),
+			creationTime: moment().format(this._dateFormat),
 			textBlocks: emailSetting.textBlocks,
 			extra: {
 				emailConfirmLink: emailConfirmLink
@@ -81,7 +84,7 @@ export class EmailHandler {
 		let emailTemplateInput: EmailTemplateInput = {
 			user: emailUser,
 			order: emailOrder,
-			creationTime: new Date().toString(),
+			creationTime: moment().format(this._dateFormat),
 			textBlocks: emailSetting.textBlocks
 		};
 
@@ -101,7 +104,7 @@ export class EmailHandler {
 			user: emailUser,
 			order: emailOrder,
 			userFullName: (!isNullOrUndefined(emailSetting.userFullName)) ? emailSetting.userFullName : emailUser.name,
-			creationTime: new Date().toString(),
+			creationTime: moment().format(this._dateFormat),
 			textBlocks: emailSetting.textBlocks
 		};
 
@@ -143,8 +146,8 @@ export class EmailHandler {
 					return resolve({
 						content: buffer.toString('base64'),
 						contentId: 'agreement',
-						filename: this._agreementFileName + '.pdf',
-						type: 'pdf'
+						filename: this._agreementFileName + '_' + moment().format('MM_DD_YYYY') + '.pdf',
+						type: 'application/pdf'
 					});
 				}
 			});

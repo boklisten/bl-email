@@ -7,7 +7,7 @@ import {EmailTextBlock} from "./template/email-text-block";
 
 
 
-let emailHandler: EmailHandler = new EmailHandler({sendgrid: {apiKey: SECRETS.email.sendgrid.apiKey}});
+let emailHandler: EmailHandler = new EmailHandler({sendgrid: {apiKey: SECRETS.email.sendgrid.apiKey}, locale: 'nb'});
 
 
 let emailTextBlocks: EmailTextBlock[] = [
@@ -24,7 +24,7 @@ let genericTextBlocks: EmailTextBlock[] = [
 	}
 ];
 
-
+/*
 let emailSetting: EmailSetting = {
 	toEmail: 'aholskil@gmail.com',
 	fromEmail: 'noreply@boklisten.co',
@@ -32,6 +32,7 @@ let emailSetting: EmailSetting = {
 	userId: 'user1',
 	textBlocks: genericTextBlocks
 };
+
 
 let emailOrder: EmailOrder = {
 	id: 'dfa2a83asc193274adf',
@@ -88,21 +89,59 @@ let emailOrder: EmailOrder = {
 		]
 	}
 };
+*/
 
-let emailUser: EmailUser = {
-	id: 'user1',
-	dob: '01.01.2000',
-	name: 'Billy Bob Johansen',
-	email: 'aholskil@gmail.com',
-	address: 'Traktorveien 10D, 3421, OSLO'
+
+let emailSettings = {
+	toEmail: 'aholskil@gmail.com',
+	fromEmail: 'ikkesvar@boklisten.no',
+	subject: 'Kvittering fra Boklisten.no',
+	userId: '5b6579a26ccf334a2728d0f8',
+	textBlocks: [
+		{
+			text: 'Vedlagt i denne mailen ligger en kontrakt som du trenger å skrive under på for å få leid bøkene. Kontrakten må du ha med deg når du kommer til oss på stand.'
+		}
+	]
+};
+let emailOrder = {
+	id: '5b6967606df8b3411612a32f',
+	showDeadline: true,
+	showPrice: false,
+	showStatus: true,
+	showSubject: true,
+	currency: 'NOK',
+	itemAmount: '0',
+	totalAmount: '0',
+	items:
+	[
+		{
+			title: 'Ergo 2 2012 fysikk på 1, 2, 3!',
+			status: 'leie',
+			subject: 'Norsk Almennkunnskap VG2 og VG3',
+			deadline: '01.08.2018',
+			price: null
+		}
+	],
+	showDelivery: false,
+	delivery: null,
+	showPayment: false,
+	payment: null
 };
 
-emailHandler.sendReminder(emailSetting, emailOrder, emailUser).then((emailLog) => {
-	console.log('reminder sent!', emailLog)
-}).catch((emailError) => {
-	console.log('emailError', emailError);
-})
-
+let emailUser = {
+	id: '5b6579a26ccf334a2728d0f8',
+	dob: '02.01.1999',
+	name: 'Bill Johan Bobsen',
+	email: 'aholskil@gmail.com',
+	address: 'osloveien 10'
+};
+/*
+emailHandler.sendOrderReceipt(emailSettings, emailOrder, emailUser, true).then(() => {
+	console.log('the email was sent!');
+}).catch((err) => {
+	console.log('could not send email...', err);
+});
+*/
 
 
 /*

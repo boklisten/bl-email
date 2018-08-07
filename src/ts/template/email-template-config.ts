@@ -136,6 +136,7 @@ export type EmailTemplateConfig = {
 				totalPriceTitle: string,
 				titleHeader: string,
 				statusHeader: string,
+				subjectHeader: string,
 				deadlineHeader: string,
 				priceHeader: string,
 				orderIdTitle: string

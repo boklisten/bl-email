@@ -150,6 +150,7 @@
         "totalPriceTitle": "Totalt",
         "titleHeader": "Tittel",
         "statusHeader": "Handling",
+        "subjectHeader": "Fag",
         "deadlineHeader": "Frist",
         "priceHeader": "Pris",
         "orderIdTitle": "Ordre-ID:"

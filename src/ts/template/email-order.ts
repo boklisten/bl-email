@@ -10,7 +10,8 @@ export type EmailOrder = {
 	currency?: string,
 	items: {
 		title: string,
-		status: string
+		status: string,
+		subject?: string | null,
 		deadline?: string | null,
 		price?: string | null
 	}[],

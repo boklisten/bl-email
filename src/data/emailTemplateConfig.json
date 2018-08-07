@@ -150,6 +150,7 @@
         "totalPriceTitle": "Total",
         "titleHeader": "Title",
         "statusHeader": "Status",
+        "subjectHeader": "Subject",
         "deadlineHeader": "Deadline",
         "priceHeader": "Price",
         "orderIdTitle": "Order id:"

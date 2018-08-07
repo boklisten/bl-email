@@ -4,9 +4,14 @@
                 <table>
                     <tr class="bl-table-title-container">
                         <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.titleHeader}}</th>
+                        {{#if emailTemplateInput.order.showSubject}}
+                            <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.subjectHeader}}</th>
+                        {{/if}}
+
                         {{#if emailTemplateInput.order.showStatus}}
                             <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.statusHeader}}</th>
                         {{/if}}
+
 
                         {{#if emailTemplateInput.order.showDeadline}}
                             <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.deadlineHeader}}</th>
@@ -20,6 +25,10 @@
                     {{#each emailTemplateInput.order.items}}
                     <tr>
                         <td class="bl-table-item-text">{{title}}</td>
+
+                        {{#if ../emailTemplateInput.order.showSubject}}
+                            <td class="bl-table-item-text">{{subject}}</td>
+                        {{/if}}
 
                         {{#if ../emailTemplateInput.order.showStatus}}
                             <td class="bl-table-item-text">{{status}}</td>
