@@ -5,6 +5,7 @@ export type EmailOrder = {
 	showDeadline?: boolean,
 	showPrice?: boolean,
 	showStatus?: boolean,
+	showSubject?: boolean,
 	itemAmount: string,
 	totalAmount: string,
 	currency?: string,
@@ -13,15 +14,17 @@ export type EmailOrder = {
 		status: string,
 		subject?: string | null,
 		deadline?: string | null,
-		price?: string | null
+		price?: string | null,
+		handout?: boolean | null
 	}[],
 	showDelivery?: boolean,
 	delivery?: {
 		method: 'bring',
+		trackingNumber: string,
 		address: string,
-		estimatedDeliveryDate: string,
-		amount: string,
-		currency: string
+		estimatedDeliveryDate: string | null,
+		amount: string | null,
+		currency: string | null
 	},
 	showPayment?: boolean,
 	payment: {

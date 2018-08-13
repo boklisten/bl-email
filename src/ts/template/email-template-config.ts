@@ -148,6 +148,7 @@ export type EmailTemplateConfig = {
 				deliveryAddressTitle: string,
 				estimatedDeliveryTitle: string,
 				deliveryPriceTitle: string,
+				trackingNumberTitle: string,
 				title: string
 			}
 		},

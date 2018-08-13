@@ -120,6 +120,26 @@ export class EmailHandler {
 		return this.sendEmail(emailSetting, 'receipt', emailTemplateInput);
 	}
 
+	public async sendDelivery(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser) {
+		emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
+
+		emailOrder.showPayment = false;
+		emailOrder.showDeadline = false;
+		emailOrder.showPrice = false;
+		emailOrder.showDelivery = true;
+		emailOrder.showSubject = false;
+
+		let emailTemplateInput: EmailTemplateInput = {
+			user: emailUser,
+			order: emailOrder,
+			userFullName: (!isNullOrUndefined(emailSetting.userFullName)) ? emailSetting.userFullName : emailUser.name,
+			creationTime: moment().format(this._dateFormat),
+			textBlocks: emailSetting.textBlocks
+		};
+
+		return this.sendEmail(emailSetting, 'receipt', emailTemplateInput);
+	}
+
 	private sendEmail(emailSetting: EmailSetting, emailType: EmailType, emailTemplateInput: EmailTemplateInput): Promise<EmailLog> {
 		return this._sendGrid.send(
 			emailSetting.userId,

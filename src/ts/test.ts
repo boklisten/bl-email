@@ -99,7 +99,10 @@ let emailSettings = {
 	userId: '5b6579a26ccf334a2728d0f8',
 	textBlocks: [
 		{
-			text: 'Vedlagt i denne mailen ligger en kontrakt som du trenger å skrive under på for å få leid bøkene. Kontrakten må du ha med deg når du kommer til oss på stand.'
+			text: 'Dine bøker er nå sendt med Bring og vil komme til deg om ikke lenge! Du kan se ditt tracking-nummer i denne mailen'
+		},
+		{
+			text: 'Vi anser nå bøkene som utlevert, og de vil nå være ditt ansvar frem til innlevering. Om det skulle oppstå noe feil med leveransen er det bare å ta kontakt med oss.'
 		}
 	]
 };
@@ -116,14 +119,18 @@ let emailOrder = {
 	[
 		{
 			title: 'Ergo 2 2012 fysikk på 1, 2, 3!',
-			status: 'leie',
-			subject: 'Norsk Almennkunnskap VG2 og VG3',
-			deadline: '01.08.2018',
-			price: null
+			status: 'utlevering via bring',
 		}
 	],
 	showDelivery: false,
-	delivery: null,
+	delivery: {
+		method: 'bring',
+		trackingNumber: 'jfdas21jasdX2ASjdqa',
+		estimatedDeliveryDate: null,
+		address: "Jon Jonsen, einervein 10 D, 0560 OSLO",
+		amount: null,
+		currency: null
+	},
 	showPayment: false,
 	payment: null
 };
@@ -156,6 +163,14 @@ emailHandler.sendPasswordReset(emailSetting, 'www.boklisten.co/password/reset/fj
 	console.log('password reset sent!', emailLog);
 }).catch((emailError) => {
 	console.log('password reset error: ', emailError);
+});
+*/
+
+/*
+emailHandler.sendDelivery(emailSettings, emailOrder, emailUser).then(() => {
+	console.log('sent delivery mail');
+}).catch(() => {
+	console.log('could not send delivery mail');
 });
 */
 

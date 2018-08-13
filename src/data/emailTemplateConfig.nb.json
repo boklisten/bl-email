@@ -167,6 +167,7 @@
         "deliveryMethodTitle": "Sendingsmetode",
         "deliveryAddressTitle": "Leveres til",
         "estimatedDeliveryTitle": "Forventet leveringsdato",
+        "trackingNumberTitle": "Sporingsnummer",
         "deliveryPriceTitle": "Pris"
       }
     },

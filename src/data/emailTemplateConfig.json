@@ -167,6 +167,7 @@
         "deliveryMethodTitle": "Method",
         "deliveryAddressTitle": "Shipping address",
         "estimatedDeliveryTitle": "Estimated delivery date",
+        "trackingNumberTitle": "Tracking number",
         "deliveryPriceTitle": "Price"
       }
     },
