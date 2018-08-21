@@ -22,9 +22,11 @@ export class EmailHandler {
 	private _agreementFileName: string;
 	private _dateFormat: string;
 	
-	constructor(config: { emailTemplateConfig?: EmailTemplateConfig, sendgrid: {apiKey: string}, locale?: 'en' | 'nb', agreementFileName?: string}) {
+	constructor(config: { emailTemplateConfig?: EmailTemplateConfig, sendgrid?: {apiKey: string}, locale?: 'en' | 'nb', agreementFileName?: string}) {
 		this._dateFormat = 'DD.MM.YYYY';
-		this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
+		if (config.sendgrid) {
+			this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
+		}
 		this._templateCompiler = new TemplateCompiler();
 
 		this._agreementFileName = (config.agreementFileName) ? config.agreementFileName : 'boklistenno_agreement';
