@@ -29,6 +29,7 @@ export class TemplateCompiler {
 		this.compiledPages['receipt'] = this.compileTemplate('receipt');
 		this.compiledPages['reminder'] = this.compileTemplate('reminder');
 		this.compiledPages['receipt-with-agreement'] = this.compileTemplate('receipt-with-agreement');
+		this.compiledPages['receipt-pdf'] = this.compileTemplate('receipt-pdf');
 	}
 
 	public getReceiptWithAgreementHtml(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
@@ -37,6 +38,14 @@ export class TemplateCompiler {
 			emailTemplateConfig: emailTemplateConfig
 		};
 		return this.compiledPages['receipt-with-agreement'](combinedData);
+	}
+
+	public getReceiptPdf(emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {
+		const combinedData = {
+			emailTemplateInput: emailTemplateInput,
+			emailTemplateConfig: emailTemplateConfig
+		};
+		return this.compiledPages['receipt-pdf'](combinedData);
 	}
 	
 	public getHtml(emailType: EmailType, emailTemplateConfig: EmailTemplateConfig, emailTemplateInput: EmailTemplateInput): string {

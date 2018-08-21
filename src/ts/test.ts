@@ -4,6 +4,8 @@ import {EmailSetting} from "./template/email-setting";
 import {EmailOrder} from "./template/email-order";
 import {EmailUser} from "./template/email-user";
 import {EmailTextBlock} from "./template/email-text-block";
+import {PdfHandler} from "./pdf.handler";
+import {EmailAttachment} from "./template/email-attachment";
 
 
 
@@ -97,6 +99,7 @@ let emailSettings = {
 	fromEmail: 'ikkesvar@boklisten.no',
 	subject: 'Kvittering fra Boklisten.no',
 	userId: '5b6579a26ccf334a2728d0f8',
+	attachments: [],
 	textBlocks: [
 		{
 			text: 'Dine bøker er nå sendt med Bring og vil komme til deg om ikke lenge! Du kan se ditt tracking-nummer i denne mailen'
@@ -106,7 +109,7 @@ let emailSettings = {
 		}
 	]
 };
-let emailOrder = {
+let emailOrder: EmailOrder = {
 	id: '5b6967606df8b3411612a32f',
 	showDeadline: true,
 	showPrice: false,
@@ -173,6 +176,26 @@ emailHandler.sendDelivery(emailSettings, emailOrder, emailUser).then(() => {
 	console.log('could not send delivery mail');
 });
 */
+
+/*
+const pdfHandler = new PdfHandler(emailHandler);
+
+
+pdfHandler.getOrderReceipt(emailSettings, emailOrder, emailUser).then((pdf: EmailAttachment) => {
+	emailSettings.attachments = [pdf];
+
+	emailHandler.sendOrderReceipt(emailSettings, emailOrder, emailUser).then(() => {
+		console.log('order reciept sent');
+	}).catch(() => {
+		console.log('could not send reciept');
+	})
+
+}).catch(() => {
+	console.log('could not get agreement...');
+});
+
+*/
+
 
 
 

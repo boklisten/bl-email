@@ -96,17 +96,21 @@ export class EmailHandler {
 		return this.sendEmail(emailSetting, 'reminder', emailTemplateInput);
 	}
 
-	public async sendOrderReceipt(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser, withAgreement?: boolean) {
-		emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
-
-
-		let emailTemplateInput: EmailTemplateInput = {
+	public createEmailTemplateInput(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser) {
+		return {
 			user: emailUser,
 			order: emailOrder,
 			userFullName: (!isNullOrUndefined(emailSetting.userFullName)) ? emailSetting.userFullName : emailUser.name,
 			creationTime: moment().format(this._dateFormat),
 			textBlocks: emailSetting.textBlocks
 		};
+	}
+
+	public async sendOrderReceipt(emailSetting: EmailSetting, emailOrder: EmailOrder, emailUser: EmailUser, withAgreement?: boolean) {
+		emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
+
+
+		let emailTemplateInput: EmailTemplateInput = this.createEmailTemplateInput(emailSetting, emailOrder, emailUser);
 
 		if (withAgreement) {
 			try {
@@ -153,7 +157,7 @@ export class EmailHandler {
 	}
 	
 
-	private createRentAgreementAttachment(emailTemplateInput: EmailTemplateInput): Promise<EmailAttachment> {
+	public createRentAgreementAttachment(emailTemplateInput: EmailTemplateInput): Promise<EmailAttachment> {
 		return new Promise((resolve, reject) => {
 
 			const receiptWithAgreementHtml = this._templateCompiler.getReceiptWithAgreementHtml(this._emailTemplateConfig, emailTemplateInput);
@@ -175,10 +179,14 @@ export class EmailHandler {
 
 	}
 
+	public getEmailTemplateConfig(): EmailTemplateConfig {
+		return this._emailTemplateConfig;
+	}
+
 	private encodeAttachments(attachments: EmailAttachment[]): EmailAttachment[] {
 		if (attachments && attachments.length > 0) {
 			for (let attachment of attachments) {
-				attachment.content = new Buffer(attachment.content).toString('base64');
+				//attachment.content = new Buffer(attachment.content).toString('base64');
 			}
 		} else {
 			attachments = [];
