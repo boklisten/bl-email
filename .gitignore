@@ -7,3 +7,5 @@ dist
 .awspublish*
 config.json
 .idea/
+
+src/config/secrets.ts
