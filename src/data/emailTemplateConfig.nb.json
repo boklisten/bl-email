@@ -119,13 +119,9 @@
   "reminder": {
     "text": {
       "title": "På tide å levere bøkene",
-      "yourItemsTitle": "Dine bøker"
+      "yourItemsTitle": "Bøker som snart må leveres"
     },
     "textBlocks": [
-      {
-        "text": "Dette er en påminnelse på at du må levere bøkene snart, hvis du ikke gjør dette vil det tilkomme gebyrer i henhold til leieavtalen.",
-        "warning": true
-      }
     ]
   },
   "partial": {

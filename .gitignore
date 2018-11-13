@@ -9,3 +9,6 @@ config.json
 .idea/
 
 src/config/secrets.ts
+
+*.swp
+Session.vim
