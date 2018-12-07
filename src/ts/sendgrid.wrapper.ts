@@ -16,8 +16,8 @@ export class SendgridWrapper {
     fromEmail: string,
     subject: string,
     type: EmailType,
-    blMessageId: string,
     html: string,
+    blMessageId: string,
     attachments?: EmailAttachment[],
   ): Promise<EmailLog> {
     return new Promise((resolve, reject) => {
