@@ -33,6 +33,7 @@ let emailOrder: EmailOrder = {
 	currency: 'NOK',
 	itemAmount: '0',
 	totalAmount: '0',
+  loan: true,
 	items:
 	[
 		{
@@ -67,6 +68,13 @@ let emailUser = {
 	email: 'aholskil@gmail.com',
 	address: 'osloveien 10'
 };
+/*
+emailHandler.sendOrderReceipt(emailSettings, emailOrder, emailUser).then(() => {
+  //console.log('email receipt sent');
+}).catch((e) => {
+  //console.log('could not send receipt', e);
+});
+ */
 /*
 emailHandler.sendReminder(emailSettings, emailOrder, emailUser).then(() => {
   console.log('reminder sent');

@@ -9,6 +9,7 @@ export type EmailOrder = {
 	itemAmount: string,
 	totalAmount: string,
 	currency?: string,
+  loan?: boolean,
 	items: {
 		title: string,
 		status: string,
