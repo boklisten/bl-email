@@ -12,12 +12,14 @@ import {EmailTextBlock} from './template/email-text-block';
 import {isNullOrUndefined} from 'util';
 import moment = require('moment');
 
+
 export class EmailHandler {
   private _sendGrid: SendgridWrapper;
   private _templateCompiler: TemplateCompiler;
   private _emailTemplateConfig: EmailTemplateConfig;
   private _agreementFileName: string;
   private _dateFormat: string;
+  private _utcOffset: number;
 
   constructor(config: {
     emailTemplateConfig?: EmailTemplateConfig;
@@ -25,6 +27,12 @@ export class EmailHandler {
     locale?: 'en' | 'nb';
     agreementFileName?: string;
   }) {
+
+
+
+    moment.locale(config.locale ? config.locale : 'nb');
+    this._utcOffset = config.locale ? 0 : 120;
+
     this._dateFormat = 'DD.MM.YYYY';
     if (config.sendgrid) {
       this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
@@ -82,7 +90,7 @@ export class EmailHandler {
     emailConfirmLink: string,
   ): Promise<EmailLog> {
     let emailTemplateInput: EmailTemplateInput = {
-      creationTime: moment().format(this._dateFormat),
+      creationTime: moment().utcOffset(this._utcOffset).format(this._dateFormat),
       textBlocks: emailSetting.textBlocks,
       extra: {
         emailConfirmLink: emailConfirmLink,
@@ -102,7 +110,7 @@ export class EmailHandler {
     let emailTemplateInput: EmailTemplateInput = {
       user: emailUser,
       order: emailOrder,
-      creationTime: moment().format(this._dateFormat),
+      creationTime: moment().utcOffset(this._utcOffset).format(this._dateFormat),
       textBlocks: emailSetting.textBlocks,
     };
 
@@ -127,7 +135,7 @@ export class EmailHandler {
       userFullName: !isNullOrUndefined(emailSetting.userFullName)
         ? emailSetting.userFullName
         : emailUser.name,
-      creationTime: moment().format(this._dateFormat),
+      creationTime: moment().utcOffset(this._utcOffset).format(this._dateFormat),
       textBlocks: emailSetting.textBlocks,
     };
   }
@@ -179,7 +187,7 @@ export class EmailHandler {
       userFullName: !isNullOrUndefined(emailSetting.userFullName)
         ? emailSetting.userFullName
         : emailUser.name,
-      creationTime: moment().format(this._dateFormat),
+      creationTime: moment().utcOffset(this._utcOffset).format(this._dateFormat),
       textBlocks: emailSetting.textBlocks,
     };
 
@@ -232,7 +240,7 @@ export class EmailHandler {
               filename:
                 this._agreementFileName +
                 '_' +
-                moment().format('MM_DD_YYYY') +
+                moment().utcOffset(this._utcOffset).format('MM_DD_YYYY') +
                 '.pdf',
               type: 'application/pdf',
             });
