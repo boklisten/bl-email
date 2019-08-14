@@ -28,12 +28,9 @@ export class EmailHandler {
     agreementFileName?: string;
   }) {
 
-
-
-    moment.locale(config.locale ? config.locale : 'nb');
-    this._utcOffset = config.locale ? 0 : 120;
-
+    this._utcOffset = 120;
     this._dateFormat = 'DD.MM.YYYY';
+
     if (config.sendgrid) {
       this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
     }
