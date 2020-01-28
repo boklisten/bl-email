@@ -95,7 +95,7 @@ let emailUser: EmailUser = {
   email: 'aholskil@gmail.com',
   address: 'Traktorveien 10D, 3421, OSLO',
 };
-/*
+
 emailHandler
   .sendOrderReceipt(emailSetting, emailOrder, emailUser, true)
   .then(emailLog => {
@@ -104,7 +104,7 @@ emailHandler
   .catch(emailError => {
     console.log('emailError', emailError);
   });
-  */
+
 /*
 emailHandler
   .sendReminder(emailSetting, emailOrder, emailUser)
