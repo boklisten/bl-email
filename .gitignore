@@ -7,8 +7,6 @@ dist
 .awspublish*
 config.json
 .idea/
-
-src/config/secrets.ts
-
 *.swp
 Session.vim
+src/config/secrets.ts

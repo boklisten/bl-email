@@ -1,9 +1,25 @@
+p {
+  font-size: 9px;
+}
+
+h4 {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+li {
+  font-size: 9px;
+}
 
 .bl-header {
   background-color: $body-background !important;
   padding-top: 10px;
 }
-
 
 .bl-header-pdf {
   background-color: $white !important;
@@ -13,7 +29,6 @@
   background-color: $white !important;
 }
 
-
 .bl-footer {
   background-color: $body-background !important;
 }
@@ -22,14 +37,12 @@
   border-top: 3px solid $primary-color;
 }
 
-
 .bl-main-container-small {
   border-top: 3px solid $primary-color;
 }
 
 .bl-container {
   padding-top: 15px;
-
 }
 
 .bl-payment-container {
@@ -110,7 +123,6 @@ table.button {
 .bl-container-title {
   padding: 5px;
 }
-
 
 .bl-item-container {
   background-color: white;
