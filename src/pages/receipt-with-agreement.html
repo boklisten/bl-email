@@ -1,5 +1,5 @@
-<div class="bl-body-pdf" style="margin-top: 5px">
-  <div id="pageHeader">
+<div class="bl-body-pdf">
+  <div id="pageHeader" style="padding-top: 5px">
     <div class="bl-text-tiny bl-center-text bl-scale-down">
       {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementCustomer'}}
       {{{{raw}}}} {{emailTemplateInput.user.name}} -
@@ -7,6 +7,8 @@
       {{{{/raw}}}}
     </div>
   </div>
+
+  {{> header-small}}
 
   <container>
     <row>
@@ -20,18 +22,12 @@
 
   {{> item-list}}
 
-  <spacer size="4"></spacer>
-
   <container>
     <row>
       <columns>
         <h3 class="bl-scale-down">
           Boklistens betingelser for utlån og salg av bøker på avdrag
         </h3>
-      </columns>
-    </row>
-    <row>
-      <columns>
         <p class="bl-scale-down">
           Det avtales herved at Boklisten.no AS, heretter kalt Boklisten, selger
           bøker på avdrag til kunder, eller låner ut bøker til elever ved VGS.
@@ -149,21 +145,21 @@
     <row>
       <columns>
         <div>____________________</div>
-        <div class="bl-text-tiny bl-center-text">
+        <div class="bl-text-tiny bl-center-text bl-scale-down">
           {{{{raw}}}} {{emailTemplateInput.creationTime}} -
           {{emailTemplateInput.order.id}} {{{{/raw}}}}
         </div>
       </columns>
       <columns>
         <div>____________________</div>
-        <div class="bl-text-small">
+        <div class="bl-text-small bl-scale-down">
           {{i
           'emailTemplateConfig.receipt-with-agreement.text.guardianNameCapital'}}
         </div>
       </columns>
       <columns>
         <div>____________________</div>
-        <div class="bl-text-small">
+        <div class="bl-text-small bl-scale-down">
           {{i
           'emailTemplateConfig.receipt-with-agreement.text.guardianSignature'}}
         </div>
