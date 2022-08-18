@@ -7,6 +7,7 @@ import {EmailUser} from "./template/email-user";
 import {TemplateCompiler} from "./template/template-compiler";
 import moment = require("moment");
 import {EmailTemplateConfig} from "./template/email-template-config";
+import {generatePdf} from "./html-pdf";
 
 export class PdfHandler {
 	private _templateCompiler: TemplateCompiler;
@@ -33,10 +34,11 @@ export class PdfHandler {
 	private createPdf(html: string): Promise<EmailAttachment> {
 		return new Promise((resolve, reject) => {
 
-			const pdf = require('html-pdf');
+			const options = { format: 'A4', header: {height: '25mm'}, footer: {height: '25mm'} };
 
-			pdf.create(html, {header: {height: '25mm'}, footer: {height: '25mm'}}).toBuffer((err, buffer) => {
-				if (!Buffer.isBuffer(buffer) || err) {
+			generatePdf({ content: html }, options, () => {
+			}).then((buffer) => {
+				if (!Buffer.isBuffer(buffer)) {
 					reject(new Error('pdf to buffer failed'));
 				} else {
 					return resolve({

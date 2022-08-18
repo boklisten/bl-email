@@ -1,5 +1,5 @@
 import {EmailHandler} from './email.handler';
-import {SECRETS} from '../config/secrets';
+import SECRETS from '../config/secrets';
 import {EmailSetting} from './template/email-setting';
 import {EmailOrder} from './template/email-order';
 import {EmailUser} from './template/email-user';
@@ -25,7 +25,7 @@ let genericTextBlocks: EmailTextBlock[] = [
 ];
 
 let emailSetting: EmailSetting = {
-  toEmail: 'aholskil@gmail.com',
+  toEmail: 'adrianandersen@protonmail.com',
   fromEmail: 'noreply@boklisten.co',
   subject: 'Order receipt from Boklisten.co',
   userId: 'user1',
@@ -92,7 +92,7 @@ let emailUser: EmailUser = {
   id: 'user1',
   dob: '01.01.2000',
   name: 'Billy Bob Johansen',
-  email: 'aholskil@gmail.com',
+  email: 'adrianandersen@protonmail.com',
   address: 'Traktorveien 10D, 3421, OSLO',
 };
 

@@ -1,13 +1,13 @@
 {
   "name": "@boklisten/bl-email",
-  "version": "1.4.28",
+  "version": "1.5.9",
   "description": "email handler for boklisten, based on ZURB foundation for emails",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "prepare": "gulp build --production",
     "start": "gulp",
-    "test": "gulp build --production && ts-node dist/ts/test.js",
+    "test": "gulp build --production && node dist/ts/test.js",
     "build": "gulp --production",
     "zip": "gulp zip --production",
     "litmus": "gulp litmus --production",
@@ -17,10 +17,12 @@
   "license": "MIT",
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
+    "bluebird": "^3.7.2",
     "foundation-emails": "^2.2.1",
-    "handlebars": "^4.0.11",
-    "html-pdf": "^2.2.0",
+    "handlebars": "^4.7.7",
+    "inline-css": "^4.0.1",
     "moment": "^2.22.2",
+    "puppeteer": "^9.1.1",
     "typescript": "^2.6.2"
   },
   "devDependencies": {
