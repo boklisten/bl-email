@@ -16,6 +16,12 @@
         <div class="text-center bl-main-title">
           <b>{{i 'emailTemplateConfig.receipt-with-agreement.text.title'}}</b>
         </div>
+          <div class="bl-text-tiny bl-center-text bl-scale-down">
+            {{i 'emailTemplateConfig.partial.item-list.text.orderIdTitle'}}
+            {{{{raw}}}}
+              {{emailTemplateInput.order.id}}
+            {{{{/raw}}}}
+          </div>
       </columns>
     </row>
   </container>
@@ -145,8 +151,11 @@
       <columns>
         <div>____________________</div>
         <div class="bl-text-tiny bl-center-text bl-scale-down">
-          {{{{raw}}}} {{emailTemplateInput.creationTime}} -
-          {{emailTemplateInput.order.id}} {{{{/raw}}}}
+            {{i 'emailTemplateConfig.receipt-with-agreement.text.customerSignature'}}
+            <br/>
+          {{{{raw}}}}
+            {{emailTemplateInput.user.name}} - {{emailTemplateInput.creationTime}}
+          {{{{/raw}}}}
         </div>
       </columns>
       <columns>
@@ -182,8 +191,12 @@
       {{i 'emailTemplateConfig.general.contact.organizationNumber.value'}}
     </div>
     <div class="bl-text-tiny bl-center-text">
-      {{{{raw}}}} {{emailTemplateInput.creationTime}} -
-      {{emailTemplateInput.order.orderId}} {{{{/raw}}}}
+      {{emailTemplateInput.creationTime}} -
+      {{i 'emailTemplateConfig.partial.item-list.text.orderIdTitle'}}
+      {{{{raw}}}}
+        {{emailTemplateInput.order.id}}
+      {{{{/raw}}}}
+
     </div>
   </div>
 </div>
