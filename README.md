@@ -6,6 +6,13 @@
 npm install @boklisten/bl-email
 ```
 
+## Publish
+```shell
+npm version # Optionally --patch
+npm publish
+```
+NB: Do not use `yarn publish`!
+
 ## Example usage
 
 import the emailHandler
