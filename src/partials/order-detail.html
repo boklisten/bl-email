@@ -1,26 +1,26 @@
 <container>
-    <row>
-        <columns>
-            <h4 class="bl-container-title">{{i 'emailTemplateConfig.partial.order-detail.text.title'}}</h4>
-        </columns>
-    </row>
+  <row>
+    <columns>
+      <h4 class="bl-container-title">
+        {{i 'emailTemplateConfig.partial.order-detail.text.title'}}
+      </h4>
+    </columns>
+  </row>
 
-    {{> item-list}}
+  {{> item-list}}
 
-    <spacer size="8"></spacer>
+  <spacer size="8"></spacer>
 
-    {{> delivery}}
-
-    {{{{raw}}}}
-        <row>
-            <columns>
-                <div class="bl-text-small">
-                    {{emailTemplateConfig.partial.item-list.text.orderIdTitle}} {{emailTemplateInput.order.id}}
-                </div>
-            </columns>
-        </row>
-    {{{{/raw}}}}
-
+  {{> delivery}} {{{{raw}}}}
+  <row>
+    <columns>
+      <div class="bl-text-small">
+        {{emailTemplateConfig.partial.item-list.text.orderIdTitle}}
+        {{emailTemplateInput.order.id}}
+      </div>
+    </columns>
+  </row>
+  {{{{/raw}}}}
 </container>
 
 <spacer size="8"></spacer>

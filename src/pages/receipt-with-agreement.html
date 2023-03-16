@@ -16,12 +16,10 @@
         <div class="text-center bl-main-title">
           <b>{{i 'emailTemplateConfig.receipt-with-agreement.text.title'}}</b>
         </div>
-          <div class="bl-text-tiny bl-center-text bl-scale-down">
-            {{i 'emailTemplateConfig.partial.item-list.text.orderIdTitle'}}
-            {{{{raw}}}}
-              {{emailTemplateInput.order.id}}
-            {{{{/raw}}}}
-          </div>
+        <div class="bl-text-tiny bl-center-text bl-scale-down">
+          {{i 'emailTemplateConfig.partial.item-list.text.orderIdTitle'}}
+          {{{{raw}}}} {{emailTemplateInput.order.id}} {{{{/raw}}}}
+        </div>
       </columns>
     </row>
   </container>
@@ -142,7 +140,7 @@
         </p>
 
         <p class="bl-scale-down">
-        {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementInfo'}}
+          {{i 'emailTemplateConfig.receipt-with-agreement.text.agreementInfo'}}
         </p>
       </columns>
     </row>
@@ -151,11 +149,11 @@
       <columns>
         <div>____________________</div>
         <div class="bl-text-tiny bl-center-text bl-scale-down">
-            {{i 'emailTemplateConfig.receipt-with-agreement.text.customerSignature'}}
-            <br/>
-          {{{{raw}}}}
-            {{emailTemplateInput.user.name}} - {{emailTemplateInput.creationTime}}
-          {{{{/raw}}}}
+          {{i
+          'emailTemplateConfig.receipt-with-agreement.text.customerSignature'}}
+          <br />
+          {{{{raw}}}} {{emailTemplateInput.user.name}} -
+          {{emailTemplateInput.creationTime}} {{{{/raw}}}}
         </div>
       </columns>
       <columns>
@@ -191,15 +189,9 @@
       {{i 'emailTemplateConfig.general.contact.organizationNumber.value'}}
     </div>
     <div class="bl-text-tiny bl-center-text">
-      {{{{raw}}}}
-        {{emailTemplateInput.creationTime}}
-      {{{{/raw}}}}
-      -
-      {{i 'emailTemplateConfig.partial.item-list.text.orderIdTitle'}}
-      {{{{raw}}}}
-        {{emailTemplateInput.order.id}}
-      {{{{/raw}}}}
-
+      {{{{raw}}}} {{emailTemplateInput.creationTime}} {{{{/raw}}}} - {{i
+      'emailTemplateConfig.partial.item-list.text.orderIdTitle'}} {{{{raw}}}}
+      {{emailTemplateInput.order.id}} {{{{/raw}}}}
     </div>
   </div>
 </div>

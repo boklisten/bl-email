@@ -7,10 +7,12 @@ npm install @boklisten/bl-email
 ```
 
 ## Publish
+
 ```shell
 npm version # Optionally --patch
 npm publish
 ```
+
 NB: Do not use `yarn publish`!
 
 ## Example usage
@@ -79,8 +81,7 @@ let emailTemplateInput = {
   title: "a title for the message",
   textBlocks: [
     {
-      text:
-        "a user created message, can have as many textBlocks as the user wants",
+      text: "a user created message, can have as many textBlocks as the user wants",
     },
   ],
 };

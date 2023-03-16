@@ -1,28 +1,23 @@
-
 {{> header}}
 
 <container class="bl-main-container">
-
   <row>
     <columns>
-      <h3 class="text-center bl-main-title">{{i 'emailTemplateConfig.receipt.text.title'}}</h3>
+      <h3 class="text-center bl-main-title">
+        {{i 'emailTemplateConfig.receipt.text.title'}}
+      </h3>
     </columns>
   </row>
 
   <row>
     <columns small="12">
-      <b class="bl-hello">{{i 'emailTemplateConfig.general.text.hello'}}
-        {{{{raw}}}}
-          {{#if emailTemplateInput.userFullName}}
-            {{emailTemplateInput.userFullName}}
-          {{else}}
-            {{emailTemplateInput.user.name}}
-          {{/if}}
-        {{{{/raw}}}}
+      <b class="bl-hello"
+        >{{i 'emailTemplateConfig.general.text.hello'}} {{{{raw}}}} {{#if
+        emailTemplateInput.userFullName}} {{emailTemplateInput.userFullName}}
+        {{else}} {{emailTemplateInput.user.name}} {{/if}} {{{{/raw}}}}
       </b>
     </columns>
   </row>
-
 </container>
 
 <spacer size="8"></spacer>
@@ -31,25 +26,20 @@
 
 <spacer size="8"></spacer>
 
-{{> order-detail}}
-
-{{{{raw}}}}
-  {{#emailTemplateInput.order.loan}}
-    <container>
-      <spacer size="8"></spacer>
-      <row>
-        <columns small="12">
-          <h4 class="bl-center-text">Husk å skrive navn i bøkene dine!</h4>
-        </columns>
-      </row>
-    </container>
-  {{/emailTemplateInput.order.loan}}
-{{{{/raw}}}}
+{{> order-detail}} {{{{raw}}}} {{#emailTemplateInput.order.loan}}
+<container>
+  <spacer size="8"></spacer>
+  <row>
+    <columns small="12">
+      <h4 class="bl-center-text">Husk å skrive navn i bøkene dine!</h4>
+    </columns>
+  </row>
+</container>
+{{/emailTemplateInput.order.loan}} {{{{/raw}}}}
 
 <spacer size="8"></spacer>
 
 {{> login}}
-
 
 <spacer size="8"></spacer>
 

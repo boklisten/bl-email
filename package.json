@@ -7,8 +7,8 @@
   "scripts": {
     "build": "gulp build --production",
     "serve": "gulp",
-		"prettier": "prettier --write '**/*.{html,js,ts,tsx,md,json,yml,css,scss}' --ignore-path=.gitignore",
-		"prettier:check": "prettier --check '**/*.{html,js,ts,tsx,md,json,yml,css,scss}' --ignore-path=.gitignore",
+    "prettier": "prettier --write '**/*.{html,js,ts,tsx,md,json,yml,css,scss}' --ignore-path=.gitignore",
+    "prettier:check": "prettier --check '**/*.{html,js,ts,tsx,md,json,yml,css,scss}' --ignore-path=.gitignore",
     "test": "gulp build --production && node dist/ts/test.js",
     "zip": "gulp zip --production",
     "litmus": "gulp litmus --production",

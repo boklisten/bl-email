@@ -1,18 +1,17 @@
 <div class="bl-body-pdf">
-    {{> header-small}}
+  {{> header-small}}
 
-    <container class="bl-main-container">
+  <container class="bl-main-container">
+    <row>
+      <columns>
+        <h3 class="text-center bl-main-title">
+          {{i 'emailTemplateConfig.receipt.text.title'}}
+        </h3>
+      </columns>
+    </row>
+  </container>
 
-        <row>
-            <columns>
-                <h3 class="text-center bl-main-title">{{i 'emailTemplateConfig.receipt.text.title'}}</h3>
-            </columns>
-        </row>
+  <spacer size="4"></spacer>
 
-    </container>
-
-    <spacer size="4"></spacer>
-
-    {{> order-detail}}
+  {{> order-detail}}
 </div>
-

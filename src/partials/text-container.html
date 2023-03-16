@@ -1,33 +1,17 @@
+{{{{raw}}}} {{#each emailTemplateInput.textBlocks}}
+<spacer size="8"></spacer>
 
-
-{{{{raw}}}}
-        {{#each emailTemplateInput.textBlocks}}
-            <spacer size="8"></spacer>
-
-            <container>
-                <row>
-                    {{#if warning}}
-                        <columns small="12" class="bl-container-warning">
-                            {{text}}
-                        </columns>
-                    {{else}}
-                        {{#if alert}}
-                            <columns small="12" class="bl-container-alert">
-                                {{text}}
-                            </columns>
-                        {{else}}
-                            {{#if secondary}}
-                                <columns small="12" class="bl-container-secondary">
-                                    {{text}}
-                                </columns>
-                            {{else}}
-                                <columns small="12" class="bl-container">
-                                    {{text}}
-                                </columns>
-                            {{/if}}
-                        {{/if}}
-                    {{/if}}
-                </row>
-            </container>
-        {{/each}}
-{{{{/raw}}}}
+<container>
+  <row>
+    {{#if warning}}
+    <columns small="12" class="bl-container-warning"> {{text}} </columns>
+    {{else}} {{#if alert}}
+    <columns small="12" class="bl-container-alert"> {{text}} </columns>
+    {{else}} {{#if secondary}}
+    <columns small="12" class="bl-container-secondary"> {{text}} </columns>
+    {{else}}
+    <columns small="12" class="bl-container"> {{text}} </columns>
+    {{/if}} {{/if}} {{/if}}
+  </row>
+</container>
+{{/each}} {{{{/raw}}}}

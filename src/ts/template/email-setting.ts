@@ -1,5 +1,5 @@
-import {EmailAttachment} from './email-attachment';
-import {EmailTextBlock} from './email-text-block';
+import { EmailAttachment } from "./email-attachment";
+import { EmailTextBlock } from "./email-text-block";
 
 export type EmailSetting = {
   userId: string;

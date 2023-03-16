@@ -1,61 +1,97 @@
-{{{{raw}}}}
+{{{{raw}}}} {{#if emailTemplateInput.order.showPayment}}
+<container>
+  <row>
+    <columns>
+      <h4 class="bl-container-title">
+        {{emailTemplateConfig.partial.payment.text.title}}
+      </h4>
+    </columns>
+  </row>
 
-    {{#if emailTemplateInput.order.showPayment}}
-            <container>
-                <row>
-                    <columns>
-                            <h4 class="bl-container-title">{{emailTemplateConfig.partial.payment.text.title}}</h4>
-                    </columns>
-                </row>
+  {{#each emailTemplateInput.order.payment.payments}}
+  <row>
+    <columns>
+      <table class="bl-payment-container">
+        <tr>
+          <td>
+            <div class="bl-payment-text-small">
+              <b>{{../emailTemplateConfig.partial.payment.text.methodTitle}}</b>
+              {{method}}
+            </div>
+          </td>
+          {{#if cardInfo}}
+          <td>
+            <div class="bl-payment-text-small">
+              <b
+                >{{../emailTemplateConfig.partial.payment.text.cardInfoTitle}}</b
+              >
+              {{cardInfo}}
+            </div>
+          </td>
+          {{/if}}
+        </tr>
+        <tr>
+          <td>
+            <div class="bl-payment-text-small">
+              <b>{{../emailTemplateConfig.partial.payment.text.totalTitle}}</b>
+              {{amount}} {{../emailTemplateInput.order.payment.currency}}
+            </div>
+          </td>
+          <td>
+            <div class="bl-payment-text-small">
+              <b
+                >{{../emailTemplateConfig.partial.payment.text.paymentIdTitle}}</b
+              >
+              {{paymentId}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="bl-payment-text-small">
+              <b
+                >{{../emailTemplateConfig.partial.payment.text.paymentStatusTitle}}</b
+              >
+              {{status}}
+            </div>
+          </td>
+          <td>
+            <div class="bl-payment-text-small">
+              <b>{{../emailTemplateConfig.partial.payment.text.dateTitle}}</b>
+              {{creationTime}}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </columns>
+  </row>
+  {{/each}}
 
-                {{#each emailTemplateInput.order.payment.payments}}
-                    <row>
-                        <columns>
-                            <table class="bl-payment-container">
-                                <tr>
-                                    <td>
-                                        <div class="bl-payment-text-small"><b>{{../emailTemplateConfig.partial.payment.text.methodTitle}}</b> {{method}}</div>
-                                    </td>
-                                    {{#if cardInfo}}
-                                        <td>
-                                            <div class="bl-payment-text-small"><b>{{../emailTemplateConfig.partial.payment.text.cardInfoTitle}}</b> {{cardInfo}}</div>
-                                        </td>
-                                    {{/if}}
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="bl-payment-text-small"><b>{{../emailTemplateConfig.partial.payment.text.totalTitle}}</b> {{amount}} {{../emailTemplateInput.order.payment.currency}}</div>
-                                    </td>
-                                    <td>
-                                        <div class="bl-payment-text-small">
-                                            <b>{{../emailTemplateConfig.partial.payment.text.paymentIdTitle}}</b> {{paymentId}}
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="bl-payment-text-small"><b>{{../emailTemplateConfig.partial.payment.text.paymentStatusTitle}}</b> {{status}}</div>
-                                    </td>
-                                    <td>
-                                        <div class="bl-payment-text-small"><b>{{../emailTemplateConfig.partial.payment.text.dateTitle}}</b> {{creationTime}}</div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </columns>
-                    </row>
-                {{/each}}
-
-                <row class="bl-table-total">
-                    <columns>
-                        <div style="float: right"><i class="bl-table-total-price-title">{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i> <b class="bl-table-total-price"> {{emailTemplateInput.order.payment.total}} {{emailTemplateInput.order.payment.currency}}</b></div>
-                        {{#if emailTemplateInput.order.payment.taxAmount}}
-                            <div>
-                                <small style="float: right"><i>{{emailTemplateConfig.partial.payment.text.taxTitle}}</i></small>
-                                <small style="float: right"><b>{{emailTemplateInput.order.payment.taxAmount}} {{emailTemplateInput.order.payment.currency}}</b></small>
-                            </div>
-                        {{/if}}
-                    </columns>
-                </row>
-            </container>
-    {{/if}}
-{{{{/raw}}}}
+  <row class="bl-table-total">
+    <columns>
+      <div style="float: right">
+        <i class="bl-table-total-price-title"
+          >{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i
+        >
+        <b class="bl-table-total-price">
+          {{emailTemplateInput.order.payment.total}}
+          {{emailTemplateInput.order.payment.currency}}</b
+        >
+      </div>
+      {{#if emailTemplateInput.order.payment.taxAmount}}
+      <div>
+        <small style="float: right"
+          ><i>{{emailTemplateConfig.partial.payment.text.taxTitle}}</i></small
+        >
+        <small style="float: right"
+          ><b
+            >{{emailTemplateInput.order.payment.taxAmount}}
+            {{emailTemplateInput.order.payment.currency}}</b
+          ></small
+        >
+      </div>
+      {{/if}}
+    </columns>
+  </row>
+</container>
+{{/if}} {{{{/raw}}}}
