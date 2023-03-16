@@ -1,42 +1,42 @@
-
 {{> header}}
 
 <container class="bl-main-container">
-
-    <row>
-        <columns>
-            <h3 class="text-center bl-main-title">{{i 'emailTemplateConfig.confirm-email.text.title'}}</h3>
-        </columns>
-    </row>
-
+  <row>
+    <columns>
+      <h3 class="text-center bl-main-title">
+        {{i 'emailTemplateConfig.confirm-email.text.title'}}
+      </h3>
+    </columns>
+  </row>
 </container>
 
 <spacer size="8"></spacer>
 
 <container>
-    <row>
-        <columns small="12" class="bl-container">
-           <p class="bl-center-text">
-               {{i 'emailTemplateConfig.confirm-email.text.info'}}
-           </p>
-            <center>
-                <button href="{{i 'emailTemplateInput.extra.emailConfirmLink'}}" class="radius">
-                    {{i 'emailTemplateConfig.confirm-email.text.button'}}
-                </button>
-            </center>
-        </columns>
-    </row>
-    <row>
-        <columns>
-            <center>
-                <small>
-                    <i>
-                        {{i 'emailTemplateInput.extra.emailConfirmLink'}}
-                    </i>
-                </small>
-            </center>
-        </columns>
-    </row>
+  <row>
+    <columns small="12" class="bl-container">
+      <p class="bl-center-text">
+        {{i 'emailTemplateConfig.confirm-email.text.info'}}
+      </p>
+      <center>
+        <button
+          href="{{i 'emailTemplateInput.extra.emailConfirmLink'}}"
+          class="radius"
+        >
+          {{i 'emailTemplateConfig.confirm-email.text.button'}}
+        </button>
+      </center>
+    </columns>
+  </row>
+  <row>
+    <columns>
+      <center>
+        <small>
+          <i> {{i 'emailTemplateInput.extra.emailConfirmLink'}} </i>
+        </small>
+      </center>
+    </columns>
+  </row>
 </container>
 
 <spacer size="4"></spacer>
@@ -46,5 +46,3 @@
 <spacer size="8"></spacer>
 
 {{> contact}}
-
-

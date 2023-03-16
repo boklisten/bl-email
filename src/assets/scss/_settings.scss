@@ -12,11 +12,10 @@
 //   7. Menu
 //   8. Thumbnail
 
-
 // 1. Global
 // ---------
 
-$primary-color: #26768F;
+$primary-color: #26768f;
 $secondary-color: #777777;
 $success-color: #3adb76;
 $warning-color: #ffae00;
@@ -144,4 +143,3 @@ $thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
 $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
-

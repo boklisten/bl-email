@@ -65,9 +65,7 @@
       "fromEmail": "ikkesvar@boklisten.no",
       "subject": ""
     },
-    "text": {
-
-    }
+    "text": {}
   },
   "hello": {
     "emailSetting": {
@@ -121,8 +119,7 @@
       "title": "På tide å levere bøkene",
       "yourItemsTitle": "Bøker som snart må leveres"
     },
-    "textBlocks": [
-    ]
+    "textBlocks": []
   },
   "partial": {
     "contact": {

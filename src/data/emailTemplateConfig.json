@@ -65,9 +65,7 @@
       "fromEmail": "noreply@boklisten.co",
       "subject": ""
     },
-    "text": {
-
-    }
+    "text": {}
   },
   "hello": {
     "emailSetting": {

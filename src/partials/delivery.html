@@ -1,44 +1,66 @@
-{{{{raw}}}}
-    {{#if emailTemplateInput.order.showDelivery}}
-        <row>
-            <columns>
-                <h6>
-                    {{emailTemplateConfig.partial.delivery.text.title}}
-                </h6>
-            </columns>
-        </row>
-        <row>
-            <columns>
-                <table class="bl-payment-container">
-                    <tr>
-                        <td>
-                            <div class="bl-payment-text-small"><b>{{emailTemplateConfig.partial.delivery.text.deliveryMethodTitle}}:</b> {{emailTemplateInput.order.delivery.method}}</div>
-                        </td>
-                        {{#if emailTemplateInput.order.delivery.amount}}
-                        <td>
-                            <div class="bl-payment-text-small"><b>{{emailTemplateConfig.partial.delivery.text.deliveryPriceTitle}}:</b> {{emailTemplateInput.order.delivery.amount}} {{emailTemplateInput.order.delivery.currency}}</div>
-                        </td>
-                        {{/if}}
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="bl-payment-text-small"><b>{{emailTemplateConfig.partial.delivery.text.deliveryAddressTitle}}:</b> {{emailTemplateInput.order.delivery.address}}</div>
-                        </td>
-                        {{#if emailTemplateInput.order.delivery.estimatedDeliveryDate}}
-                        <td>
-                            <div class="bl-payment-text-small"><b>{{emailTemplateConfig.partial.delivery.text.estimatedDeliveryTitle}}:</b> {{emailTemplateInput.order.delivery.estimatedDeliveryDate}}</div>
-                        </td>
-                        {{/if}}
-                    </tr>
-                    {{#if emailTemplateInput.order.delivery.trackingNumber}}
-                    <tr>
-                        <td>
-                            <div class="bl-payment-text-small"><b>{{emailTemplateConfig.partial.delivery.text.trackingNumberTitle}}:</b> {{emailTemplateInput.order.delivery.trackingNumber}}</div>
-                        </td>
-                    </tr>
-                    {{/if}}
-                </table>
-            </columns>
-        </row>
-    {{/if}}
-{{{{/raw}}}}
+{{{{raw}}}} {{#if emailTemplateInput.order.showDelivery}}
+<row>
+  <columns>
+    <h6>{{emailTemplateConfig.partial.delivery.text.title}}</h6>
+  </columns>
+</row>
+<row>
+  <columns>
+    <table class="bl-payment-container">
+      <tr>
+        <td>
+          <div class="bl-payment-text-small">
+            <b
+              >{{emailTemplateConfig.partial.delivery.text.deliveryMethodTitle}}:</b
+            >
+            {{emailTemplateInput.order.delivery.method}}
+          </div>
+        </td>
+        {{#if emailTemplateInput.order.delivery.amount}}
+        <td>
+          <div class="bl-payment-text-small">
+            <b
+              >{{emailTemplateConfig.partial.delivery.text.deliveryPriceTitle}}:</b
+            >
+            {{emailTemplateInput.order.delivery.amount}}
+            {{emailTemplateInput.order.delivery.currency}}
+          </div>
+        </td>
+        {{/if}}
+      </tr>
+      <tr>
+        <td>
+          <div class="bl-payment-text-small">
+            <b
+              >{{emailTemplateConfig.partial.delivery.text.deliveryAddressTitle}}:</b
+            >
+            {{emailTemplateInput.order.delivery.address}}
+          </div>
+        </td>
+        {{#if emailTemplateInput.order.delivery.estimatedDeliveryDate}}
+        <td>
+          <div class="bl-payment-text-small">
+            <b
+              >{{emailTemplateConfig.partial.delivery.text.estimatedDeliveryTitle}}:</b
+            >
+            {{emailTemplateInput.order.delivery.estimatedDeliveryDate}}
+          </div>
+        </td>
+        {{/if}}
+      </tr>
+      {{#if emailTemplateInput.order.delivery.trackingNumber}}
+      <tr>
+        <td>
+          <div class="bl-payment-text-small">
+            <b
+              >{{emailTemplateConfig.partial.delivery.text.trackingNumberTitle}}:</b
+            >
+            {{emailTemplateInput.order.delivery.trackingNumber}}
+          </div>
+        </td>
+      </tr>
+      {{/if}}
+    </table>
+  </columns>
+</row>
+{{/if}} {{{{/raw}}}}

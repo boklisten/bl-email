@@ -1,21 +1,23 @@
 {{> header}}
 
 <container class="bl-main-container">
-    <row>
-        <columns>
-            <h3 class="text-center bl-main-title">{{i 'emailTemplateConfig.deadline.text.title'}}</h3>
-        </columns>
-    </row>
+  <row>
+    <columns>
+      <h3 class="text-center bl-main-title">
+        {{i 'emailTemplateConfig.deadline.text.title'}}
+      </h3>
+    </columns>
+  </row>
 
-    <row>
-        <columns small="12">
-            <b class="bl-hello">{{i 'emailTemplateConfig.general.text.hello'}} {{i 'emailTemplateInput.username'}}</b>
-            <p>
-                {{i 'emailTemplateConfig.deadline.text.intro'}}
-            </p>
-        </columns>
-    </row>
-
+  <row>
+    <columns small="12">
+      <b class="bl-hello"
+        >{{i 'emailTemplateConfig.general.text.hello'}} {{i
+        'emailTemplateInput.username'}}</b
+      >
+      <p>{{i 'emailTemplateConfig.deadline.text.intro'}}</p>
+    </columns>
+  </row>
 </container>
 
 <spacer size="8"></spacer>
@@ -30,8 +32,6 @@
 
 {{> login}}
 
-
 <spacer size="8"></spacer>
 
 {{> contact}}
-

@@ -1,74 +1,78 @@
-    <row>
-        <columns class="bl-table" small="12">
-            {{{{raw}}}}
-                <table>
-                    <tr class="bl-table-title-container">
-                        <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.titleHeader}}</th>
+<row>
+  <columns class="bl-table" small="12">
+    {{{{raw}}}}
+    <table>
+      <tr class="bl-table-title-container">
+        <th class="bl-table-title">
+          {{emailTemplateConfig.partial.item-list.text.titleHeader}}
+        </th>
 
-                        {{#if emailTemplateInput.order.showSubject}}
-                            <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.subjectHeader}}</th>
-                        {{/if}}
+        {{#if emailTemplateInput.order.showSubject}}
+        <th class="bl-table-title">
+          {{emailTemplateConfig.partial.item-list.text.subjectHeader}}
+        </th>
+        {{/if}} {{#if emailTemplateInput.order.showStatus}}
+        <th class="bl-table-title">
+          {{emailTemplateConfig.partial.item-list.text.statusHeader}}
+        </th>
+        {{/if}} {{#if emailTemplateInput.order.showDeadline}}
+        <th class="bl-table-title">
+          {{emailTemplateConfig.partial.item-list.text.deadlineHeader}}
+        </th>
+        {{/if}} {{#if emailTemplateInput.order.showPrice}}
+        <th class="bl-table-title">
+          {{emailTemplateConfig.partial.item-list.text.priceHeader}}
+        </th>
+        {{/if}}
+      </tr>
 
-                        {{#if emailTemplateInput.order.showStatus}}
-                            <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.statusHeader}}</th>
-                        {{/if}}
+      {{#each emailTemplateInput.order.items}}
+      <tr>
+        <td class="bl-table-item-text">{{title}}</td>
 
+        {{#if ../emailTemplateInput.order.showSubject}}
+        <td class="bl-table-item-text">{{subject}}</td>
+        {{/if}} {{#if ../emailTemplateInput.order.showStatus}}
+        <td class="bl-table-item-text">{{status}}</td>
+        {{/if}} {{#if ../emailTemplateInput.order.showDeadline}}
+        <td class="bl-table-item-text">{{deadline}}</td>
+        {{/if}} {{#if ../emailTemplateInput.order.showPrice}}
+        <td class="bl-table-item-text">
+          {{price}} {{../emailTemplateInput.order.currency}}
+        </td>
+        {{/if}}
+      </tr>
+      {{/each}} {{#if emailTemplateInput.order.showPrice}}
+      <tr>
+        {{#if emailTemplateInput.order.showStatus}} {{#if
+        emailTemplateInput.order.showDeadline}}
+        <td class="bl-table-item-text" colspan="3">
+          <i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i>
+        </td>
+        {{else}}
+        <td class="bl-table-item-text" colspan="2">
+          <i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i>
+        </td>
+        {{/if}} {{else}} {{#if emailTemplateInput.order.showDeadline}}
+        <td class="bl-table-item-text" colspan="2">
+          <i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i>
+        </td>
+        {{else}}
+        <td class="bl-table-item-text" colspan="1">
+          <i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i>
+        </td>
+        {{/if}} {{/if}}
 
-                        {{#if emailTemplateInput.order.showDeadline}}
-                            <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.deadlineHeader}}</th>
-                        {{/if}}
+        <td class="bl-table-item-text">
+          <b
+            >{{emailTemplateInput.order.itemAmount}}
+            {{emailTemplateInput.order.currency}}</b
+          >
+        </td>
+      </tr>
+      {{/if}}
+    </table>
 
-                        {{#if emailTemplateInput.order.showPrice}}
-                            <th class="bl-table-title">{{emailTemplateConfig.partial.item-list.text.priceHeader}}</th>
-                        {{/if}}
-                    </tr>
-
-                    {{#each emailTemplateInput.order.items}}
-                    <tr>
-                        <td class="bl-table-item-text">{{title}}</td>
-
-                        {{#if ../emailTemplateInput.order.showSubject}}
-                            <td class="bl-table-item-text">{{subject}}</td>
-                        {{/if}}
-
-                        {{#if ../emailTemplateInput.order.showStatus}}
-                            <td class="bl-table-item-text">{{status}}</td>
-                        {{/if}}
-
-                        {{#if ../emailTemplateInput.order.showDeadline}}
-                            <td class="bl-table-item-text">{{deadline}}</td>
-                        {{/if}}
-
-                        {{#if ../emailTemplateInput.order.showPrice}}
-                            <td class="bl-table-item-text">{{price}} {{../emailTemplateInput.order.currency}}</td>
-                        {{/if}}
-                    </tr>
-                    {{/each}}
-
-                    {{#if emailTemplateInput.order.showPrice}}
-                        <tr>
-
-                            {{#if emailTemplateInput.order.showStatus}}
-                                {{#if emailTemplateInput.order.showDeadline}}
-                                    <td class="bl-table-item-text" colspan="3"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
-                                {{else}}
-                                    <td class="bl-table-item-text" colspan="2"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
-                                {{/if}}
-                            {{else}}
-                                {{#if emailTemplateInput.order.showDeadline}}
-                                    <td class="bl-table-item-text" colspan="2"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
-                                {{else}}
-                                    <td class="bl-table-item-text" colspan="1"><i>{{emailTemplateConfig.partial.item-list.text.totalPriceTitle}}</i></td>
-                                {{/if}}
-                            {{/if}}
-
-                            <td class="bl-table-item-text"><b>{{emailTemplateInput.order.itemAmount}} {{emailTemplateInput.order.currency}}</b></td>
-                        </tr>
-                    {{/if}}
-
-                </table>
-
-            {{{{/raw}}}}
-
-        </columns>
-    </row>
+    {{{{/raw}}}}
+  </columns>
+</row>

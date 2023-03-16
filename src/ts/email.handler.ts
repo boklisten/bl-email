@@ -1,18 +1,17 @@
-import {SendgridWrapper} from './sendgrid.wrapper';
-import {EmailTemplateInput} from './template/email-template-input';
-import {TemplateCompiler} from './template/template-compiler';
-import {EmailTemplateConfig} from './template/email-template-config';
-import {EmailLog} from './email-log';
-import {EmailAttachment} from './template/email-attachment';
-import {EmailOrder} from './template/email-order';
-import {EmailSetting} from './template/email-setting';
-import {EmailType} from './template/email-type';
-import {EmailUser} from './template/email-user';
-import {EmailTextBlock} from './template/email-text-block';
-import {isNullOrUndefined} from 'util';
-import moment = require('moment');
-import {generatePdf} from "./html-pdf";
-
+import { SendgridWrapper } from "./sendgrid.wrapper";
+import { EmailTemplateInput } from "./template/email-template-input";
+import { TemplateCompiler } from "./template/template-compiler";
+import { EmailTemplateConfig } from "./template/email-template-config";
+import { EmailLog } from "./email-log";
+import { EmailAttachment } from "./template/email-attachment";
+import { EmailOrder } from "./template/email-order";
+import { EmailSetting } from "./template/email-setting";
+import { EmailType } from "./template/email-type";
+import { EmailUser } from "./template/email-user";
+import { EmailTextBlock } from "./template/email-text-block";
+import { isNullOrUndefined } from "util";
+import moment = require("moment");
+import { generatePdf } from "./html-pdf";
 
 export class EmailHandler {
   private _sendGrid: SendgridWrapper;
@@ -24,13 +23,12 @@ export class EmailHandler {
 
   constructor(config: {
     emailTemplateConfig?: EmailTemplateConfig;
-    sendgrid?: {apiKey: string};
-    locale?: 'en' | 'nb';
+    sendgrid?: { apiKey: string };
+    locale?: "en" | "nb";
     agreementFileName?: string;
   }) {
-
     this._utcOffset = 120;
-    this._dateFormat = 'DD.MM.YYYY';
+    this._dateFormat = "DD.MM.YYYY";
 
     if (config.sendgrid) {
       this._sendGrid = new SendgridWrapper(config.sendgrid.apiKey);
@@ -38,26 +36,26 @@ export class EmailHandler {
     this._templateCompiler = new TemplateCompiler();
 
     this._agreementFileName = config.agreementFileName
-        ? config.agreementFileName
-        : 'boklistenno_agreement';
+      ? config.agreementFileName
+      : "boklistenno_agreement";
 
     if (!isNullOrUndefined(config.locale)) {
-      if (config.locale === 'nb') {
-        this._emailTemplateConfig = require('../data/emailTemplateConfig.nb.json');
+      if (config.locale === "nb") {
+        this._emailTemplateConfig = require("../data/emailTemplateConfig.nb.json");
       } else {
-        this._emailTemplateConfig = require('../data/emailTemplateConfig.json');
+        this._emailTemplateConfig = require("../data/emailTemplateConfig.json");
       }
     } else {
       this._emailTemplateConfig = config.emailTemplateConfig
-          ? config.emailTemplateConfig
-          : require('../data/emailTemplateConfig.json');
+        ? config.emailTemplateConfig
+        : require("../data/emailTemplateConfig.json");
     }
   }
 
   public sendGeneric(
-      emailSetting: EmailSetting,
-      title: string,
-      textBlocks: EmailTextBlock[],
+    emailSetting: EmailSetting,
+    title: string,
+    textBlocks: EmailTextBlock[]
   ): Promise<EmailLog> {
     let emailTemplateInput: EmailTemplateInput = {
       title: title,
@@ -65,12 +63,12 @@ export class EmailHandler {
       textBlocks: textBlocks,
     };
 
-    return this.sendEmail(emailSetting, 'generic', emailTemplateInput);
+    return this.sendEmail(emailSetting, "generic", emailTemplateInput);
   }
 
   public sendPasswordReset(
-      emailSetting: EmailSetting,
-      passwordResetLink: string,
+    emailSetting: EmailSetting,
+    passwordResetLink: string
   ): Promise<EmailLog> {
     let emailTemplateInput: EmailTemplateInput = {
       creationTime: new Date().toString(),
@@ -80,35 +78,39 @@ export class EmailHandler {
       },
     };
 
-    return this.sendEmail(emailSetting, 'password-reset', emailTemplateInput);
+    return this.sendEmail(emailSetting, "password-reset", emailTemplateInput);
   }
 
   public sendEmailVerification(
-      emailSetting: EmailSetting,
-      emailConfirmLink: string,
+    emailSetting: EmailSetting,
+    emailConfirmLink: string
   ): Promise<EmailLog> {
     let emailTemplateInput: EmailTemplateInput = {
-      creationTime: moment().utcOffset(this._utcOffset).format(this._dateFormat),
+      creationTime: moment()
+        .utcOffset(this._utcOffset)
+        .format(this._dateFormat),
       textBlocks: emailSetting.textBlocks,
       extra: {
         emailConfirmLink: emailConfirmLink,
       },
     };
 
-    return this.sendEmail(emailSetting, 'confirm-email', emailTemplateInput);
+    return this.sendEmail(emailSetting, "confirm-email", emailTemplateInput);
   }
 
   public sendReminder(
-      emailSetting: EmailSetting,
-      emailOrder: EmailOrder,
-      emailUser: EmailUser,
+    emailSetting: EmailSetting,
+    emailOrder: EmailOrder,
+    emailUser: EmailUser
   ): Promise<EmailLog> {
     emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
     let emailTemplateInput: EmailTemplateInput = {
       user: emailUser,
       order: emailOrder,
-      creationTime: moment().utcOffset(this._utcOffset).format(this._dateFormat),
+      creationTime: moment()
+        .utcOffset(this._utcOffset)
+        .format(this._dateFormat),
       textBlocks: emailSetting.textBlocks,
     };
 
@@ -116,61 +118,63 @@ export class EmailHandler {
     emailTemplateInput.order.showPrice = false;
     emailTemplateInput.order.showDeadline = true;
     emailTemplateInput.textBlocks = emailTemplateInput.textBlocks.concat(
-        this._emailTemplateConfig.reminder.textBlocks,
+      this._emailTemplateConfig.reminder.textBlocks
     );
 
-    return this.sendEmail(emailSetting, 'reminder', emailTemplateInput);
+    return this.sendEmail(emailSetting, "reminder", emailTemplateInput);
   }
 
   public createEmailTemplateInput(
-      emailSetting: EmailSetting,
-      emailOrder: EmailOrder,
-      emailUser: EmailUser,
+    emailSetting: EmailSetting,
+    emailOrder: EmailOrder,
+    emailUser: EmailUser
   ) {
     return {
       user: emailUser,
       order: emailOrder,
       userFullName: !isNullOrUndefined(emailSetting.userFullName)
-          ? emailSetting.userFullName
-          : emailUser.name,
-      creationTime: moment().utcOffset(this._utcOffset).format(this._dateFormat),
+        ? emailSetting.userFullName
+        : emailUser.name,
+      creationTime: moment()
+        .utcOffset(this._utcOffset)
+        .format(this._dateFormat),
       textBlocks: emailSetting.textBlocks,
     };
   }
 
   public async sendOrderReceipt(
-      emailSetting: EmailSetting,
-      emailOrder: EmailOrder,
-      emailUser: EmailUser,
-      withAgreement?: boolean,
+    emailSetting: EmailSetting,
+    emailOrder: EmailOrder,
+    emailUser: EmailUser,
+    withAgreement?: boolean
   ) {
     emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
     let emailTemplateInput: EmailTemplateInput = this.createEmailTemplateInput(
-        emailSetting,
-        emailOrder,
-        emailUser,
+      emailSetting,
+      emailOrder,
+      emailUser
     );
 
     if (withAgreement) {
       try {
         let agreementAttachment = await this.createRentAgreementAttachment(
-            emailTemplateInput,
+          emailTemplateInput
         );
         emailSetting.attachments.push(agreementAttachment);
       } catch (e) {
-        console.log(e)
-        throw new Error('could not create agreement attachment for email');
+        console.log(e);
+        throw new Error("could not create agreement attachment for email");
       }
     }
 
-    return this.sendEmail(emailSetting, 'receipt', emailTemplateInput);
+    return this.sendEmail(emailSetting, "receipt", emailTemplateInput);
   }
 
   public async sendDelivery(
-      emailSetting: EmailSetting,
-      emailOrder: EmailOrder,
-      emailUser: EmailUser,
+    emailSetting: EmailSetting,
+    emailOrder: EmailOrder,
+    emailUser: EmailUser
   ) {
     emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
@@ -184,60 +188,70 @@ export class EmailHandler {
       user: emailUser,
       order: emailOrder,
       userFullName: !isNullOrUndefined(emailSetting.userFullName)
-          ? emailSetting.userFullName
-          : emailUser.name,
-      creationTime: moment().utcOffset(this._utcOffset).format(this._dateFormat),
+        ? emailSetting.userFullName
+        : emailUser.name,
+      creationTime: moment()
+        .utcOffset(this._utcOffset)
+        .format(this._dateFormat),
       textBlocks: emailSetting.textBlocks,
     };
 
-    return this.sendEmail(emailSetting, 'receipt', emailTemplateInput);
+    return this.sendEmail(emailSetting, "receipt", emailTemplateInput);
   }
 
   private sendEmail(
-      emailSetting: EmailSetting,
-      emailType: EmailType,
-      emailTemplateInput: EmailTemplateInput,
+    emailSetting: EmailSetting,
+    emailType: EmailType,
+    emailTemplateInput: EmailTemplateInput
   ): Promise<EmailLog> {
     return this._sendGrid.send(
-        emailSetting.userId,
-        emailSetting.toEmail,
-        emailSetting.fromEmail,
-        emailSetting.subject,
+      emailSetting.userId,
+      emailSetting.toEmail,
+      emailSetting.fromEmail,
+      emailSetting.subject,
+      emailType,
+      this._templateCompiler.getHtml(
         emailType,
-        this._templateCompiler.getHtml(
-            emailType,
-            this._emailTemplateConfig,
-            emailTemplateInput,
-        ),
-        emailSetting.blMessageId,
-        emailSetting.attachments,
+        this._emailTemplateConfig,
+        emailTemplateInput
+      ),
+      emailSetting.blMessageId,
+      emailSetting.attachments
     );
   }
 
   public createRentAgreementAttachment(
-      emailTemplateInput: EmailTemplateInput,
+    emailTemplateInput: EmailTemplateInput
   ): Promise<EmailAttachment> {
     return new Promise((resolve, reject) => {
-      const receiptWithAgreementHtml = this._templateCompiler.getReceiptWithAgreementHtml(
+      const receiptWithAgreementHtml =
+        this._templateCompiler.getReceiptWithAgreementHtml(
           this._emailTemplateConfig,
-          emailTemplateInput,
-      );
-      const options = { format: 'A4', header: {height: '15mm'}, footer: {height: '25mm'} };
+          emailTemplateInput
+        );
+      const options = {
+        format: "A4",
+        header: { height: "15mm" },
+        footer: { height: "25mm" },
+      };
 
-      generatePdf({ content: receiptWithAgreementHtml }, options, () => {
-      }).then((buffer) => {
+      generatePdf(
+        { content: receiptWithAgreementHtml },
+        options,
+        () => {}
+      ).then((buffer) => {
         if (!Buffer.isBuffer(buffer)) {
-          reject(new Error('pdf to buffer failed'));
+          reject(new Error("pdf to buffer failed"));
         } else {
           return resolve({
-            content: buffer.toString('base64'),
-            contentId: 'agreement',
+            content: buffer.toString("base64"),
+            contentId: "agreement",
             filename:
-                this._agreementFileName +
-                '_' +
-                moment().utcOffset(this._utcOffset).format('MM_DD_YYYY') +
-                '.pdf',
-            type: 'application/pdf',
+              this._agreementFileName +
+              "_" +
+              moment().utcOffset(this._utcOffset).format("MM_DD_YYYY") +
+              ".pdf",
+            type: "application/pdf",
           });
         }
       });
