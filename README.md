@@ -2,8 +2,6 @@
 
 ## Install
 
-You need a private key from @boklisten to use this module.
-
 ```text
 npm install @boklisten/bl-email
 ```
