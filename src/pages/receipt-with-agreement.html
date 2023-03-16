@@ -191,7 +191,10 @@
       {{i 'emailTemplateConfig.general.contact.organizationNumber.value'}}
     </div>
     <div class="bl-text-tiny bl-center-text">
-      {{emailTemplateInput.creationTime}} -
+      {{{{raw}}}}
+        {{emailTemplateInput.creationTime}}
+      {{{{/raw}}}}
+      -
       {{i 'emailTemplateConfig.partial.item-list.text.orderIdTitle'}}
       {{{{raw}}}}
         {{emailTemplateInput.order.id}}
