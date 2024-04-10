@@ -1,6 +1,6 @@
 {
   "name": "@boklisten/bl-email",
-  "version": "1.7.2",
+  "version": "1.7.6",
   "description": "email handler for boklisten, based on ZURB foundation for emails",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -46,7 +46,7 @@
     "gulp-mail": "^0.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
-    "gulp-sass": "^2.1.0",
+    "gulp-sass": "^3.2.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^3.2.3",
     "gulp-uncss": "^1.0.1",

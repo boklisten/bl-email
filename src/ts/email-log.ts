@@ -6,7 +6,7 @@ export class EmailLog {
   constructor(
     private toEmail: string,
     private fromEmail: string,
-    private type: EmailType
+    private type: EmailType,
   ) {
     this._date = new Date();
   }

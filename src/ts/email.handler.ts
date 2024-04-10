@@ -55,7 +55,7 @@ export class EmailHandler {
   public sendGeneric(
     emailSetting: EmailSetting,
     title: string,
-    textBlocks: EmailTextBlock[]
+    textBlocks: EmailTextBlock[],
   ): Promise<EmailLog> {
     let emailTemplateInput: EmailTemplateInput = {
       title: title,
@@ -68,7 +68,7 @@ export class EmailHandler {
 
   public sendPasswordReset(
     emailSetting: EmailSetting,
-    passwordResetLink: string
+    passwordResetLink: string,
   ): Promise<EmailLog> {
     let emailTemplateInput: EmailTemplateInput = {
       creationTime: new Date().toString(),
@@ -81,9 +81,25 @@ export class EmailHandler {
     return this.sendEmail(emailSetting, "password-reset", emailTemplateInput);
   }
 
+  public sendGuardianSignatureRequest(
+    emailSetting: EmailSetting,
+    signatureLink: string,
+    branchName?: string,
+  ): Promise<EmailLog> {
+    return this.sendEmail(emailSetting, "guardian-signature", {
+      creationTime: new Date().toString(),
+      textBlocks: emailSetting.textBlocks,
+      userFullName: emailSetting.userFullName,
+      extra: {
+        signatureLink: signatureLink,
+        branchName: branchName,
+      },
+    });
+  }
+
   public sendEmailVerification(
     emailSetting: EmailSetting,
-    emailConfirmLink: string
+    emailConfirmLink: string,
   ): Promise<EmailLog> {
     let emailTemplateInput: EmailTemplateInput = {
       creationTime: moment()
@@ -101,7 +117,7 @@ export class EmailHandler {
   public sendReminder(
     emailSetting: EmailSetting,
     emailOrder: EmailOrder,
-    emailUser: EmailUser
+    emailUser: EmailUser,
   ): Promise<EmailLog> {
     emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
@@ -118,7 +134,7 @@ export class EmailHandler {
     emailTemplateInput.order.showPrice = false;
     emailTemplateInput.order.showDeadline = true;
     emailTemplateInput.textBlocks = emailTemplateInput.textBlocks.concat(
-      this._emailTemplateConfig.reminder.textBlocks
+      this._emailTemplateConfig.reminder.textBlocks,
     );
 
     return this.sendEmail(emailSetting, "reminder", emailTemplateInput);
@@ -127,7 +143,7 @@ export class EmailHandler {
   public createEmailTemplateInput(
     emailSetting: EmailSetting,
     emailOrder: EmailOrder,
-    emailUser: EmailUser
+    emailUser: EmailUser,
   ) {
     return {
       user: emailUser,
@@ -146,21 +162,20 @@ export class EmailHandler {
     emailSetting: EmailSetting,
     emailOrder: EmailOrder,
     emailUser: EmailUser,
-    withAgreement?: boolean
+    withAgreement?: boolean,
   ) {
     emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
     let emailTemplateInput: EmailTemplateInput = this.createEmailTemplateInput(
       emailSetting,
       emailOrder,
-      emailUser
+      emailUser,
     );
 
     if (withAgreement) {
       try {
-        let agreementAttachment = await this.createRentAgreementAttachment(
-          emailTemplateInput
-        );
+        let agreementAttachment =
+          await this.createRentAgreementAttachment(emailTemplateInput);
         emailSetting.attachments.push(agreementAttachment);
       } catch (e) {
         console.log(e);
@@ -174,7 +189,7 @@ export class EmailHandler {
   public async sendDelivery(
     emailSetting: EmailSetting,
     emailOrder: EmailOrder,
-    emailUser: EmailUser
+    emailUser: EmailUser,
   ) {
     emailSetting.attachments = this.encodeAttachments(emailSetting.attachments);
 
@@ -202,7 +217,7 @@ export class EmailHandler {
   private sendEmail(
     emailSetting: EmailSetting,
     emailType: EmailType,
-    emailTemplateInput: EmailTemplateInput
+    emailTemplateInput: EmailTemplateInput,
   ): Promise<EmailLog> {
     return this._sendGrid.send(
       emailSetting.userId,
@@ -213,21 +228,21 @@ export class EmailHandler {
       this._templateCompiler.getHtml(
         emailType,
         this._emailTemplateConfig,
-        emailTemplateInput
+        emailTemplateInput,
       ),
       emailSetting.blMessageId,
-      emailSetting.attachments
+      emailSetting.attachments,
     );
   }
 
   public createRentAgreementAttachment(
-    emailTemplateInput: EmailTemplateInput
+    emailTemplateInput: EmailTemplateInput,
   ): Promise<EmailAttachment> {
     return new Promise((resolve, reject) => {
       const receiptWithAgreementHtml =
         this._templateCompiler.getReceiptWithAgreementHtml(
           this._emailTemplateConfig,
-          emailTemplateInput
+          emailTemplateInput,
         );
       const options = {
         format: "A4",
@@ -238,7 +253,7 @@ export class EmailHandler {
       generatePdf(
         { content: receiptWithAgreementHtml },
         options,
-        () => {}
+        () => {},
       ).then((buffer) => {
         if (!Buffer.isBuffer(buffer)) {
           reject(new Error("pdf to buffer failed"));

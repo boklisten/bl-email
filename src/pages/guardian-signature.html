@@ -1,0 +1,67 @@
+{{> header}}
+
+<container class="bl-main-container">
+  <row>
+    <columns>
+      <h3 class="text-center bl-main-title">
+        {{emailTemplateConfig.guardian-signature.text.title}}
+      </h3>
+    </columns>
+  </row>
+</container>
+
+<spacer size="8"></spacer>
+
+<container>
+  <row>
+    <columns small="12" class="bl-container">
+      <p class="bl-center-text">
+        Du mottar denne eposten fordi du er satt opp som foresatt for {{i
+        'emailTemplateInput.userFullName'}}, som har bestilt bøker hos
+        Boklisten.no {{i 'emailTemplateInput.extra.branchName'}}. Ettersom {{i
+        'emailTemplateInput.userFullName'}} er under 18 år, må du signere en
+        låneavtale på deres vegne før de kan motta bøkene.
+      </p>
+      <center>
+        <button
+          href="{{i 'emailTemplateInput.extra.signatureLink'}}"
+          class="radius"
+        >
+          {{emailTemplateConfig.guardian-signature.text.button}}
+        </button>
+      </center>
+    </columns>
+  </row>
+  <row>
+    <columns>
+      <p class="bl-center-text">
+        <small>
+          <i> {{i 'emailTemplateInput.extra.signatureLink'}} </i>
+        </small>
+      </p>
+    </columns>
+  </row>
+</container>
+
+<spacer size="8"></spacer>
+
+<container>
+  <row>
+    <columns small="12" class="bl-container">
+      <p>
+        {{emailTemplateConfig.guardian-signature.text.warning}}
+        <a href="mailto:{{emailTemplateConfig.link.email}}"
+          >{{emailTemplateConfig.link.email}}</a
+        >
+      </p>
+    </columns>
+  </row>
+</container>
+
+<spacer size="8"></spacer>
+
+{{> text-container}}
+
+<spacer size="8"></spacer>
+
+{{> contact}}

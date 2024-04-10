@@ -91,6 +91,19 @@
       "warning": "Hvis dette ikke var deg, så vil vi gjerne at du kontakter oss. Dette kan du gjøre ved å sende e-post til:"
     }
   },
+  "guardian-signature": {
+    "emailSetting": {
+      "fromEmail": "noreply@boklisten.no",
+      "subject": "Signer låneavtale"
+    },
+    "text": {
+      "title": "Signer låneavtale",
+      "info": "Du kan se låneavtalen og signere ved å klikke på knappen under eller følg",
+      "linkTitle": "denne linken.",
+      "button": "Signer låneavtale",
+      "warning": "Hvis dette ikke var deg eller noen du er foresatt for, så vil vi gjerne at du kontakter oss. Dette kan du gjøre ved å sende e-post til:"
+    }
+  },
   "receipt": {
     "emailSetting": {
       "fromEmail": "noreply@boklisten.co",

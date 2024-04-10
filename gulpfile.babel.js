@@ -29,7 +29,7 @@ var CONFIG;
 // Build the "dist" folder by running all of the below tasks
 gulp.task(
   "build",
-  gulp.series(clean, pages, sass, images, inline, copyTestData, buildTs)
+  gulp.series(clean, pages, sass, images, inline, copyTestData, buildTs),
 );
 
 // Build emails, run the server, and watch for file changes
@@ -62,7 +62,7 @@ function pages() {
         partials: "src/partials",
         helpers: "src/helpers",
         data: "src/data",
-      })
+      }),
     )
     .pipe(inky())
     .pipe(gulp.dest(TEMPLATE_PATH));
@@ -82,15 +82,15 @@ function sass() {
     .pipe(
       $.sass({
         includePaths: ["node_modules/foundation-emails/scss"],
-      }).on("error", $.sass.logError)
+      }).on("error", $.sass.logError),
     )
     .pipe(
       $.if(
         PRODUCTION,
         $.uncss({
           html: [TEMPLATE_PATH + "**/*.html"],
-        })
-      )
+        }),
+      ),
     )
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe(gulp.dest(TEMPLATE_PATH + "css"));
@@ -152,7 +152,7 @@ function inliner(css) {
     .pipe(
       $.replace,
       '<link rel="stylesheet" type="text/css" href="css/app.css">',
-      ""
+      "",
     )
     .pipe($.htmlmin, {
       collapseWhitespace: true,
@@ -171,7 +171,7 @@ function creds(done) {
     beep();
     console.log(
       "[AWS]".bold.red +
-        " Sorry, there was an issue locating your config.json. Please see README.md"
+        " Sorry, there was an issue locating your config.json. Please see README.md",
     );
     process.exit();
   }
@@ -253,7 +253,7 @@ function zip() {
       $.rename(function (path) {
         path.dirname = fileName;
         return path;
-      })
+      }),
     );
 
     var moveImages = gulp
@@ -263,7 +263,7 @@ function zip() {
         $.rename(function (path) {
           path.dirname = fileName + path.dirname.replace(TEMPLATE_PATH, "");
           return path;
-        })
+        }),
       );
 
     return merge(moveHTML, moveImages)

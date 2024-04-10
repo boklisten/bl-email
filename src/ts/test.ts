@@ -25,7 +25,7 @@ let genericTextBlocks: EmailTextBlock[] = [
 ];
 
 let emailSetting: EmailSetting = {
-  toEmail: "adrianandersen@protonmail.com",
+  toEmail: "adrian@boklisten.no",
   fromEmail: "noreply@boklisten.co",
   subject: "Order receipt from Boklisten.co",
   userId: "user1",
@@ -92,10 +92,23 @@ let emailUser: EmailUser = {
   id: "user1",
   dob: "01.01.2000",
   name: "Billy Bob Johansen",
-  email: "adrianandersen@protonmail.com",
+  email: "adrian@boklisten.no",
   address: "Traktorveien 10D, 3421, OSLO",
 };
 
+emailHandler.sendGuardianSignatureRequest(
+  {
+    toEmail: "adrian@boklisten.no",
+    fromEmail: "noreply@boklisten.co",
+    subject: "Order receipt from Boklisten.co",
+    userId: "user1",
+    userFullName: "Adrian Andersen",
+  },
+  "https://fisk.no",
+  "Ullern Oslo",
+);
+
+/*
 emailHandler
   .sendOrderReceipt(emailSetting, emailOrder, emailUser, true)
   .then((emailLog) => {
@@ -105,7 +118,6 @@ emailHandler
     console.log("emailError", emailError);
   });
 
-/*
 emailHandler
   .sendReminder(emailSetting, emailOrder, emailUser)
   .then(emailLog => {

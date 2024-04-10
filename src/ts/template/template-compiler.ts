@@ -19,17 +19,19 @@ export class TemplateCompiler {
     this.compiledPages["hello"] = this.compileTemplate("hello");
     this.compiledPages["password-reset"] =
       this.compileTemplate("password-reset");
+    this.compiledPages["guardian-signature"] =
+      this.compileTemplate("guardian-signature");
     this.compiledPages["receipt"] = this.compileTemplate("receipt");
     this.compiledPages["reminder"] = this.compileTemplate("reminder");
     this.compiledPages["receipt-with-agreement"] = this.compileTemplate(
-      "receipt-with-agreement"
+      "receipt-with-agreement",
     );
     this.compiledPages["receipt-pdf"] = this.compileTemplate("receipt-pdf");
   }
 
   public getReceiptWithAgreementHtml(
     emailTemplateConfig: EmailTemplateConfig,
-    emailTemplateInput: EmailTemplateInput
+    emailTemplateInput: EmailTemplateInput,
   ): string {
     const combinedData = {
       emailTemplateInput: emailTemplateInput,
@@ -40,7 +42,7 @@ export class TemplateCompiler {
 
   public getReceiptPdf(
     emailTemplateConfig: EmailTemplateConfig,
-    emailTemplateInput: EmailTemplateInput
+    emailTemplateInput: EmailTemplateInput,
   ): string {
     const combinedData = {
       emailTemplateInput: emailTemplateInput,
@@ -52,7 +54,7 @@ export class TemplateCompiler {
   public getHtml(
     emailType: EmailType,
     emailTemplateConfig: EmailTemplateConfig,
-    emailTemplateInput: EmailTemplateInput
+    emailTemplateInput: EmailTemplateInput,
   ): string {
     const combinedData = {
       emailTemplateInput: emailTemplateInput,
@@ -64,7 +66,7 @@ export class TemplateCompiler {
   private compileTemplate(name: string) {
     const rawHtml = fs.readFileSync(
       __dirname + "/../../templates/" + name + ".html",
-      "utf8"
+      "utf8",
     );
     return Handlebars.compile(rawHtml);
   }
