@@ -84,7 +84,7 @@ export class EmailHandler {
   public sendGuardianSignatureRequest(
     emailSetting: EmailSetting,
     signatureLink: string,
-    branchName?: string,
+    branchName: string,
   ): Promise<EmailLog> {
     return this.sendEmail(emailSetting, "guardian-signature", {
       creationTime: new Date().toString(),
