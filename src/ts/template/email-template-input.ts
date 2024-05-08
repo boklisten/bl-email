@@ -13,5 +13,7 @@ export type EmailTemplateInput = {
   extra?: {
     emailConfirmLink?: string;
     passwordResetLink?: string;
+    signatureLink?: string;
+    branchName?: string;
   };
 };

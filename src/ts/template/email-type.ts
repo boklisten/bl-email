@@ -5,4 +5,5 @@ export type EmailType =
   | "hello"
   | "password-reset"
   | "receipt"
-  | "reminder";
+  | "reminder"
+  | "guardian-signature";

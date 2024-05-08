@@ -10,3 +10,4 @@ config.json
 *.swp
 Session.vim
 src/config/secrets.ts
+dist/config/secrets.js

@@ -23,7 +23,7 @@ export class PdfHandler {
   public getRentAgreement(
     emailSetting: EmailSetting,
     emailOrder: EmailOrder,
-    emailUser: EmailUser
+    emailUser: EmailUser,
   ): Promise<EmailAttachment> {
     const receiptWithAgreementHtml =
       this._templateCompiler.getReceiptWithAgreementHtml(
@@ -31,8 +31,8 @@ export class PdfHandler {
         this._emailHandler.createEmailTemplateInput(
           emailSetting,
           emailOrder,
-          emailUser
-        )
+          emailUser,
+        ),
       );
     return this.createPdf(receiptWithAgreementHtml);
   }
@@ -40,15 +40,15 @@ export class PdfHandler {
   public getOrderReceipt(
     emailSetting: EmailSetting,
     emailOrder: EmailOrder,
-    emailUser: EmailUser
+    emailUser: EmailUser,
   ): Promise<EmailAttachment> {
     const orderReceiptHtml = this._templateCompiler.getReceiptPdf(
       this._emailTemplateConfig,
       this._emailHandler.createEmailTemplateInput(
         emailSetting,
         emailOrder,
-        emailUser
-      )
+        emailUser,
+      ),
     );
     return this.createPdf(orderReceiptHtml);
   }

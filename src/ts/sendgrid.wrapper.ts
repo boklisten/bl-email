@@ -18,7 +18,7 @@ export class SendgridWrapper {
     type: EmailType,
     html: string,
     blMessageId: string,
-    attachments?: EmailAttachment[]
+    attachments?: EmailAttachment[],
   ): Promise<EmailLog> {
     return new Promise((resolve, reject) => {
       const sgMsg = {
@@ -41,7 +41,7 @@ export class SendgridWrapper {
         })
         .catch((error: any) => {
           reject(
-            new Error('could not send email to "' + sgMsg.to + '"' + error)
+            new Error('could not send email to "' + sgMsg.to + '"' + error),
           );
         });
     });
